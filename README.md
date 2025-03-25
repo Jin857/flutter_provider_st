@@ -1,6 +1,7 @@
 # flutter_provider_st
 
-A new Flutter project.
+flutter 架构学习 
+使用Provider + dio搭建项目
 
 ## Getting Started
 
