@@ -3,11 +3,17 @@
 flutter 架构学习 
 使用Provider + dio搭建项目
 
-## Getting Started
+# 开始学习
+## flutter_screenutil
+  flutter_screenutil: 用来兼容不同手机之间的文本大小/高度
+## fluttertoast
+  fluttertoast: Toast提示
+## provider
+  provider: 状态管理工具(本章节主要学习)
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+
+
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
 - [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)

@@ -49,7 +49,7 @@ class _LimitClickButtonState extends State<LimitClickButton> {
     return GestureDetector(
       onTap: () async {
         if (chick) {
-          ToastUtils.show(widget.toastString);
+          ToastUtils.show(name: widget.toastString);
           return;
         }
         setState(() {
@@ -63,7 +63,7 @@ class _LimitClickButtonState extends State<LimitClickButton> {
       child: ColorFiltered(
         colorFilter: chick
             ? clickColor
-            : const ColorFilter.mode(Colors.white, BlendMode.multiply),
+            : const ColorFilter.mode(Colors.transparent, BlendMode.multiply),
         child: widget.child,
       ),
     );
