@@ -20,7 +20,11 @@ class MainPage extends StatelessWidget {
                 debugShowCheckedModeBanner: true,
                 initialRoute: "/",
                 routes: {
-                  "/": (context) => const MyHomePage(),
+                  "/": (context) {
+                    /// 这里可以处理跳转问题
+                    print("刷新了 ,----------");
+                    return const MyHomePage();
+                  },
                 },
                 onGenerateRoute: (settings) {
                   debugPrint("当前跳转路由:${settings.name}");
