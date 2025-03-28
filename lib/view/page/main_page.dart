@@ -11,6 +11,9 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      designSize: const Size(1080, 1920), // 设计图中的尺寸
       builder: (_, child) {
         return ChangeNotifierProvider(
           create: (context) => MainModel(),
