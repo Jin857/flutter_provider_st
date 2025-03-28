@@ -2,6 +2,8 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/utils/location_gps_utils.dart';
+import 'package:geolocator/geolocator.dart';
 
 // ChangeNotifier 主要有两个方法:
 // addListener 注册监听。
@@ -11,9 +13,12 @@ class MainModel extends ChangeNotifier {
     loadConfig();
   }
 
+  /// 位置信息
+  Position? position;
+
   /// 读取本地配置文件
   Future<void> loadConfig() async {
-    debugPrint("config loadding...");
+    getLocation();
   }
 
   String generateRandomString(int length) {
@@ -25,5 +30,10 @@ class MainModel extends ChangeNotifier {
       (index) => availableChars[random.nextInt(availableChars.length)],
     ).join();
     return randomString;
+  }
+
+  /// 获取位置信息
+  Future<void> getLocation() async {
+    position = await LocationGPSUtils.getLatitudeLongitude();
   }
 }

@@ -18,7 +18,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     /// 从上下文中拿到MainModel;
-    // var model = context.watch<MainModel>();
+    var model = context.watch<MainModel>();
     return Scaffold(
       body: Container(
         width: double.infinity,
