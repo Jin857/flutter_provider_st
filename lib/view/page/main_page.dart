@@ -22,7 +22,6 @@ class MainPage extends StatelessWidget {
                 routes: {
                   "/": (context) {
                     /// 这里可以处理跳转问题
-                    print("刷新了 ,----------");
                     return const MyHomePage();
                   },
                 },

@@ -14,6 +14,11 @@ flutter 架构学习
   geolocator: GPS定位使用
   使用教程:
     ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/LOCATION_README.md))
+## flutter_staggered_grid_view
+flutter_staggered_grid_view : 瀑布流排版
+  使用教程:
+  ([STAGGERD_GRID_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/STAGGERD_GRID_README.md))
+
     
 
 - [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
