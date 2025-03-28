@@ -18,12 +18,3 @@ flutter 架构学习
 flutter_staggered_grid_view : 瀑布流排版
   使用教程:
   ([STAGGERD_GRID_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/STAGGERD_GRID_README.md))
-
-    
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
