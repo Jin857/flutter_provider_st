@@ -42,6 +42,7 @@ flutter_screenutil : 解决屏幕适配问题,个人认为这款是比较好用�
 ## http_proxy
   http_proxy: 添加代理
   解决问题flutter app无法抓包问题
+  注意com.android.application:不支持8.1.0或者更高版本，我目前用的是7.3.0
   ([Flutter中http请求抓包解决方案](https://blog.csdn.net/u010508150/article/details/138486757))
 
 ## fl_chart
