@@ -1,3 +1,4 @@
 {
-  "cmake.sourceDirectory": "/Users/jin/dev/practice/flutter_provider_st/linux"
+  "cmake.sourceDirectory": "/Users/jin/dev/practice/flutter_provider_st/linux",
+  "java.configuration.updateBuildConfiguration": "interactive"
 }

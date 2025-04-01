@@ -1,12 +1,42 @@
+buildscript {
+    ext.kotlin_version = '1.9.0'
+    repositories {
+        google()
+        mavenCentral()
+        maven{url 'https://maven.aliyun.com/repository/google' }
+        maven{url 'https://maven.aliyun.com/repository/public' }
+        maven{url 'https://maven.aliyun.com/repository/jcenter' }
+    }
+
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"  
+    }
+}
+
+
 allprojects {
     repositories {
         google()
         mavenCentral()
+        maven{url 'https://maven.aliyun.com/repository/google' }
+        maven{url 'https://maven.aliyun.com/repository/public' }
+        maven{url 'https://maven.aliyun.com/repository/jcenter' }
+        maven { url 'https://jitpack.io' }
     }
 }
 
 rootProject.buildDir = "../build"
+
 subprojects {
+    afterEvaluate { project ->
+        if (project.plugins.hasPlugin("com.android.application") ||
+                project.plugins.hasPlugin("com.android.library")) {
+            project.android {
+                compileSdkVersion 34
+                buildToolsVersion "34.0.0"
+            }
+        }
+    }
     project.buildDir = "${rootProject.buildDir}/${project.name}"
 }
 subprojects {
