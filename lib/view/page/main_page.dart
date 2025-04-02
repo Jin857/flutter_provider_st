@@ -27,6 +27,9 @@ class MainPage extends StatelessWidget {
                     /// 这里可以处理跳转问题
                     return const MyHomePage();
                   },
+                  "/error": (context) {
+                    return const ErrorPage();
+                  },
                 },
                 onGenerateRoute: (settings) {
                   debugPrint("当前跳转路由:${settings.name}");

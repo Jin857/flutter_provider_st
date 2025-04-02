@@ -5,6 +5,8 @@ import 'package:flutter_provider_st/config/assets_config.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/view/component/l_image.dart';
 import 'package:flutter_provider_st/view/component/limit_click_button.dart';
+import 'package:flutter_provider_st/view/snackbar/my_snackbar.dart';
+import 'package:flutter_provider_st/view/snackbar/my_snackbar_controller.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:provider/provider.dart';
 
@@ -95,19 +97,33 @@ class _MyHomePageState extends State<MyHomePage> {
                                 )
                               ],
                             ),
-                            const Wrap(
+                            Wrap(
                               crossAxisAlignment: WrapCrossAlignment.center,
                               spacing: 10,
                               children: [
-                                Icon(
-                                  Icons.search_sharp,
-                                  size: 20,
-                                  color: Colors.white,
+                                LimitClickButton(
+                                  onClick: () async {
+                                    await Future.delayed(
+                                      const Duration(seconds: 1),
+                                    );
+                                  },
+                                  child: const Icon(
+                                    Icons.search_sharp,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
                                 ),
-                                Icon(
-                                  Icons.notifications_on,
-                                  size: 20,
-                                  color: Colors.white,
+                                LimitClickButton(
+                                  onClick: () async {
+                                    await Future.delayed(
+                                      const Duration(seconds: 1),
+                                    );
+                                  },
+                                  child: const Icon(
+                                    Icons.notifications_on,
+                                    size: 20,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ],
                             )
@@ -163,7 +179,25 @@ class _MyHomePageState extends State<MyHomePage> {
                               subtitle: subtitle,
                               onClick: () async {
                                 await Future.delayed(
-                                    const Duration(seconds: 1));
+                                  const Duration(seconds: 1),
+                                );
+                                if (index == 0) {
+                                  MySnackbarController controller =
+                                      MySnackbarController(
+                                    context: context,
+                                    snackbar: MySnackbar(
+                                      duration: const Duration(seconds: 10),
+                                      child: Container(
+                                        color: Colors.black54,
+                                        width: double.infinity,
+                                        height: 60,
+                                      ),
+                                    ),
+                                  );
+                                  controller.show();
+                                } else if (index == 1) {
+                                  Navigator.pushNamed(context, '/error');
+                                }
                               },
                             );
                           },
