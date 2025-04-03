@@ -45,7 +45,7 @@ class ZoomMove extends StatefulWidget {
 class ZoomMoveState extends State<ZoomMove> with TickerProviderStateMixin {
   late AnimationController controller;
   late bool endHide = false;
-  late Timer? _timer;
+  late Timer? _timer = null;
   @override
   void initState() {
     super.initState();

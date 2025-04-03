@@ -37,7 +37,12 @@ class LineMove extends StatefulWidget {
   final bool endHide;
 
   /// 运动曲线
-  /// linear:匀速的, decelerate:匀减速,ease:开始加速，后面减速。easeIn:开始慢，后面快。easeOut:开始快，后面慢。easeInOut:开始慢，然后加速，最后再减速。
+  /// linear : 匀速的
+  /// decelerate : 匀减速
+  /// ease : 开始加速，后面减速
+  /// easeIn : 开始慢，后面快
+  /// easeOut : 开始快，后面慢
+  /// easeInOut : 开始慢，然后加速，最后再减速
   final Curve curve;
 
   const LineMove({
