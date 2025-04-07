@@ -1,4 +1,4 @@
-/// @description :图片、动画、SVG资源文件
+/// 图片、动画、SVG资源文件
 class AssetsConfig {
   static const String lobbymain = 'assets/images/lobby/lobby_main.png';
   static const String lobbybook_01 = 'assets/images/lobby/lobby_book_01.png';
