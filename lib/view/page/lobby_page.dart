@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/config/color_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/component/bottom_navigation.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
-import 'package:flutter_provider_st/view/page/home_page.dart';
+import 'package:flutter_provider_st/view/page/home/home_page.dart';
 import 'package:flutter_provider_st/view/staggered_grid/staggered_main.dart';
 
 class LobbyPage extends StatefulWidget {
