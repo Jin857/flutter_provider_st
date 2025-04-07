@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
-import 'package:flutter_provider_st/view/component/limit_click_button.dart';
+import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/view/animation/demo/animation_demo.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_provider_st/view/component/card/swell_botton_card.dart';
