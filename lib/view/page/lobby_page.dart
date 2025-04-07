@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/color_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
