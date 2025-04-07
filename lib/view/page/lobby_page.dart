@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/color_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/component/bottom_navigation.dart';
+import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/home/home_page.dart';
 import 'package:flutter_provider_st/view/staggered_grid/staggered_main.dart';
@@ -54,28 +55,7 @@ class _LobbyPageState extends State<LobbyPage> {
           selectColor: Colors.white,
           onTap: (int index) => onchanged(index),
           tabIndex: _currentIdx,
-          item: [
-            MyBottomNavigationBarItem(
-              title: "首页",
-              selectIcons: CupertinoIcons.house_fill,
-              normalIcons: CupertinoIcons.house,
-            ),
-            MyBottomNavigationBarItem(
-              title: "发现",
-              selectIcons: CupertinoIcons.tortoise,
-              normalIcons: CupertinoIcons.tortoise,
-            ),
-            MyBottomNavigationBarItem(
-              title: "消息",
-              selectIcons: CupertinoIcons.chat_bubble_2_fill,
-              normalIcons: CupertinoIcons.chat_bubble_2,
-            ),
-            MyBottomNavigationBarItem(
-              title: "个人中心",
-              selectIcons: CupertinoIcons.person_solid,
-              normalIcons: CupertinoIcons.person,
-            )
-          ],
+          item: LobbyPageModel.bottomNavigationBarModels,
         ),
       ),
       body: PageView(
