@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/config/color_config.dart';
+import 'package:flutter_provider_st/config/screen_config.dart';
+import 'package:flutter_provider_st/view/component/bottom_navigation.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/home_page.dart';
 import 'package:flutter_provider_st/view/staggered_grid/staggered_main.dart';
@@ -13,62 +16,133 @@ class LobbyPage extends StatefulWidget {
 
 class _LobbyPageState extends State<LobbyPage> {
   late int _currentIdx = 0;
+  late PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+    pageController = PageController();
+  }
 
   void onchanged(int value) {
     setState(() {
       _currentIdx = value;
     });
-  }
-
-  Widget getBuildChild(int index) {
-    switch (index) {
-      case 0:
-        return const MyHomePage();
-      case 1:
-        return const StaggeredMain();
-      default:
-        return const ErrorPage();
-    }
+    pageController.jumpToPage(value);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xAAC5C5C5),
+      backgroundColor: ColorConfig.backgroundColor,
       drawerEdgeDragWidth: 0.0,
       resizeToAvoidBottomInset: false,
-      body: CupertinoTabScaffold(
-        tabBar: CupertinoTabBar(
-          currentIndex: _currentIdx,
-          onTap: (value) => onchanged(value),
-          iconSize: 40,
-          activeColor: const Color(0XFFffca7f),
-          items: const <BottomNavigationBarItem>[
-            BottomNavigationBarItem(
-              activeIcon: Icon(CupertinoIcons.house_fill),
-              icon: Icon(CupertinoIcons.house),
-              label: '首页',
+      bottomNavigationBar: BottomAppBar(
+        padding: EdgeInsets.zero,
+        color: [
+          Colors.green.shade900.withOpacity(0.8),
+          Colors.red.withOpacity(0.8),
+          Colors.yellow.withOpacity(0.8),
+          Colors.orange.withOpacity(0.8),
+        ][_currentIdx],
+        clipBehavior: Clip.hardEdge,
+        shadowColor: Colors.transparent,
+        surfaceTintColor: Colors.transparent,
+        height: ScreenConfig.bottomNavigationBarHeight,
+        child: MyBottomNavigation(
+          normalColor: Colors.black45,
+          selectColor: Colors.white,
+          onTap: (int index) => onchanged(index),
+          tabIndex: _currentIdx,
+          item: [
+            MyBottomNavigationBarItem(
+              title: "首页",
+              selectIcons: CupertinoIcons.house_fill,
+              normalIcons: CupertinoIcons.house,
             ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(CupertinoIcons.tortoise),
-              icon: Icon(CupertinoIcons.tortoise_fill),
-              label: '发现',
+            MyBottomNavigationBarItem(
+              title: "发现",
+              selectIcons: CupertinoIcons.tortoise,
+              normalIcons: CupertinoIcons.tortoise,
             ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(CupertinoIcons.chat_bubble_2_fill),
-              icon: Icon(CupertinoIcons.chat_bubble_2),
-              label: '消息',
+            MyBottomNavigationBarItem(
+              title: "消息",
+              selectIcons: CupertinoIcons.chat_bubble_2_fill,
+              normalIcons: CupertinoIcons.chat_bubble_2,
             ),
-            BottomNavigationBarItem(
-              activeIcon: Icon(CupertinoIcons.person_solid),
-              icon: Icon(CupertinoIcons.person),
-              label: '个人中心',
-            ),
+            MyBottomNavigationBarItem(
+              title: "个人中心",
+              selectIcons: CupertinoIcons.person_solid,
+              normalIcons: CupertinoIcons.person,
+            )
           ],
         ),
-        tabBuilder: (BuildContext context, int index) {
-          return getBuildChild(index);
-        },
+      ),
+      body: PageView(
+        controller: pageController,
+        onPageChanged: (int index) => onchanged(index),
+        children: const [
+          MyHomePage(),
+          StaggeredMain(),
+          ErrorPage(),
+          ErrorPage(),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomNavigationBarButton extends StatelessWidget {
+  final Function(int index) onClick;
+  final int index;
+  final String title;
+  final bool select;
+  final Color selectColor;
+  final Color normalColor;
+  final IconData selectIcons;
+  final IconData normalIcons;
+  const BottomNavigationBarButton({
+    super.key,
+    required this.index,
+    required this.onClick,
+    required this.select,
+    Color? selectColor,
+    Color? normalColor,
+    IconData? selectIcons,
+    IconData? normalIcons,
+    String? title,
+  })  : selectColor = selectColor ?? Colors.red,
+        normalColor = normalColor ?? Colors.black54,
+        selectIcons = selectIcons ?? Icons.abc,
+        normalIcons = normalIcons ?? Icons.abc_rounded,
+        title = title ?? "";
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        onClick(index);
+      },
+      child: Container(
+        width: ScreenConfig.width / 5,
+        color: Colors.white.withOpacity(0.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(
+              select ? selectIcons : normalIcons,
+              color: select ? selectColor : normalColor,
+            ),
+            if (title.isNotEmpty)
+              Text(
+                title,
+                style: TextStyle(
+                  color: select ? selectColor : normalColor,
+                  fontSize: 12,
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }

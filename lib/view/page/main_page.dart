@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/provider/main_model.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
-import 'package:flutter_provider_st/view/page/home_page.dart';
 import 'package:flutter_provider_st/view/page/lobby_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -14,7 +13,6 @@ class MainPage extends StatelessWidget {
     return ScreenUtilInit(
       minTextAdapt: true,
       splitScreenMode: true,
-      designSize: const Size(1080, 1920), // 设计图中的尺寸
       builder: (_, child) {
         return ChangeNotifierProvider(
           create: (context) => MainModel(),
