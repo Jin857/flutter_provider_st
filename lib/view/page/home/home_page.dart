@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
@@ -38,9 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               child: Container(
-                margin: EdgeInsets.only(
-                  top: MediaQuery.of(context).padding.top,
-                ),
+                margin: EdgeInsets.only(top: ScreenConfig.topPadding),
                 width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
