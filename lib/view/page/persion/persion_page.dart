@@ -1,10 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/config/assets_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
+import 'package:flutter_provider_st/config/text_config.dart';
 import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/view/component/button/text_icon_button.dart';
 import 'package:flutter_provider_st/view/component/card/head_botton_card.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
+import 'package:flutter_provider_st/view/component/layout/top_bottom_flex_layout.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_provider_st/view/component/layout/proportional_segmentation_horizontal.dart';
 
 class PersionPage extends StatelessWidget {
   const PersionPage({super.key});
@@ -82,57 +87,89 @@ class PersionPage extends StatelessWidget {
             SliverToBoxAdapter(
               child: SizedBox(
                 width: double.infinity,
-                height: 150,
+                height: 120,
                 child: Flex(
                   direction: Axis.horizontal,
                   children: <Widget>[
                     Expanded(
-                      flex: 3,
-                      child: Container(
-                        color: Colors.red,
+                      flex: 5,
+                      child: TopBottomFlexLayout(
+                        topWidget: Container(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: ScreenUtil().setSp(20),
+                          ),
+                          width: double.infinity,
+                          child: const Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Hi Steen", style: TextConfig.bigTitleStyle),
+                              TextIconButton(
+                                title: "查看编辑个人资料",
+                                iconData: Icons.edit_calendar,
+                              ),
+                            ],
+                          ),
+                        ),
+                        bottomWidget: ProportionalSegmentationHorizontal(
+                          list: [
+                            ProportionalSegmentationHorizontalModel(
+                              key: "100",
+                              value: "优惠券",
+                            ),
+                            ProportionalSegmentationHorizontalModel(
+                              key: "100",
+                              value: "福利金",
+                            ),
+                            ProportionalSegmentationHorizontalModel(
+                              key: "100",
+                              value: "钱包金额",
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                     Expanded(
-                      flex: 1,
-                      child: Container(
-                        // color: Colors.green,
-                        alignment: Alignment.center,
-                        child: Wrap(
-                          crossAxisAlignment: WrapCrossAlignment.center,
-                          runAlignment: WrapAlignment.spaceAround,
-                          alignment: WrapAlignment.center,
-                          runSpacing: 10,
-                          children: [
-                            HeadBottonCard(
-                              radius: ((ScreenConfig.width / 4) - 40) / 2,
+                      flex: 2,
+                      child: Wrap(
+                        alignment: WrapAlignment.center,
+                        runSpacing: 10,
+                        children: [
+                          HeadBottonCard(
+                            radius: ((ScreenConfig.width / 4) - 40) / 2,
+                            headIco: AssetsConfig.getHead(31),
+                            errorImage: AssetsConfig.getHead(0),
+                          ),
+                          Container(
+                            padding: const EdgeInsets.symmetric(
+                              horizontal: 6,
+                              vertical: 3,
                             ),
-                            SizedBox(
-                              width: double.infinity,
-                              child: Container(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: 10,
-                                  vertical: 4,
+                            decoration: BoxDecoration(
+                              color: Colors.blue,
+                              borderRadius: BorderRadius.circular(30.0),
+                            ), //3像素圆角
+                            child: Wrap(
+                              crossAxisAlignment: WrapCrossAlignment.center,
+                              runAlignment: WrapAlignment.center,
+                              alignment: WrapAlignment.center,
+                              spacing: 4,
+                              children: [
+                                Icon(
+                                  Icons.monetization_on,
+                                  color: Colors.limeAccent,
+                                  size: ScreenUtil().setSp(14),
                                 ),
-                                decoration: BoxDecoration(
-                                  color: Colors.blue,
-                                  borderRadius: BorderRadius.circular(30.0),
-                                ), //3像素圆角
-                                child: const Wrap(
-                                  crossAxisAlignment: WrapCrossAlignment.center,
-                                  runAlignment: WrapAlignment.center,
-                                  alignment: WrapAlignment.center,
-                                  children: [
-                                    Icon(
-                                      CupertinoIcons.chart_pie,
-                                      color: Colors.amber,
-                                    ),
-                                    Text("签到")
-                                  ],
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
+                                Text(
+                                  "签到奖励",
+                                  style: TextStyle(
+                                    fontSize: ScreenUtil().setSp(11),
+                                    color: Colors.white,
+                                  ),
+                                )
+                              ],
+                            ),
+                          )
+                        ],
                       ),
                     ),
                   ],

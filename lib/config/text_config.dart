@@ -8,4 +8,11 @@ class TextConfig {
     color: Colors.black,
     fontWeight: FontWeight.w900,
   );
+
+  /// 大标题
+  static const TextStyle bigTitleStyle = TextStyle(
+    fontSize: 20,
+    color: Colors.black,
+    fontWeight: FontWeight.w900,
+  );
 }
