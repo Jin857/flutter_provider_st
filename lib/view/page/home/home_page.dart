@@ -28,14 +28,13 @@ class _MyHomePageState extends State<MyHomePage> {
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: RadialGradient(
                   colors: [
-                    Colors.lime.shade400,
-                    Colors.green.shade400,
-                    Colors.green,
+                    Colors.blue.withOpacity(0.1),
+                    Colors.blue.withOpacity(0.6),
                   ], // 渐变颜色
-                  begin: Alignment.topLeft, // 渐变开始位置
-                  end: Alignment.topRight, // 渐变结束位置
+                  center: Alignment.center, // 渐变中心点
+                  radius: 2.0, // 渐变半径，1.0表示从中心到边界
                 ),
               ),
               child: Container(
@@ -48,9 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     topRight: Radius.circular(30),
                   ),
                   gradient: RadialGradient(
-                    colors: [Colors.green.shade900, Colors.black], // 渐变颜色
-                    center: Alignment.bottomCenter, // 渐变中心点
-                    radius: 1.0, // 渐变半径，1.0表示从中心到边界
+                    colors: [
+                      Colors.blue.withOpacity(0.1),
+                      Colors.blue.withOpacity(0.5),
+                    ], // 渐变颜色
+                    center: Alignment.center, // 渐变中心点
+                    radius: 2.0, // 渐变半径，1.0表示从中心到边界
                   ),
                 ),
                 child: CustomScrollView(

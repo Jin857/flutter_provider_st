@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/config/color_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/component/bottom_navigation.dart';
 import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
@@ -35,16 +34,16 @@ class _LobbyPageState extends State<LobbyPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ColorConfig.backgroundColor,
+      backgroundColor: Colors.white,
       drawerEdgeDragWidth: 0.0,
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.zero,
         color: [
-          Colors.green.shade900.withOpacity(0.8),
-          Colors.red.withOpacity(0.8),
-          Colors.yellow.withOpacity(0.8),
+          Colors.blue.withOpacity(0.5),
+          Colors.blue.withOpacity(0.2),
           Colors.blue.withOpacity(0.8),
+          Colors.blue.withOpacity(0.3),
         ][_currentIdx],
         clipBehavior: Clip.hardEdge,
         shadowColor: Colors.transparent,
