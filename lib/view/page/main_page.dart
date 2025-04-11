@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/provider/main_model.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/lobby_page.dart';
+import 'package:flutter_provider_st/view/page/new_lobby_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -24,7 +25,7 @@ class MainPage extends StatelessWidget {
                 routes: {
                   "/": (context) {
                     /// 这里可以处理跳转问题
-                    return const LobbyPage();
+                    return const NewLobbyPage();
                   },
                   "/error": (context) {
                     return const ErrorPage();

@@ -40,6 +40,8 @@ class MyBottomNavigation extends StatelessWidget {
 
   final int tabIndex;
 
+  final double? width;
+
   const MyBottomNavigation({
     super.key,
     required this.item,
@@ -47,6 +49,7 @@ class MyBottomNavigation extends StatelessWidget {
     required this.normalColor,
     required this.onTap,
     required this.tabIndex,
+    this.width,
   });
 
   @override
@@ -60,7 +63,7 @@ class MyBottomNavigation extends StatelessWidget {
           selectColor: selectColor,
           normalColor: normalColor,
           select: key == tabIndex,
-          width: ScreenConfig.width / item.length,
+          width: (width ?? ScreenConfig.width) / item.length,
           bottomNavigationBarItem: value,
         ),
       );
@@ -99,32 +102,36 @@ class BottomNavigationBarButton extends StatelessWidget {
       onTap: () {
         onClick(index);
       },
-      child: Container(
-        width: width,
-        color: Colors.white.withOpacity(0.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            bottomNavigationBarItem.showIcon
-                ? Icon(
-                    select
-                        ? bottomNavigationBarItem.selectIcons ?? Icons.abc
-                        : bottomNavigationBarItem.normalIcons ??
-                            Icons.abc_outlined,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 1000), // 动画持续时间
+        curve: Curves.easeInOut, // 动画曲线
+        child: Container(
+          width: width,
+          color: Colors.white.withOpacity(0.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              bottomNavigationBarItem.showIcon
+                  ? Icon(
+                      select
+                          ? bottomNavigationBarItem.selectIcons ?? Icons.abc
+                          : bottomNavigationBarItem.normalIcons ??
+                              Icons.abc_outlined,
+                      color: select ? selectColor : normalColor,
+                    )
+                  : select
+                      ? bottomNavigationBarItem.selectWidget!
+                      : bottomNavigationBarItem.normalWidget!,
+              if (bottomNavigationBarItem.title.isNotEmpty)
+                Text(
+                  bottomNavigationBarItem.title,
+                  style: TextStyle(
                     color: select ? selectColor : normalColor,
-                  )
-                : select
-                    ? bottomNavigationBarItem.selectWidget!
-                    : bottomNavigationBarItem.normalWidget!,
-            if (bottomNavigationBarItem.title.isNotEmpty)
-              Text(
-                bottomNavigationBarItem.title,
-                style: TextStyle(
-                  color: select ? selectColor : normalColor,
-                  fontSize: 12,
+                    fontSize: 12,
+                  ),
                 ),
-              ),
-          ],
+            ],
+          ),
         ),
       ),
     );

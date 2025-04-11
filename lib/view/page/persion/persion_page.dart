@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/config/text_config.dart';
+import 'package:flutter_provider_st/event/event_bus.dart';
 import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/view/component/button/text_icon_button.dart';
 import 'package:flutter_provider_st/view/component/card/head_botton_card.dart';
@@ -85,6 +86,8 @@ class PersionPage extends StatelessWidget {
                               await Future.delayed(
                                 const Duration(seconds: 1),
                               );
+                              print("---------");
+                              bus.emit("toLogin", {"islogin": false});
                             },
                             child: Icon(
                               CupertinoIcons.settings,

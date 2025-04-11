@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
+import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     Colors.blue.withOpacity(0.6),
                   ], // 渐变颜色
                   center: Alignment.center, // 渐变中心点
-                  radius: 2.0, // 渐变半径，1.0表示从中心到边界
+                  radius: 0.5, // 渐变半径，1.0表示从中心到边界
                 ),
               ),
               child: Container(
@@ -46,13 +47,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     topLeft: Radius.circular(30),
                     topRight: Radius.circular(30),
                   ),
-                  gradient: RadialGradient(
+                  gradient: LinearGradient(
                     colors: [
-                      Colors.blue.withOpacity(0.1),
                       Colors.blue.withOpacity(0.5),
+                      Colors.blue.withOpacity(0.1),
+                      Colors.transparent
                     ], // 渐变颜色
-                    center: Alignment.center, // 渐变中心点
-                    radius: 2.0, // 渐变半径，1.0表示从中心到边界
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                   ),
                 ),
                 child: CustomScrollView(
@@ -135,7 +137,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                     context: context,
                                   );
                                 } else if (index == 1) {
-                                  Navigator.pushNamed(context, '/error');
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const HeroAnimationRouteA(),
+                                    ),
+                                  );
                                 }
                               },
                             );

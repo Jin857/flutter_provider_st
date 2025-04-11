@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/event/event_bus.dart';
-import 'package:flutter_provider_st/view/component/bottom_nav/bottom_navigation.dart';
 import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/home/home_page.dart';
+import 'package:flutter_provider_st/view/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
 import 'package:flutter_provider_st/view/page/persion/persion_page.dart';
 import 'package:flutter_provider_st/view/scroll/tow_scroller_widget.dart';
 
-class LobbyPage extends StatefulWidget {
-  const LobbyPage({super.key});
+class NewLobbyPage extends StatefulWidget {
+  const NewLobbyPage({super.key});
 
   @override
   State<StatefulWidget> createState() => _LobbyPageState();
 }
 
-class _LobbyPageState extends State<LobbyPage> {
+class _LobbyPageState extends State<NewLobbyPage> {
   late int _currentIdx = 0;
   late PageController pageController;
 
@@ -59,12 +59,10 @@ class _LobbyPageState extends State<LobbyPage> {
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
         height: ScreenConfig.bottomNavigationBarHeight,
-        child: MyBottomNavigation(
-          normalColor: Colors.black45,
-          selectColor: Colors.white,
-          onTap: (int index) => onchanged(index),
-          tabIndex: _currentIdx,
-          item: LobbyPageModel.bottomNavigationBarModels,
+        child: AnimatedBottomNavigationBar(
+          currentIndex: _currentIdx,
+          onTap: (index) => onchanged(index),
+          items: LobbyPageModel.bottomNavigationBarModels,
         ),
       ),
       body: PageView(

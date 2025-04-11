@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/view/animation/flip_move.dart';
-import 'package:flutter_provider_st/view/animation/line_move.dart';
-import 'package:flutter_provider_st/view/animation/zoom_move.dart';
+import 'package:flutter_provider_st/view/animation/tween/flip_move.dart';
+import 'package:flutter_provider_st/view/animation/tween/line_move.dart';
+import 'package:flutter_provider_st/view/animation/tween/zoom_move.dart';
 import 'package:flutter_provider_st/view/snackbar/my_snackbar.dart';
 import 'package:flutter_provider_st/view/snackbar/my_snackbar_controller.dart';
 
