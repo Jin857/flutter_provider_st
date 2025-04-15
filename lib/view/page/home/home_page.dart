@@ -144,6 +144,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                           const HeroAnimationRouteA(),
                                     ),
                                   );
+                                } else if (index == 2) {
+                                  Navigator.pushNamed(context, "/game");
                                 }
                               },
                             );

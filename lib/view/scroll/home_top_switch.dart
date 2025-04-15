@@ -25,9 +25,6 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
     Size? preferredSize,
   }) : preferredSize = preferredSize ?? const Size.fromHeight(30.0);
 
-  // @override
-  // Size get preferredSize => preferredSize;
-
   @override
   Widget build(BuildContext context) {
     return Container(
