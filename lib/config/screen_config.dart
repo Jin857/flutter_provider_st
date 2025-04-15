@@ -16,6 +16,10 @@ class ScreenConfig {
   static final double topPadding =
       MediaQueryData.fromView(platformDispatcher.views.first).padding.top;
 
+  /// 顶部标题栏+padding
+  static double topPaddingToolbarHeight =
+      ScreenUtil().setHeight(56) + topPadding;
+
   /// 底部状态栏高
   static final double bottomPadding =
       MediaQueryData.fromView(platformDispatcher.views.first).padding.bottom;

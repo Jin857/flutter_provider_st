@@ -9,6 +9,9 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
   final List<String> list;
   final int selectIndex;
 
+  @override
+  final Size preferredSize;
+
   /// - [selectIndex] 选择的序列号
   /// - [onChange] Tab更改
   /// - [onMore] 更多
@@ -19,17 +22,18 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
     required this.onChange,
     required this.onMore,
     required this.list,
-  });
+    Size? preferredSize,
+  }) : preferredSize = preferredSize ?? const Size.fromHeight(30.0);
 
-  @override
-  Size get preferredSize => const Size.fromHeight(30.0);
+  // @override
+  // Size get preferredSize => preferredSize;
 
   @override
   Widget build(BuildContext context) {
     return Container(
         color: Colors.blue.shade100,
         width: double.infinity,
-        height: 30,
+        height: preferredSize.height,
         child: Row(
           children: [
             SizedBox(
@@ -46,7 +50,7 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
                                   var index = list.indexWhere((v) => v == item);
                                   onChange(index);
                                 },
-                                height: 30,
+                                height: preferredSize.height,
                                 child: MenuItem(
                                   title: item,
                                   select: item == list[selectIndex],
@@ -217,6 +221,21 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // return Container(
+    //   alignment: Alignment.center,
+    //   decoration: BoxDecoration(
+    //     border: select
+    //         ? const Border(bottom: BorderSide(color: Colors.blue, width: 3))
+    //         : null,
+    //   ),
+    //   child: Text(
+    //     title,
+    //     style: TextStyle(
+    //       color: select ? Colors.blue : Colors.black87,
+    //       fontWeight: FontWeight.normal,
+    //     ),
+    //   ),
+    // );
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
