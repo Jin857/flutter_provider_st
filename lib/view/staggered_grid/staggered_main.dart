@@ -38,7 +38,7 @@ class StaggeredMain extends StatelessWidget {
           onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MasonryGridPage()),
+              MaterialPageRoute(builder: (context) => MyMasonryGridWidget()),
             );
           },
         ),

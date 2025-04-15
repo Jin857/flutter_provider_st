@@ -124,7 +124,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                           ),
                           SizedBox(
                             height: double.infinity,
-                            child: SwiperPage(
+                            child: MySwiperWidget(
                               imgList: images,
                               onTap: (index) {},
                             ),

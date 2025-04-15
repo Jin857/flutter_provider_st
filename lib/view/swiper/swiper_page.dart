@@ -3,7 +3,8 @@ import 'package:flutter_provider_st/view/component/l_image.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 // 目前使用在 Home 中。需要根据后面使用情况进行适配
-class SwiperPage extends StatefulWidget {
+// ignore: must_be_immutable
+class MySwiperWidget extends StatefulWidget {
   List<String> imgList;
   PageIndicatorLayout? layout;
   double? pointHeight;
@@ -12,7 +13,7 @@ class SwiperPage extends StatefulWidget {
 
   Function(int index) onTap;
 
-  SwiperPage({
+  MySwiperWidget({
     super.key,
     this.pointHeight = 150,
     this.height = 160,
@@ -24,10 +25,10 @@ class SwiperPage extends StatefulWidget {
   });
 
   @override
-  State<SwiperPage> createState() => _SwiperPageState();
+  State<MySwiperWidget> createState() => _SwiperPageState();
 }
 
-class _SwiperPageState extends State<SwiperPage> {
+class _SwiperPageState extends State<MySwiperWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

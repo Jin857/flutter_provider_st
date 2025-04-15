@@ -4,11 +4,12 @@ import 'package:flutter_provider_st/view/component/secondary_interface.dart';
 import 'package:flutter_provider_st/view/staggered_grid/common.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-class MasonryGridPage extends StatelessWidget {
+// ignore: must_be_immutable
+class MyMasonryGridWidget extends StatelessWidget {
   final int itemCount = 12;
   List<String> log = <String>[];
 
-  MasonryGridPage({super.key});
+  MyMasonryGridWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
