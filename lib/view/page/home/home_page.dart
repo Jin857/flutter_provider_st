@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
+import 'package:flutter_provider_st/view/page/luckywheel/lucky_wheel_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
@@ -146,6 +147,8 @@ class _MyHomePageState extends State<MyHomePage> {
                                   );
                                 } else if (index == 2) {
                                   Navigator.pushNamed(context, "/game");
+                                } else if (index == 3) {
+                                  openLuckyWheel(context);
                                 }
                               },
                             );
