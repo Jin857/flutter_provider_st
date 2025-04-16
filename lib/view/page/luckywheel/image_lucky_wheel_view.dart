@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/view/component/button/limit_click_button.dar
 import 'package:flutter_provider_st/view/component/toast_util.dart';
 
 /// 打开等比例幸运大转盘弹窗
-openLuckyWheel(BuildContext context) async {
+openImageLuckyWheel(BuildContext context) async {
   showDialog(
     context: context,
     builder: (a) {
@@ -22,7 +22,7 @@ openLuckyWheel(BuildContext context) async {
                 style: TextStyle(color: Colors.white, fontSize: 20),
               ),
             ),
-            const LuckyWheelController(),
+            const ImageLuckyWheelController(),
             LimitClickButton(
               onClick: () async {
                 Navigator.pop(context);
@@ -50,14 +50,15 @@ openLuckyWheel(BuildContext context) async {
 }
 
 /// 等比分幸运大转盘
-class LuckyWheelController extends StatefulWidget {
-  const LuckyWheelController({super.key});
+class ImageLuckyWheelController extends StatefulWidget {
+  const ImageLuckyWheelController({super.key});
 
   @override
-  State<LuckyWheelController> createState() => _LuckyWheelControllerState();
+  State<ImageLuckyWheelController> createState() =>
+      _LuckyWheelControllerState();
 }
 
-class _LuckyWheelControllerState extends State<LuckyWheelController>
+class _LuckyWheelControllerState extends State<ImageLuckyWheelController>
     with TickerProviderStateMixin {
   /// 动画控制器
   late AnimationController animationController;
@@ -75,7 +76,7 @@ class _LuckyWheelControllerState extends State<LuckyWheelController>
   int prizeNum = 8;
 
   /// 转动圈数
-  int cyclesNum = 2;
+  int cyclesNum = 5;
 
   /// 旋转时长毫秒
   int duration = 5000;
