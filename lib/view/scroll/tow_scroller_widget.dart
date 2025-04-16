@@ -206,8 +206,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                 width: double.infinity,
                 key: _globalKey1,
                 child: const LImage(
-                  image:
-                      "https://img2.baidu.com/it/u=1650090367,957669736&fm=253&fmt=auto&app=138&f=JPEG?w=1600&h=500",
+                  image: "assets/images/common/homepage_animated_banner.gif",
                 ),
               ),
             ),
