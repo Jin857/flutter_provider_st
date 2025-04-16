@@ -23,6 +23,7 @@ class TowScrollerWidget extends StatefulWidget {
 class _TowScrollerWidgetState extends State<TowScrollerWidget> {
   final ScrollController _scrollController = ScrollController();
   final GlobalKey _globalKey = GlobalKey();
+  final GlobalKey _globalKey1 = GlobalKey();
   double tabHeight = 40;
   final images = const [
     "http://gips3.baidu.com/it/u=3557221034,1819987898&fm=3028&app=3028&f=JPEG&fmt=auto?w=1280&h=960",
@@ -55,9 +56,13 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
   void _scrollToTop() {
     final RenderBox renderBoxRed =
         _globalKey.currentContext!.findRenderObject() as RenderBox;
+    final RenderBox renderBoxRed1 =
+        _globalKey1.currentContext!.findRenderObject() as RenderBox;
     Size size = renderBoxRed.size;
+    Size size1 = renderBoxRed1.size;
+
     _scrollController.animateTo(
-      size.height,
+      size.height + size1.height,
       duration: const Duration(milliseconds: 500),
       curve: Curves.easeOut,
     );
@@ -193,6 +198,16 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                     },
                     selectIndex: selectListIndex,
                   ),
+                ),
+              ),
+            ),
+            SliverToBoxAdapter(
+              child: SizedBox(
+                width: double.infinity,
+                key: _globalKey1,
+                child: const LImage(
+                  image:
+                      "https://img2.baidu.com/it/u=1650090367,957669736&fm=253&fmt=auto&app=138&f=JPEG?w=1600&h=500",
                 ),
               ),
             ),

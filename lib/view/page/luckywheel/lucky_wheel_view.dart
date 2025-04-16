@@ -1,14 +1,49 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/view/snackbar/my_snackbar.dart';
-import 'package:flutter_provider_st/view/snackbar/my_snackbar_controller.dart';
+import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/view/component/toast_util.dart';
 
+/// 打开等比例幸运大转盘弹窗
 openLuckyWheel(BuildContext context) async {
   showDialog(
     context: context,
     builder: (a) {
-      return const Center(
-        child: LuckyWheelController(),
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(bottom: 30),
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+              child: const Text(
+                "等比例幸运大转盘",
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Colors.white, fontSize: 20),
+              ),
+            ),
+            const LuckyWheelController(),
+            LimitClickButton(
+              onClick: () async {
+                Navigator.pop(context);
+              },
+              child: Container(
+                margin: const EdgeInsets.only(top: 20),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 3),
+                decoration: BoxDecoration(
+                  color: Colors.black12,
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                child: const Text(
+                  "关闭",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(color: Colors.white, fontSize: 14),
+                ),
+              ),
+            ),
+          ],
+        ),
       );
     },
   );
@@ -24,38 +59,52 @@ class LuckyWheelController extends StatefulWidget {
 
 class _LuckyWheelControllerState extends State<LuckyWheelController>
     with TickerProviderStateMixin {
+  /// 动画控制器
   late AnimationController animationController;
+
+  /// Tween动画
   late Animation<double> _animation;
 
-  //是否正在转动
+  /// 是否正在转动
   bool isRunning = false;
-  //是否顺时针
+
+  /// 是否顺时针
   bool isClockwise = true;
 
-  //奖品数量
+  /// 奖品数量
   int prizeNum = 8;
-  //最少转动圈数
+
+  /// 转动圈数
   int cyclesNum = 2;
+
+  /// 旋转时长毫秒
+  int duration = 5000;
 
   @override
   void initState() {
     super.initState();
+
+    /// 初始化控制器
     animationController = AnimationController(
       vsync: this,
-      duration: const Duration(milliseconds: 2000),
+      duration: Duration(milliseconds: duration),
     );
-    //动画监听
+
+    /// 初始化动画监听
     animationController.addListener(() {
       if (animationController.status == AnimationStatus.completed) {
         isRunning = false;
-        //结束了
+        print('动画结束了');
       } else if (animationController.status == AnimationStatus.forward) {
+        // 正向运行动画 - 从头到尾都在播放。
         print('forward');
       } else if (animationController.status == AnimationStatus.reverse) {
+        /// 返向运行动画 - 动画从结束到开始向后运行。
         print('reverse');
       }
     });
-    //初始位置
+
+    /// 初始位置
     _animation = Tween<double>(begin: 0, end: 0).animate(
       CurvedAnimation(
         parent: animationController,
@@ -68,26 +117,34 @@ class _LuckyWheelControllerState extends State<LuckyWheelController>
     );
   }
 
+  /// 开始动画
   void start() {
-    ///中奖编号
+    /// 随机获取中奖编号
+    /// 中奖编号范围 展示逻辑 - 0 正对指针位置
     int luckyName = Random().nextInt(8);
+
+    /// 开始动画
     startAnimation(luckyName);
   }
 
+  /// 点击开始按钮
   void buttonOnClickStartRun() {
     if (isRunning == false) {
       isRunning = true;
     } else {
+      ToastUtils.show(name: "抽奖中，请稍等");
       return;
     }
     start();
   }
 
+  /// 开始动画
+  /// [index] 奖品编号
   void startAnimation(int index) {
     _animation = Tween<double>(
-            begin: 0,
-            end: (isClockwise ? 1 : -1) * (cyclesNum + (1 / prizeNum)) * index)
-        .animate(CurvedAnimation(
+      begin: 0,
+      end: (isClockwise ? 1 : -1) * (cyclesNum + ((1 / prizeNum) * index)),
+    ).animate(CurvedAnimation(
       parent: animationController,
       curve: const Interval(
         0,
