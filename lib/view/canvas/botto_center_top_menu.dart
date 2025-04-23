@@ -12,9 +12,13 @@ class BottoCenterTopMenu extends StatelessWidget {
   /// 凸起宽度
   final double bumpWidth;
 
+  /// 选择圆大小
   final double circle;
 
+  /// 凸起距离左侧位置
   final double leftC;
+
+  final Color backgroundColor;
 
   const BottoCenterTopMenu({
     super.key,
@@ -23,6 +27,7 @@ class BottoCenterTopMenu extends StatelessWidget {
     required this.bumpWidth,
     required this.leftC,
     required this.circle,
+    required this.backgroundColor,
   });
 
   @override
@@ -34,6 +39,7 @@ class BottoCenterTopMenu extends StatelessWidget {
         bumpHeight: bumpHeight,
         leftC: leftC,
         circle: circle,
+        backgroundColor: backgroundColor,
       ),
     );
   }
@@ -44,18 +50,20 @@ class BottomTabDrawPaint extends CustomPainter {
   final double bumpWidth;
   final double leftC;
   final double circle;
+  final Color backgroundColor;
 
   BottomTabDrawPaint({
     required this.bumpHeight,
     required this.bumpWidth,
     required this.leftC,
     required this.circle,
+    required this.backgroundColor,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
-      ..color = Colors.white
+      ..color = backgroundColor
       ..style = PaintingStyle.fill // 填充样式
       ..isAntiAlias = true; // 开启抗锯齿
 
@@ -89,7 +97,7 @@ class BottomTabDrawPaint extends CustomPainter {
     canvas.drawPath(path, paint);
 
     /// 画一个圆 位置与凸起位置一致
-    paint.color = Colors.amber;
+    paint.color = Colors.blue;
     canvas.drawCircle(
       Offset(leftC + bumpWidth / 2, circle + bumpHeight / 2),
       circle,

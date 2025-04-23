@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/event/event_bus.dart';
-import 'package:flutter_provider_st/view/model/lobby_page_model.dart';
+import 'package:flutter_provider_st/view/page/bottombar/move_bar_bottom.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/home/home_page.dart';
-import 'package:flutter_provider_st/view/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
 import 'package:flutter_provider_st/view/page/persion/persion_page.dart';
 import 'package:flutter_provider_st/view/scroll/tow_scroller_widget.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewLobbyPage extends StatefulWidget {
   const NewLobbyPage({super.key});
@@ -38,39 +38,45 @@ class _LobbyPageState extends State<NewLobbyPage> {
     setState(() {
       _currentIdx = value;
     });
-    pageController.jumpToPage(value);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
       drawerEdgeDragWidth: 0.0,
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: BottomAppBar(
-        padding: EdgeInsets.zero,
-        color: [
-          Colors.blue.withOpacity(0.6),
-          Colors.blue.withOpacity(0.2),
-          Colors.blue.withOpacity(0.8),
-          Colors.blue.withOpacity(0.3),
+      bottomNavigationBar: MoveBarBottom(
+        backgroundColor: [
+          Colors.blue.shade100,
+          Colors.blue.shade200,
+          Colors.blue.shade400,
+          Colors.blue.shade800,
+          Colors.blue.shade300,
         ][_currentIdx],
-        clipBehavior: Clip.hardEdge,
-        shadowColor: Colors.transparent,
-        surfaceTintColor: Colors.transparent,
+        tabIndex: _currentIdx,
         height: ScreenConfig.bottomNavigationBarHeight,
-        child: AnimatedBottomNavigationBar(
-          currentIndex: _currentIdx,
-          onTap: (index) => onchanged(index),
-          items: LobbyPageModel.bottomNavigationBarModels,
-        ),
+        circle: 18.w,
+        onChangeIdex: (index) => {
+          onchanged(index),
+          pageController.jumpToPage(index),
+        },
+        tablist: [
+          MyTabBarModel(title: "首页", icon: const Icon(Icons.home)),
+          MyTabBarModel(title: "发现", icon: const Icon(Icons.search)),
+          MyTabBarModel(title: "发布", icon: const Icon(Icons.add)),
+          MyTabBarModel(title: "消息", icon: const Icon(Icons.message)),
+          MyTabBarModel(title: "我", icon: const Icon(Icons.person)),
+        ],
       ),
       body: PageView(
         controller: pageController,
-        onPageChanged: (int index) => onchanged(index),
+        onPageChanged: (int index) => {
+          onchanged(index),
+        },
         children: const [
           MyHomePage(),
           TowScrollerWidget(),
+          ErrorPage(),
           ErrorPage(),
           PersionPage(),
         ],
