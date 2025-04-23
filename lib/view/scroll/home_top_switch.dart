@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
+class HomeTopSwitch extends StatefulWidget implements PreferredSizeWidget {
   final Function(int index) onChange;
   final Function() onMore;
   final List<String> list;
@@ -26,34 +25,75 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
   }) : preferredSize = preferredSize ?? const Size.fromHeight(30.0);
 
   @override
+  State<HomeTopSwitch> createState() => _HomeTopSwitchState();
+}
+
+class _HomeTopSwitchState extends State<HomeTopSwitch> {
+  final ScrollController _scrollController = ScrollController();
+  List<GlobalKey> globalKeyList = [];
+  int selectIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    selectIndex = widget.selectIndex;
+    globalKeyList = widget.list.map((v) => GlobalKey(debugLabel: v)).toList();
+  }
+
+  void _tabChange(int index) {
+    final keyRenderObject =
+        globalKeyList[index].currentContext?.findAncestorRenderObjectOfType();
+    if (keyRenderObject != null) {
+      _scrollController.position
+          .ensureVisible(
+            keyRenderObject!,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeIn,
+          )
+          .then((value) {});
+    }
+  }
+
+  @override
+  void didUpdateWidget(covariant HomeTopSwitch oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.selectIndex != widget.selectIndex &&
+        widget.selectIndex != selectIndex) {
+      selectIndex = widget.selectIndex;
+      _tabChange(widget.selectIndex);
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Container(
         color: Colors.blue.shade100,
         width: double.infinity,
-        height: preferredSize.height,
+        height: widget.preferredSize.height,
         child: Row(
           children: [
             SizedBox(
               width: ScreenConfig.width - 40,
               child: CustomScrollView(
+                controller: _scrollController,
                 scrollDirection: Axis.horizontal,
-                slivers: list
+                slivers: widget.list
                     .map(
-                      (item) => item == list[selectIndex]
+                      (item) => item == "推荐"
                           ? SliverPersistentHeader(
                               pinned: true,
                               delegate: SliverCustomHeaderDelegate(
                                 onTap: () {
-                                  var index = list.indexWhere((v) => v == item);
-                                  onChange(index);
+                                  var index =
+                                      widget.list.indexWhere((v) => v == item);
+                                  widget.onChange(index);
                                 },
-                                height: preferredSize.height,
+                                height: widget.preferredSize.height,
                                 child: MenuItem(
                                   title: item,
-                                  select: item == list[selectIndex],
+                                  select: item == widget.list[selectIndex],
                                 ),
                                 collapsedWith: 60,
-                                expandedWith: 80,
+                                expandedWith: 60,
                                 shrinkWith: 60,
                                 paddingLeft: 0,
                                 changeColor: Colors.blue.shade100,
@@ -62,15 +102,17 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
                             )
                           : SliverToBoxAdapter(
                               child: GestureDetector(
+                                key: globalKeyList[widget.list.indexOf(item)],
                                 onTap: () {
-                                  var index = list.indexWhere((v) => v == item);
-                                  onChange(index);
+                                  selectIndex = widget.list.indexOf(item);
+                                  _tabChange(selectIndex);
+                                  widget.onChange(selectIndex);
                                 },
                                 child: SizedBox(
                                   width: 60,
                                   child: MenuItem(
                                     title: item,
-                                    select: item == list[selectIndex],
+                                    select: item == widget.list[selectIndex],
                                   ),
                                 ),
                               ),
@@ -80,7 +122,7 @@ class HomeTopSwitch extends StatelessWidget implements PreferredSizeWidget {
               ),
             ),
             GestureDetector(
-              onTap: onMore,
+              onTap: widget.onMore,
               child: const SizedBox(
                 width: 40,
                 child: Icon(Icons.keyboard_arrow_down_sharp),
@@ -218,42 +260,30 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   alignment: Alignment.center,
-    //   decoration: BoxDecoration(
-    //     border: select
-    //         ? const Border(bottom: BorderSide(color: Colors.blue, width: 3))
-    //         : null,
-    //   ),
-    //   child: Text(
-    //     title,
-    //     style: TextStyle(
-    //       color: select ? Colors.blue : Colors.black87,
-    //       fontWeight: FontWeight.normal,
-    //     ),
-    //   ),
-    // );
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Text(
-          title,
-          style: TextStyle(
-            color: select ? Colors.blue : Colors.black87,
-            fontWeight: FontWeight.normal,
-          ),
+    return Center(
+      child: Text(
+        title,
+        style: TextStyle(
+          color: select ? Colors.blue : Colors.black87,
+          fontWeight: FontWeight.normal,
         ),
-        if (select)
-          Container(
-            width: ScreenUtil().setSp(20),
-            height: ScreenUtil().setSp(3),
-            decoration: const BoxDecoration(
-              color: Colors.blue,
-              borderRadius: BorderRadius.all(Radius.circular(2)),
-            ),
-          )
-      ],
+      ),
     );
+    // return Column(
+    //   mainAxisAlignment: MainAxisAlignment.center,
+    //   crossAxisAlignment: CrossAxisAlignment.center,
+    //   children: [
+
+    //     if (select)
+    //       Container(
+    //         width: ScreenUtil().setSp(20),
+    //         height: ScreenUtil().setSp(3),
+    //         decoration: const BoxDecoration(
+    //           color: Colors.blue,
+    //           borderRadius: BorderRadius.all(Radius.circular(2)),
+    //         ),
+    //       )
+    //   ],
+    // );
   }
 }
