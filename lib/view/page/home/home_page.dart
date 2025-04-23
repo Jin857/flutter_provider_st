@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
+import 'package:flutter_provider_st/view/page/bottombar/bottom_app_bar_page.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/image_lucky_wheel_view.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/widget_lucky_wheel_view.dart';
 import 'package:provider/provider.dart';
@@ -161,6 +162,13 @@ class _MyHomePageState extends State<MyHomePage> {
                                   //   ),
                                   // );
                                   openWidgetLuckyWheel(context);
+                                } else if (index == 5) {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => BottomAppBarPage(),
+                                    ),
+                                  );
                                 }
                               },
                             );
