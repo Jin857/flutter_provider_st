@@ -1,8 +1,6 @@
 import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_provider_st/config/assets_config.dart';
 
 /// 大转盘样式
 class LuckyDrawPaint extends CustomPainter {
@@ -31,9 +29,6 @@ class LuckyDrawPaint extends CustomPainter {
       ..strokeWidth = 1.0
       ..isAntiAlias = true
       ..style = PaintingStyle.fill;
-    final Paint paintimage = Paint()
-      // ..color = Colors.white.withOpacity(0.5) // 半透明
-      ..blendMode = BlendMode.srcOver;
     // 定义一个Rect，指定扇形的面积
     Rect rect = Rect.fromCircle(
       center: Offset(
