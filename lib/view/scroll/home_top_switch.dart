@@ -45,7 +45,7 @@ class _HomeTopSwitchState extends State<HomeTopSwitch> {
     if (keyRenderObject != null) {
       _scrollController.position
           .ensureVisible(
-            keyRenderObject!,
+            keyRenderObject,
             duration: const Duration(milliseconds: 300),
             curve: Curves.easeIn,
           )

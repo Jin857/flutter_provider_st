@@ -241,7 +241,8 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                             onTap: () {},
                             child: ProductCard(
                               image: images[imageIdex],
-                              name: "卡片内容($index)-$imageIdex",
+                              name:
+                                  "${list[selectListIndex]}-卡片内容($index)-$imageIdex",
                               subtitle: index % 3 == 1
                                   ? "卡拉斯京卢卡斯家了阿斯利。"
                                   : index % 3 == 2
