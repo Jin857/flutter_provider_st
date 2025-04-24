@@ -1,18 +1,19 @@
-//订阅者回调签名
+// 订阅者回调签名
 typedef void EventCallback(arg);
 
+/// 全局监听
 class EventBus {
   // 私有构造函数
   EventBus._internal();
 
   // 保存单例
-  static EventBus _singleton = EventBus._internal();
+  static final EventBus _singleton = EventBus._internal();
 
   // 工厂构造函数
   factory EventBus() => _singleton;
 
   // 保存事件订阅者队列，key:事件名(id)，value: 对应事件的订阅者队列
-  final _emap = Map<Object, List<EventCallback>?>();
+  final _emap = <Object, List<EventCallback>?>{};
 
   // 添加订阅者
   void on(eventName, EventCallback f) {
@@ -43,5 +44,5 @@ class EventBus {
   }
 }
 
-// 定义一个top-level（全局）变量，页面引入该文件后可以直接使用bus
+// 定义一个 Top Level（全局）变量，页面引入该文件后可以直接使用bus
 var bus = EventBus();

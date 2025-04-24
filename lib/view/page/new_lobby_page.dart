@@ -24,7 +24,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
     super.initState();
     pageController = PageController();
     bus.on("toLogin", (data) {
-      print("toLogin: $data");
+      debugPrint("toLogin: $data");
     });
   }
 

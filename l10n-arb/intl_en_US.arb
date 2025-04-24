@@ -1,0 +1,11 @@
+{
+  "@@last_modified": "2025-04-24T17:06:44.283452",
+  "@@locale":"en_us",
+  "title": "Flutter APP",
+  "@title": {
+    "description": "Title for the Demo application",
+    "type": "text",
+    "placeholders_order": [],
+    "placeholders": {}
+  }
+}

@@ -90,7 +90,6 @@ class PersionPage extends StatelessWidget {
                               await Future.delayed(
                                 const Duration(seconds: 1),
                               );
-                              print("---------");
                               bus.emit("toLogin", {"islogin": false});
                             },
                             child: Icon(
