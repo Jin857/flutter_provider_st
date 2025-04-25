@@ -1,22 +1,28 @@
 # 多语言
-  搭建多语言环境需要引入的组件库：
+  
+  搭建多语言环境需要引入的组件库
+
   ## flutter_localizations: sdk: flutter
-      flutter 自带的多语言组件包
+  flutter 自带的多语言组件包
   ## intl
-      是一个用于Flutter应用的国际化（i18n）和本地化（l10n）库，它提供了丰富的功能来支持多语言应用的开发。主要功能包括消息翻译、复数和性别的智能处理、日期和数字的格式化与解析，以及双向文本支持
+  是一个用于Flutter应用的国际化（i18n）和本地化（l10n）库，它提供了丰富的功能来支持多语言应用的开发。主要功能包括消息翻译、复数和性别的智能处理、日期和数字的格式化与解析，以及双向文本支持
   ## intl_generator
-      Flutter Intl Generator（intl_generator）是一个用于自动生成国际化（i18n）代码的工具，主要用于简化Flutter应用中的国际化工作
+  Flutter Intl Generator（intl_generator）是一个用于自动生成国际化（i18n）代码的工具，主要用于简化Flutter应用中的国际化工作
 
 ## intl 与 intl_generator 的使用
   需要注意目录文件夹:
     根目录中的: L19n-arb 是用来存放 arb 文件的, arb 文件是根据下面方式自行生成的
     根目录中的: lib/L10n 是用来存放 自定义 localization_intl.dart 文件 以及自动生成的: .dart文件,包括 messages_all.dart , messages_zh_cn.dart 等文件。
 
-  1. 生成 arb 文件
+## 生成 arb 文件
+  ```dart
     flutter  pub run intl_generator:extract_to_arb --output-dir=l10n-arb lib/l10n/localization_intl.dart
+  ```
 
-  2. 生成 dart 文件
+## 生成 dart 文件
+  ```dart
     flutter pub run intl_generator:generate_from_arb --output-dir=lib/l10n --no-use-deferred-loading lib/l10n/localization_intl.dart l10n-arb/intl_*.arb
+  ```
 
 ## 注入方式
   ```dart
