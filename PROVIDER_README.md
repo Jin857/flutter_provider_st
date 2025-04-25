@@ -61,9 +61,9 @@ flutter 状态管理工具
   当 InheritedWidget 更新时，InheritedElement 会触发依赖的子 Widget 的重建。
 
 # Provider的三个好兄弟:
-  老大 -- MultiProvider
-  老二 -- Providers
-  老三 -- Provider.of<T>(context)  /  Widget Consumer
+  1. 老大 -- MultiProvider
+  2. 老二 -- Providers
+  3. 老三 -- Provider.of<T>(context)  /  Widget Consumer
 
 
 ## MultiProvider
