@@ -7,6 +7,7 @@ import 'package:flutter_provider_st/component/threetree/element/element_button.d
 import 'package:flutter_provider_st/event/event_bus.dart';
 import 'package:flutter_provider_st/component/threetree/render/done_widget.dart';
 import 'package:flutter_provider_st/component/threetree/render/three_box_render.dart';
+import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/view/component/button/text_icon_button.dart';
 import 'package:flutter_provider_st/view/component/card/head_botton_card.dart';
@@ -17,12 +18,19 @@ import 'package:flutter_provider_st/view/component/layout/top_bottom_flex_layout
 import 'package:flutter_provider_st/component/threetree/render/custom_center_render.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_provider_st/view/component/layout/proportional_segmentation_horizontal.dart';
+import 'package:provider/provider.dart';
 
-class PersionPage extends StatelessWidget {
+class PersionPage extends StatefulWidget {
   const PersionPage({super.key});
 
   @override
-  Widget build(Object context) {
+  State<PersionPage> createState() => _PersionPageState();
+}
+
+class _PersionPageState extends State<PersionPage> {
+  @override
+  Widget build(Object cont) {
+    UserModel userModel = Provider.of<UserModel>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
@@ -119,12 +127,14 @@ class PersionPage extends StatelessWidget {
                               horizontal: ScreenUtil().setSp(20),
                             ),
                             width: double.infinity,
-                            child: const Column(
+                            child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Hi Steen",
-                                    style: TextConfig.bigTitleStyle),
-                                TextIconButton(
+                                Text(
+                                  !userModel.isLogin ? "尚未登陆" : "Hi Steen",
+                                  style: TextConfig.bigTitleStyle,
+                                ),
+                                const TextIconButton(
                                   title: "查看编辑个人资料",
                                   iconData: Icons.edit_calendar,
                                 ),
@@ -134,15 +144,15 @@ class PersionPage extends StatelessWidget {
                           bottomWidget: ProportionalSegmentationHorizontal(
                             list: [
                               ProportionalSegmentationHorizontalModel(
-                                key: "100",
+                                key: "0",
                                 value: "优惠券",
                               ),
                               ProportionalSegmentationHorizontalModel(
-                                key: "100",
+                                key: "0",
                                 value: "福利金",
                               ),
                               ProportionalSegmentationHorizontalModel(
-                                key: "100",
+                                key: "0",
                                 value: "钱包金额",
                               ),
                             ],
@@ -168,7 +178,7 @@ class PersionPage extends StatelessWidget {
                               decoration: BoxDecoration(
                                 color: Colors.blue,
                                 borderRadius: BorderRadius.circular(30.0),
-                              ), //3像素圆角
+                              ), // 3像素圆角
                               child: Wrap(
                                 crossAxisAlignment: WrapCrossAlignment.center,
                                 runAlignment: WrapAlignment.center,
