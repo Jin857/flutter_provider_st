@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_provider_st/l10n/localization_intl.dart';
+import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/locale_model.dart';
 import 'package:flutter_provider_st/provider/theme_model.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
@@ -24,6 +25,7 @@ class MainPage extends StatelessWidget {
             ChangeNotifierProvider(create: (_) => ThemeModel()),
             ChangeNotifierProvider(create: (_) => UserModel()),
             ChangeNotifierProvider(create: (_) => LocaleModel()),
+            ChangeNotifierProvider(create: (_) => CounterProvider()),
           ],
           child: Consumer2<ThemeModel, LocaleModel>(
             builder: (BuildContext context, themeModel, localeModel, child) {

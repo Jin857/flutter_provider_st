@@ -8,11 +8,11 @@ import 'package:geolocator/geolocator.dart';
 // ChangeNotifier 主要有两个方法:
 // addListener 注册监听。
 // notifyListeners 触发监听回调。
-class MainModel extends ChangeNotifier {
+class LobbyModel extends ChangeNotifier {
   /// 位置信息
   Position? position;
 
-  MainModel() {
+  LobbyModel() {
     loadConfig();
   }
 
@@ -33,7 +33,15 @@ class MainModel extends ChangeNotifier {
   }
 
   /// 获取位置信息
-  Future<void> getLocation() async {
-    position = await LocationGPSUtils.getLatitudeLongitude();
+  Future<String> getLocation() async {
+    if (position != null) {
+      return "${position!.latitude},${position!.longitude}";
+    } else {
+      position = await LocationGPSUtils.getLatitudeLongitude();
+      notifyListeners(); // 通知监听者数据变化
+      return position != null
+          ? "${position!.latitude},${position!.longitude}"
+          : "获取位置失败";
+    }
   }
 }

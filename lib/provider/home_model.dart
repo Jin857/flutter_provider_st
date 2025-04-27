@@ -12,4 +12,9 @@ class HomeModel extends ChangeNotifier {
 
   /// 读取本地配置文件
   Future<void> init() async {}
+
+  @override
+  void notifyListeners() {
+    super.notifyListeners(); // 通知依赖的Widget更新
+  }
 }
