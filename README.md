@@ -13,6 +13,8 @@ flutter 架构学习
 
 ## provider
   provider: 状态管理工具(本章节主要学习)
+  使用教程:
+    ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/PROVIDER_README.md))
 
 ## geolocator
   geolocator: GPS定位使用
