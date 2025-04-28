@@ -5,7 +5,6 @@ import 'package:flutter_provider_st/view/page/main_page.dart';
 
 void main() async {
   Global.init().then((e) {
-    WidgetsFlutterBinding.ensureInitialized();
     runApp(const MainPage());
     Configure.init();
   });

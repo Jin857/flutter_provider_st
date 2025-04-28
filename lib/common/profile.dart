@@ -1,4 +1,4 @@
-import 'package:flutter_provider_st/common/cacheConfig.dart';
+import 'package:flutter_provider_st/common/cache_config.dart';
 import 'package:flutter_provider_st/common/user.dart';
 
 class Profile {

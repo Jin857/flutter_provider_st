@@ -3,6 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/profile.dart';
+import 'package:flutter_provider_st/http/my_git.dart';
+import 'package:flutter_provider_st/http/net_cache.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _themes = <MaterialColor>[
@@ -19,7 +21,7 @@ class Global {
   static Profile profile = Profile.fromJson({});
 
   // 网络缓存对象
-  // static NetCache netCache = NetCache();
+  static NetCache netCache = NetCache();
 
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
@@ -27,7 +29,7 @@ class Global {
   // 是否为release版
   static bool get isRelease => const bool.fromEnvironment("dart.vm.product");
 
-  //初始化全局信息，会在APP启动时执行
+  // 初始化全局信息，会在APP启动时执行
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     _prefs = await SharedPreferences.getInstance();
@@ -44,7 +46,7 @@ class Global {
     profile.cache = profile.cache;
 
     //初始化网络请求相关配置
-    // Git.init();
+    Git.init();
   }
 
   // 持久化Profile信息

@@ -7,7 +7,7 @@ class ToastUtils {
   /// 统一提示样式
   /// - [name] 提示内容
   /// - [gravity] 提示位置默认剧中
-  /// - [gravity] 提示位置默认剧中
+
   static show({
     required String name,
     ToastGravity gravity = ToastGravity.CENTER,

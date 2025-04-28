@@ -122,23 +122,28 @@ class _PersionPageState extends State<PersionPage> {
                       Expanded(
                         flex: 5,
                         child: TopBottomFlexLayout(
-                          topWidget: Container(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: ScreenUtil().setSp(20),
-                            ),
-                            width: double.infinity,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  !userModel.isLogin ? "尚未登陆" : "Hi Steen",
-                                  style: TextConfig.bigTitleStyle,
-                                ),
-                                const TextIconButton(
-                                  title: "查看编辑个人资料",
-                                  iconData: Icons.edit_calendar,
-                                ),
-                              ],
+                          topWidget: LimitClickButton(
+                            onClick: () async {
+                              Navigator.pushNamed(context, "/login");
+                            },
+                            child: Container(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: ScreenUtil().setSp(20),
+                              ),
+                              width: double.infinity,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    !userModel.isLogin ? "尚未登陆" : "Hi Steen",
+                                    style: TextConfig.bigTitleStyle,
+                                  ),
+                                  const TextIconButton(
+                                    title: "查看编辑个人资料",
+                                    iconData: Icons.edit_calendar,
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                           bottomWidget: ProportionalSegmentationHorizontal(

@@ -4,7 +4,7 @@
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:allowBackup="false"
-        >
+    >
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -44,8 +44,10 @@
             <data android:mimeType="text/plain" />
         </intent>
     </queries>
+    
     <!-- internet -->
     <uses-permission android:name="android.permission.INTERNET" />
+
     <!-- location -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />

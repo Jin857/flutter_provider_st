@@ -7,6 +7,7 @@ import 'package:flutter_provider_st/provider/theme_model.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/game/game_page.dart';
+import 'package:flutter_provider_st/view/page/login/login.dart';
 import 'package:flutter_provider_st/view/page/new_lobby_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -38,8 +39,10 @@ class MainPage extends StatelessWidget {
                     return const NewLobbyPage();
                   },
                   "/game": (context) {
-                    /// 这里可以处理跳转问题
                     return const GameMainPage();
+                  },
+                  "/login": (context) {
+                    return const Login();
                   },
                   "/error": (context) {
                     return const ErrorPage();
