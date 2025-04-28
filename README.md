@@ -14,17 +14,17 @@ flutter 架构学习
 ## provider
   provider: 状态管理工具(本章节主要学习)
   使用教程:
-    ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/PROVIDER_README.md))
+    ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/README/PROVIDER_README.md))
 
 ## geolocator
   geolocator: GPS定位使用
   使用教程:
-    ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/LOCATION_README.md))
+    ([LOCATION_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/README/LOCATION_README.md))
 
 ## flutter_staggered_grid_view
 flutter_staggered_grid_view : 瀑布流排版
   使用教程:
-  ([STAGGERD_GRID_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/STAGGERD_GRID_README.md))
+  ([STAGGERD_GRID_README.md](https://github.com/Jin857/flutter_provider_st/blob/main/README/STAGGERD_GRID_README.md))
 
 ## flutter_screenutil
 flutter_screenutil : 解决屏幕适配问题,个人认为这款是比较好用的。
@@ -59,4 +59,12 @@ flutter_screenutil : 解决屏幕适配问题,个人认为这款是比较好用�
   
 ## shared_preferences
   shared_preferences : 持久化存储方案
+
+## canvas
+  flutter 绘画
+  ([canvas使用文档](https://github.com/Jin857/flutter_provider_st/blob/main/README/CANVAS_README.md))
+
+## Overlay 
+  弹窗、小提示、悬浮 
+  ([Overlays使用文档](https://github.com/Jin857/flutter_provider_st/blob/main/README/COMPONENT_README.md))
 

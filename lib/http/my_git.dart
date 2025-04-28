@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:dio/io.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/global.dart';
 import 'package:flutter_provider_st/common/repo.dart';
@@ -67,14 +68,21 @@ class Git {
 
     print("login success: ${r.data}");
 
-    //登录成功后更新公共头（authorization），此后的所有请求都会带上用户身份信息
+    /// 登录成功后更新公共头（authorization），此后的所有请求都会带上用户身份信息
     dio.options.headers[HttpHeaders.authorizationHeader] = basic;
-    //清空所有缓存
+    /// 清空所有缓存
     Global.netCache.cache.clear();
-    //更新profile中的token信息
+    /// 更新profile中的token信息
     Global.profile.token = basic;
+    Map<String, dynamic> json = r.data ?? {};
 
-    return User.fromJson(r.data);
+    var data = await compute(
+      (Map<String, dynamic> json) {
+        return User.fromJson(json);
+      },
+      json,
+    );
+    return data;
   }
 
   ///  获取用户项目列表
