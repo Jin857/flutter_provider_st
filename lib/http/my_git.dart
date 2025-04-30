@@ -56,7 +56,7 @@ class Git {
 
     print("basic: $basic");
 
-    var r = await dio.get(
+    Response r = await dio.get(
       "/user",
       options: _options.copyWith(
         headers: {HttpHeaders.authorizationHeader: basic},
