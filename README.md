@@ -2,6 +2,7 @@
 
 flutter 架构学习 
 使用Provider + dio搭建项目
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/Jin857/flutter_provider_st)
 
 # 开始学习
 

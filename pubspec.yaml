@@ -47,6 +47,9 @@ dependencies:
   shared_preferences: ^2.5.3
   flutter_swiper_null_safety: ^1.0.2
   intl: ^0.19.0
+  alipay_kit: ^6.0.0
+  webview_flutter: ^4.10.0
+  flutter_html: ^3.0.0-beta.2
 
 dev_dependencies:
   flutter_test:
