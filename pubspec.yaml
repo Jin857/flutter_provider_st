@@ -50,6 +50,7 @@ dependencies:
   alipay_kit: ^6.0.0
   webview_flutter: ^4.10.0
   flutter_html: ^3.0.0-beta.2
+  flutter_widget_from_html: ^0.16.0
 
 dev_dependencies:
   flutter_test:
