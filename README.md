@@ -69,3 +69,11 @@ flutter_screenutil : 解决屏幕适配问题,个人认为这款是比较好用�
   弹窗、小提示、悬浮 
   ([Overlays使用文档](https://github.com/Jin857/flutter_provider_st/blob/main/README/COMPONENT_README.md))
 
+
+# 闪屏页
+res/drawable-ldpi(320 x 480 像素)
+res/drawable-mdpi(480 x 800 像素)
+res/drawable-hdpi(720 x 1280 像素)
+res/drawable-xhdpi（1080 x 1920 像素）
+res/drawable-xxhdpi（1440 x 2560 像素）
+res/drawable-xxxhdpi(2160 x 3840 像素)
