@@ -72,9 +72,9 @@
 ## 本地下载apk
   flutter build apk
   添加混淆
-  flutter build appbundle --obfuscate  --split-debug-info=./symbols/
+  flutter build apk --obfuscate  --split-debug-info=./symbols/
   添加不同版本
-  flutter build appbundle  --split-per-abi --obfuscate  --split-debug-info=./symbols/
+  flutter build apk  --split-per-abi --obfuscate  --split-debug-info=./symbols/
   如果移除  --split-per-abi 将会生成一个包含 所有 目标 ABI 的 fat APK 文件。这种 APK 文件将会在比单独构建的 APK 文件尺寸要大，会导致用户下载一些不适用于其设备架构的二进制文件。
 
 
