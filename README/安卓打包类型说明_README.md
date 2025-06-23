@@ -2,6 +2,7 @@
 
 ## Android客户端的安装包文件，有以下几个版本可以选择：
 mobile-release.apk（通用版本，体积最大）
+
 mobile-universal-release.apk
 mobile-arm64-v8a-release.apk（第8代64位处理器）
 mobile-armeabi-v7a-release.apk
