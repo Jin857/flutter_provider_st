@@ -70,8 +70,10 @@ class Git {
 
     /// 登录成功后更新公共头（authorization），此后的所有请求都会带上用户身份信息
     dio.options.headers[HttpHeaders.authorizationHeader] = basic;
+
     /// 清空所有缓存
     Global.netCache.cache.clear();
+
     /// 更新profile中的token信息
     Global.profile.token = basic;
     Map<String, dynamic> json = r.data ?? {};
