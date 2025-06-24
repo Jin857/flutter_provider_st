@@ -24,7 +24,7 @@ class NetDio {
 
   /// 发送超时时间
   final Duration _sendTimeout = const Duration(seconds: 10000);
-
+ 
   NetDio({required this.url, required this.isProxy}) {
     // 初始化 dio
     var options = BaseOptions(

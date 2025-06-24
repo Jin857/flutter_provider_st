@@ -6,8 +6,7 @@ import 'package:http_proxy/http_proxy.dart';
 
 class Proxy {
   // 是否启用代理
-  static bool _isProxy = true;
-  static bool get isProxy => _isProxy;
+  static bool _isProxy = false;
   static set isProxy(bool value) {
     _isProxy = value;
   }
