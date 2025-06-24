@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/user.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
-import 'package:flutter_provider_st/http/my_git.dart';
+import 'package:flutter_provider_st/http/github/my_git.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/view/component/l_image.dart';
 import 'package:flutter_provider_st/view/component/toast_util.dart';

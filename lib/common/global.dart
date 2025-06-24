@@ -3,8 +3,8 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/profile.dart';
-import 'package:flutter_provider_st/http/my_git.dart';
-import 'package:flutter_provider_st/http/net_cache.dart';
+import 'package:flutter_provider_st/http/github/my_git.dart';
+import 'package:flutter_provider_st/http/github/net_cache.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 const _themes = <MaterialColor>[
