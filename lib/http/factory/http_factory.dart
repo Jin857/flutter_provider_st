@@ -7,7 +7,11 @@ import 'package:flutter_provider_st/http/model/http_factory_model.dart';
 /// 需要在开启app时进行注册
 abstract class HttpFactory {
   static HttpFactory? _instance;
-  static HttpFactory instance(HttpFactoryConfig config) {
+
+  /// 请求配置文件
+  static HttpFactoryConfig config = HttpFactoryConfig();
+
+  static HttpFactory instance() {
     if (_instance == null) {
       switch (config.mode) {
         case 0:

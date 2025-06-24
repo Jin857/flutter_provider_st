@@ -45,7 +45,7 @@ class Global {
     }
     profile.cache = profile.cache;
 
-    //初始化网络请求相关配置
+    // 初始化网络请求相关配置
     Git.init();
   }
 

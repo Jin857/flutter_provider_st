@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_provider_st/http/base/http_exception.dart';
+import 'package:flutter_provider_st/http/interceptor/http_interceptor.dart';
 import 'package:flutter_provider_st/http/model/http_model.dart';
 import 'package:flutter_provider_st/http/proxy/proxy.dart';
 import 'package:flutter_provider_st/http/utils/login_utils.dart';
@@ -24,7 +25,7 @@ class NetDio {
 
   /// 发送超时时间
   final Duration _sendTimeout = const Duration(seconds: 10000);
- 
+
   NetDio({required this.url, required this.isProxy}) {
     // 初始化 dio
     var options = BaseOptions(
@@ -39,6 +40,7 @@ class NetDio {
     Proxy.isProxy = isProxy;
     dio = Dio(options);
     Proxy.setProxy(dio);
+    dio.interceptors.add(HttpInterceptor());
   }
 
   /// 更改dio为发送时需要的样子

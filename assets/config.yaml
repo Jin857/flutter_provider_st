@@ -1,0 +1,8 @@
+# 0：网络环境 1：本地开发模式
+mode: 0
+
+# release：正式环境 test：测试环境 pro:预发布 dev：开发环境
+runtime: "test"
+
+# 基础接口
+baseurl: https://test-api.ssgfgtfy.com/app/api/
