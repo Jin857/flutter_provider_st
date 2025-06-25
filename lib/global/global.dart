@@ -2,9 +2,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/http/http_global.dart';
 import 'package:flutter_provider_st/models/profile.dart';
-import 'package:flutter_provider_st/http/github/net_cache.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_provider_st/utils/store.dart';
 
 const _themes = <MaterialColor>[
   Colors.blue,
@@ -15,12 +15,7 @@ const _themes = <MaterialColor>[
 ];
 
 class Global {
-  static late SharedPreferences _prefs;
-
   static Profile profile = Profile.fromJson({});
-
-  // 网络缓存对象
-  static NetCache netCache = NetCache();
 
   // 可选的主题列表
   static List<MaterialColor> get themes => _themes;
@@ -31,8 +26,7 @@ class Global {
   // 初始化全局信息，会在APP启动时执行
   static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
-    _prefs = await SharedPreferences.getInstance();
-    var globalProfile = _prefs.getString("profile");
+    var globalProfile = Store.getStringByAction(StoreAction.profile);
     if (globalProfile != null) {
       try {
         profile = Profile.fromJson(jsonDecode(globalProfile));
@@ -45,12 +39,12 @@ class Global {
     profile.cache = profile.cache;
 
     // 初始化网络请求相关配置
-    // Git.init();
+    await HttpGlobal.init();
   }
 
   // 持久化Profile信息
-  static saveProfile() => _prefs.setString(
-        "profile",
+  static saveProfile() => Store.setStringByAction(
+        StoreAction.profile,
         jsonEncode(profile.toJson()),
       );
 }

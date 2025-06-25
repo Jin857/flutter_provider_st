@@ -47,12 +47,12 @@ class Store {
 
 /// 存储数据到本地
 enum StoreAction {
-  /// token
-  token,
-
-  /// 第一次登陆通知
-  firstNotification,
+  /// 配置信息
+  profile("profile"),
 
   /// 公告
-  homeNotification,
+  homeNotification("homeNotification");
+
+  final String cname;
+  const StoreAction(this.cname);
 }

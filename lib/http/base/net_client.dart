@@ -58,7 +58,6 @@ class NetClient {
     required String url,
     Object? params,
     bool isJson = true,
-    bool isTokenOut = false,
   }) async {
     var response = await netDio.request(
       method: HttpMethod.PUT,

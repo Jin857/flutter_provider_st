@@ -1,8 +1,16 @@
+import 'package:flutter_provider_st/models/user_model.dart';
+
 /// 通用协议
 abstract class CommonProtocol {}
 
 /// 用户协议
-abstract class UserProtocol {}
+abstract class UserProtocol {
+  /// 登录
+  Future<void> login(String username, String password);
+
+  /// 获取用户信息
+  Future<UserInfo> getUserInfo();
+}
 
 // 大厅
 abstract class LobbyProtocol {}

@@ -1,3 +1,4 @@
+import 'package:flutter_provider_st/global/global.dart';
 import 'package:flutter_provider_st/http/http_global.dart';
 import 'package:flutter_provider_st/utils/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -9,7 +10,6 @@ class Injection {
     /// 初始化持久化缓存
     Store.sharedPreferences = await SharedPreferences.getInstance();
 
-    /// 初始化请求
-    await HttpGlobal.init();
+    await Global.init();
   }
 }
