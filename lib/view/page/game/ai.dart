@@ -1326,9 +1326,9 @@ class AdvancedAI extends AI {
   }
 
   /// 生成博弈树子节点
-  void createChildren(ChessNode parent) {
+  void createChildren(ChessNode? parent) {
     if (parent == null) {
-      return null;
+      return;
     }
 
     // 判断是否达到最大深度，如果是则计算棋局估值并返回
@@ -1337,7 +1337,7 @@ class AdvancedAI extends AI {
       var start = DateTime.now();
       parent.value = statusScore(our, list);
       var value = DateTime.now();
-      print(
+      debugPrint(
           '棋局估值耗时：${value.millisecondsSinceEpoch - start.millisecondsSinceEpoch}');
       return;
     }
