@@ -1,5 +1,5 @@
-import 'package:flutter_provider_st/common/cache_config.dart';
-import 'package:flutter_provider_st/common/user.dart';
+import 'package:flutter_provider_st/models/cache_config.dart';
+import 'package:flutter_provider_st/models/user.dart';
 
 class Profile {
   /// 用户名

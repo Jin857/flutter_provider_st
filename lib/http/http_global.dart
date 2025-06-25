@@ -20,6 +20,9 @@ class HttpGlobal {
     config.version = packageInfo.version;
     config.buildNumber = packageInfo.buildNumber;
 
+    /// 更具是否是debug版本，设置是否开启代理
+    config.isProxy = !isRelease;
+
     /// 初始化单例
     HttpFactory.instance();
   }

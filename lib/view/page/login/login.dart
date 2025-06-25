@@ -1,15 +1,7 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/common/user.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
-// import 'package:flutter_provider_st/http/github/my_git.dart';
-import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/view/component/l_image.dart';
-import 'package:flutter_provider_st/view/component/toast_util.dart';
-
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-// import 'package:fluttertoast/fluttertoast.dart';
-import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
   const Login({super.key});
@@ -147,6 +139,7 @@ class _LoginRouteState extends State<LoginRoute> {
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
+      
       // showLoading(context);
       // User? user;
       // try {
@@ -165,7 +158,7 @@ class _LoginRouteState extends State<LoginRoute> {
       //   // 隐藏loading框
       //   // Navigator.of(context).pop();
       // }
-      //登录成功则返回
+      // 登录成功则返回
       // if (user != null) {
       //   Navigator.of(context).pop();
       // }

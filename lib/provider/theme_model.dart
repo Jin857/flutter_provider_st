@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/common/global.dart';
+import 'package:flutter_provider_st/global/global.dart';
 import 'package:flutter_provider_st/provider/profile_change_notifier.dart';
 
 class ThemeModel extends ProfileChangeNotifier {

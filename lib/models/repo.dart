@@ -1,4 +1,4 @@
-import 'package:flutter_provider_st/common/user.dart';
+import 'package:flutter_provider_st/models/user.dart';
 
 class Repo {
   /// 项目id

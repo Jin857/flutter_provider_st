@@ -1,6 +1,6 @@
 import 'dart:collection';
 import 'package:dio/dio.dart';
-import 'package:flutter_provider_st/common/global.dart';
+import 'package:flutter_provider_st/global/global.dart';
 
 /// 网络缓存
 /// 1. 通过请求的uri作为key，缓存请求的结果

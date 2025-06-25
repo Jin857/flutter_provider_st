@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/common/global.dart';
-import 'package:flutter_provider_st/common/profile.dart';
+import 'package:flutter_provider_st/global/global.dart';
+import 'package:flutter_provider_st/models/profile.dart';
 
 class ProfileChangeNotifier extends ChangeNotifier {
   Profile get profile => Global.profile;

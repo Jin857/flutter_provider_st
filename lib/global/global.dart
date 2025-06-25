@@ -2,7 +2,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/common/profile.dart';
+import 'package:flutter_provider_st/models/profile.dart';
 import 'package:flutter_provider_st/http/github/net_cache.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

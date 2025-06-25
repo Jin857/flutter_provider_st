@@ -1,4 +1,4 @@
-import 'package:flutter_provider_st/common/user.dart';
+import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/provider/profile_change_notifier.dart';
 
 class UserModel extends ProfileChangeNotifier {

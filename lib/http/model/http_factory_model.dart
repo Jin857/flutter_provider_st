@@ -32,9 +32,6 @@ class HttpFactoryConfig {
   /// 开发模式
   final RuntimeType runtime;
 
-  /// 是否开启代理
-  final bool isProxy;
-
   /// 基础接口
   final String baseurl;
 
@@ -43,6 +40,9 @@ class HttpFactoryConfig {
 
   /// 版本数字编号
   String buildNumber;
+
+  /// 是否开启代理
+  bool isProxy;
 
   HttpFactoryConfig({
     this.mode = 0,
