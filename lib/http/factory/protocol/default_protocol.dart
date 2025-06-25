@@ -1,4 +1,5 @@
 import 'package:flutter_provider_st/http/factory/protocol/common_http_protocol.dart';
+import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/models/user_model.dart';
 
 class DefaultProtocol
@@ -10,7 +11,7 @@ class DefaultProtocol
   }
 
   @override
-  Future<void> login(String username, String password) {
+  Future<User> login(String token) {
     // TODO: implement login
     throw UnimplementedError();
   }

@@ -1,5 +1,4 @@
 import 'package:flutter_provider_st/global/global.dart';
-import 'package:flutter_provider_st/http/http_global.dart';
 import 'package:flutter_provider_st/utils/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

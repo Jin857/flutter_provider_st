@@ -22,11 +22,13 @@ class NetClient {
   Future get<T>({
     required String url,
     bool isJson = false,
+    Object? headers,
   }) async {
     var response = await netDio.request(
       method: HttpMethod.GET,
       path: url,
       params: null,
+      headers: headers,
       isJson: isJson,
     );
     return response;
@@ -39,12 +41,14 @@ class NetClient {
   Future put<T>({
     required String url,
     Object? params,
+    Object? headers,
     bool isJson = true,
   }) async {
     var response = await netDio.request(
       method: HttpMethod.PUT,
       path: url,
       params: params,
+      headers: headers,
       isJson: isJson,
     );
     return response;
@@ -57,12 +61,14 @@ class NetClient {
   Future post<T>({
     required String url,
     Object? params,
+    Object? headers,
     bool isJson = true,
   }) async {
     var response = await netDio.request(
       method: HttpMethod.PUT,
       path: url,
       params: params,
+      headers: headers,
       isJson: isJson,
     );
     return response;

@@ -7,13 +7,13 @@ import 'package:flutter_provider_st/http/http_global.dart';
 class HttpInterceptor extends Interceptor {
   @override
   void onRequest(RequestOptions options, RequestInterceptorHandler handler) {
-    debugPrint('请求URL: ${options.uri}');
+    debugPrint('请求URL(${options.method}): ${options.uri}');
     var token = Global.profile.token;
+    if (token != "") {
+      options.headers.addAll({'Authorization': "Bearer $token"});
+    }
     var version = HttpGlobal.config.version;
-    options.headers.addAll({
-      'Authorization': "Bearer $token",
-      'App-Version': version,
-    });
+    options.headers.addAll({'App-Version': version});
     super.onRequest(options, handler);
   }
 

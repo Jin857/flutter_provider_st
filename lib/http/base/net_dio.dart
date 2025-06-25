@@ -5,8 +5,7 @@ import 'package:flutter_provider_st/http/interceptor/http_interceptor.dart';
 import 'package:flutter_provider_st/http/model/http_model.dart';
 import 'package:flutter_provider_st/http/proxy/proxy.dart';
 import 'package:flutter_provider_st/http/utils/login_utils.dart';
-
-import '../../view/component/toast_util.dart';
+import 'package:flutter_provider_st/view/component/toast_util.dart';
 
 class NetDio {
   late Dio dio;
@@ -36,6 +35,10 @@ class NetDio {
       sendTimeout: _sendTimeout, // 发送超时时间
       connectTimeout: _connectTimeout, // 连接超时时间
       receiveTimeout: _receiveTimeout, // 接收超时时间
+      headers: {
+        "X-GitHub-Api-Version": "2022-11-28",
+        "accept": "application/vnd.github+json",
+      },
     );
     // 设置代理
     Proxy.isProxy = isProxy;
@@ -52,11 +55,14 @@ class NetDio {
     required HttpMethod method,
     required String path,
     required dynamic params,
+    required dynamic headers,
     bool isJson = true,
   }) async {
     try {
       dio.options.contentType =
           isJson ? Headers.jsonContentType : Headers.formUrlEncodedContentType;
+      print("===headers: $headers");
+      dio.options.headers.addAll(headers ?? {});
       Response response = await dio.request(
         path,
         data: params,
@@ -87,27 +93,6 @@ class NetDio {
 
     /// 解析数据
     var restReponse = RestReponse.fromJson(response.data);
-
-    /// 登陆
-    if (restReponse.code == 60001) {
-      LoginUtils.logout();
-    }
-
-    /// 网络异常
-    if (restReponse.code != 0) {
-      if (restReponse.msg != "") {
-        ToastUtils.show(name: "${restReponse.msg} ");
-        throw RestReponseException(
-          message: "${restReponse.msg}",
-          restReponse: restReponse,
-        );
-      } else {
-        throw RestReponseException(
-          message: "${restReponse.message}",
-          restReponse: restReponse,
-        );
-      }
-    }
     return restReponse;
   }
 }

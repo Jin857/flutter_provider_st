@@ -5,4 +5,4 @@ mode: 0
 runtime: "test"
 
 # 基础接口
-baseurl: https://test-api.ssgfgtfy.com/app/api/
+baseurl: https://api.github.com/

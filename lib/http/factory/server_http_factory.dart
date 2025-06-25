@@ -1,9 +1,11 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/http/api/user_api.dart';
 import 'package:flutter_provider_st/http/base/net_client.dart';
 import 'package:flutter_provider_st/http/http_factory.dart';
 import 'package:flutter_provider_st/http/factory/protocol/common_http_protocol.dart';
 import 'package:flutter_provider_st/http/factory/protocol/default_protocol.dart';
 import 'package:flutter_provider_st/http/model/http_model.dart';
+import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/models/user_model.dart';
 
 class ServerHttpFactory extends HttpFactory {
@@ -46,5 +48,24 @@ class _ServerHttpFactory extends DefaultProtocol {
     }
     UserInfo userInfo = UserInfo.fromJson(response?.data ?? {});
     return userInfo;
+  }
+
+  @override
+  Future<User> login(String token) async {
+    RestReponse? response;
+    try {
+      response = await netClient.get(
+        url: UserApi.login,
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+    } catch (e) {
+      print("------>,$e");
+    }
+    Map<String, dynamic> json = response?.data ?? {};
+
+    debugPrint("login success: ${json.toString()}");
+    return User.fromJson(json);
   }
 }

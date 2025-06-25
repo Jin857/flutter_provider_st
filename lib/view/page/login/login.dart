@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
+import 'package:flutter_provider_st/http/http_factory.dart';
 import 'package:flutter_provider_st/view/component/l_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -64,8 +65,6 @@ class LoginRoute extends StatefulWidget {
 class _LoginRouteState extends State<LoginRoute> {
   final GlobalKey _formKey = GlobalKey<FormState>();
   final TextEditingController _unameController = TextEditingController();
-  final TextEditingController _pwdController = TextEditingController();
-  bool pwdShow = false;
 
   @override
   void initState() {
@@ -86,35 +85,14 @@ class _LoginRouteState extends State<LoginRoute> {
             TextFormField(
                 controller: _unameController,
                 decoration: const InputDecoration(
-                  labelText: "用户名",
-                  hintText: "用户名",
+                  labelText: "登陆密钥",
+                  hintText: "登陆密钥",
                   prefixIcon: Icon(Icons.phone_android_rounded),
                 ),
                 // 校验手机号（不能为空）
                 validator: (v) {
-                  return v == null || v.trim().isNotEmpty ? null : "请输入用户名";
+                  return v == null || v.trim().isNotEmpty ? null : "请输入登陆密钥";
                 }),
-            TextFormField(
-              controller: _pwdController,
-              decoration: InputDecoration(
-                  labelText: "账户密码",
-                  hintText: "账户密码",
-                  prefixIcon: const Icon(Icons.lock_outline_rounded),
-                  suffixIcon: IconButton(
-                    icon:
-                        Icon(pwdShow ? Icons.visibility : Icons.visibility_off),
-                    onPressed: () {
-                      setState(() {
-                        pwdShow = !pwdShow;
-                      });
-                    },
-                  )),
-              obscureText: !pwdShow,
-              //校验密码（不能为空）
-              validator: (v) {
-                return v == null || v.trim().isNotEmpty ? null : "请输入密码";
-              },
-            ),
             Padding(
               padding: EdgeInsets.only(top: ScreenUtil().setHeight(25)),
               child: ConstrainedBox(
@@ -139,7 +117,7 @@ class _LoginRouteState extends State<LoginRoute> {
   void _onLogin() async {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
-      
+      HttpFactory.instance().user.login(_unameController.text);
       // showLoading(context);
       // User? user;
       // try {

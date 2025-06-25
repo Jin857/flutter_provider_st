@@ -3,5 +3,5 @@ class UserApi {
   static const String myinfo = 'myInfo';
 
   /// 登录接口
-  static const String apiLogin = 'login';
+  static const String login = '/user';
 }
