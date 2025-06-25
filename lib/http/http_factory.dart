@@ -39,9 +39,9 @@ abstract class HttpFactory {
   /// 商城
   MallProtocol get mall;
 
-  /// 大厅API
+  /// 大厅
   LobbyProtocol get lobby;
 
-  /// 用户认证API
-  AuthProtocol get auth;
+  /// 公共
+  CommonProtocol get common;
 }

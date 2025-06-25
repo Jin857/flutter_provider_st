@@ -1,5 +1,5 @@
 /// 认证
-abstract class AuthProtocol {}
+abstract class CommonProtocol {}
 
 // 大厅
 abstract class LobbyProtocol {}

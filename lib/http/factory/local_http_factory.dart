@@ -9,7 +9,7 @@ class LocalHttpFactory extends HttpFactory {
   LobbyProtocol get lobby => _protocol;
 
   @override
-  AuthProtocol get auth => _protocol;
+  CommonProtocol get common => _protocol;
 
   @override
   MallProtocol get mall => _protocol;
