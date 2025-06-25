@@ -4,7 +4,6 @@ import 'package:flutter_provider_st/http/base/http_exception.dart';
 import 'package:flutter_provider_st/http/interceptor/http_interceptor.dart';
 import 'package:flutter_provider_st/http/model/http_model.dart';
 import 'package:flutter_provider_st/http/proxy/proxy.dart';
-import 'package:flutter_provider_st/http/utils/login_utils.dart';
 import 'package:flutter_provider_st/view/component/toast_util.dart';
 
 class NetDio {

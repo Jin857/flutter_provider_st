@@ -124,7 +124,9 @@ class _PersionPageState extends State<PersionPage> {
                         child: TopBottomFlexLayout(
                           topWidget: LimitClickButton(
                             onClick: () async {
-                              Navigator.pushNamed(context, "/login");
+                              if (!userModel.isLogin) {
+                                Navigator.pushNamed(context, "/login");
+                              }
                             },
                             child: Container(
                               padding: EdgeInsets.symmetric(
@@ -135,7 +137,9 @@ class _PersionPageState extends State<PersionPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                    !userModel.isLogin ? "尚未登陆" : "Hi Steen",
+                                    !userModel.isLogin
+                                        ? "尚未登陆"
+                                        : userModel.user.login,
                                     style: TextConfig.bigTitleStyle,
                                   ),
                                   const TextIconButton(

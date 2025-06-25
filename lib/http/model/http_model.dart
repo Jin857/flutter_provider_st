@@ -21,6 +21,7 @@ class RestReponse<T> {
   String? message;
   String? type;
   T? result;
+  Map<String, dynamic>? map;
 
   RestReponse({
     required this.code,
@@ -31,6 +32,7 @@ class RestReponse<T> {
     this.message,
     this.type,
     this.result,
+    this.map,
   });
   factory RestReponse.fromJson(Map<String, dynamic> json) {
     return RestReponse(
@@ -42,6 +44,7 @@ class RestReponse<T> {
       message: json['message'] ?? "",
       type: json['type'] ?? "",
       result: json['result'],
+      map: json,
     );
   }
 
@@ -54,6 +57,7 @@ class RestReponse<T> {
         'message': message,
         'type': type,
         'result': result,
+        "map": map,
       };
   bool get isSuccess => code == 0;
 }

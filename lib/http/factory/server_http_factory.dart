@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/global/global.dart';
 import 'package:flutter_provider_st/http/api/user_api.dart';
 import 'package:flutter_provider_st/http/base/net_client.dart';
 import 'package:flutter_provider_st/http/http_factory.dart';
@@ -63,9 +63,11 @@ class _ServerHttpFactory extends DefaultProtocol {
     } catch (e) {
       print("------>,$e");
     }
-    Map<String, dynamic> json = response?.data ?? {};
+    Map<String, dynamic> json = response?.map ?? {};
 
-    debugPrint("login success: ${json.toString()}");
+    /// 更新 token
+    Global.profile.token = token;
+    print("-------->>> $json");
     return User.fromJson(json);
   }
 }
