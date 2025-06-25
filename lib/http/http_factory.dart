@@ -44,4 +44,7 @@ abstract class HttpFactory {
 
   /// 公共
   CommonProtocol get common;
+
+  /// 用户
+  UserProtocol get user;
 }

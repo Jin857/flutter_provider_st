@@ -1,3 +1,1 @@
-class V1Api {
-  
-}
+class CommonApi {}

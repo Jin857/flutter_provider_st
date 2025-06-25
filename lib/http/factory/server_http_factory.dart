@@ -4,12 +4,14 @@ import 'package:flutter_provider_st/http/factory/protocol/default_protocol.dart'
 
 class ServerHttpFactory extends HttpFactory {
   final _ServerHttpFactory _protocol;
+  @override
+  CommonProtocol get common => _protocol;
+
+  @override
+  UserProtocol get user => _protocol;
 
   @override
   LobbyProtocol get lobby => _protocol;
-
-  @override
-  CommonProtocol get common => _protocol;
 
   @override
   MallProtocol get mall => _protocol;

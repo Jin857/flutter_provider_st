@@ -6,10 +6,13 @@ class LocalHttpFactory extends HttpFactory {
   final _LocalHttpFactory _protocol;
 
   @override
-  LobbyProtocol get lobby => _protocol;
+  CommonProtocol get common => _protocol;
 
   @override
-  CommonProtocol get common => _protocol;
+  UserProtocol get user => _protocol;
+
+  @override
+  LobbyProtocol get lobby => _protocol;
 
   @override
   MallProtocol get mall => _protocol;
