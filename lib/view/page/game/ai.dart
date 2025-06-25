@@ -1355,7 +1355,7 @@ class AdvancedAI extends AI {
     var start = DateTime.now();
     BufferChessmanList enemyPosList = enemyBestPosition(list, maxCount: 5);
     var value = DateTime.now();
-    print(
+    debugPrint(
         '查找高分落子位置耗时：${value.millisecondsSinceEpoch - start.millisecondsSinceEpoch}');
 
     // 将最优落子位置放入列表中
