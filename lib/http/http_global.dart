@@ -1,6 +1,7 @@
 import 'package:flutter/services.dart';
-import 'package:flutter_provider_st/http/factory/http_factory.dart';
+import 'package:flutter_provider_st/http/http_factory.dart';
 import 'package:flutter_provider_st/http/model/http_factory_model.dart';
+import 'package:package_info_plus/package_info_plus.dart';
 import 'package:yaml/yaml.dart';
 
 class HttpGlobal {
@@ -13,6 +14,11 @@ class HttpGlobal {
   static Future init() async {
     /// 初始实例化请求工厂
     HttpFactory.config = await _getConfig();
+
+    /// 获取版本号
+    PackageInfo packageInfo = await PackageInfo.fromPlatform();
+    config.version = packageInfo.version;
+    config.buildNumber = packageInfo.buildNumber;
 
     /// 初始化单例
     HttpFactory.instance();

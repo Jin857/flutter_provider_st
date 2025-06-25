@@ -50,9 +50,6 @@ enum StoreAction {
   /// token
   token,
 
-  /// uid
-  uid,
-
   /// 第一次登陆通知
   firstNotification,
 

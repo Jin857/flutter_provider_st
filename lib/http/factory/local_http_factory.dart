@@ -1,4 +1,4 @@
-import 'package:flutter_provider_st/http/factory/http_factory.dart';
+import 'package:flutter_provider_st/http/http_factory.dart';
 import 'package:flutter_provider_st/http/factory/protocol/common_http_protocol.dart';
 import 'package:flutter_provider_st/http/factory/protocol/default_protocol.dart';
 

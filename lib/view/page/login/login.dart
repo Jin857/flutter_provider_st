@@ -2,13 +2,13 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/user.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
-import 'package:flutter_provider_st/http/github/my_git.dart';
+// import 'package:flutter_provider_st/http/github/my_git.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/view/component/l_image.dart';
 import 'package:flutter_provider_st/view/component/toast_util.dart';
 
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
+// import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
 
 class Login extends StatelessWidget {
@@ -148,27 +148,27 @@ class _LoginRouteState extends State<LoginRoute> {
     // 先验证各个表单字段是否合法
     if ((_formKey.currentState as FormState).validate()) {
       // showLoading(context);
-      User? user;
-      try {
-        user = await Git(context)
-            .login(_unameController.text, _pwdController.text);
-        // 因为登录页返回后，首页会build，所以我们传入false，这样更新user后便不触发更新。
-        Provider.of<UserModel>(context, listen: false).user = user;
-      } on DioError catch (e) {
-        //登录失败则提示
-        if (e.response?.statusCode == 401) {
-          // ToastUtils.show(GmLocalizations.of(context).userNameOrPasswordWrong);
-        } else {
-          ToastUtils.show(name: e.toString());
-        }
-      } finally {
-        // 隐藏loading框
-        // Navigator.of(context).pop();
-      }
+      // User? user;
+      // try {
+      //   user = await Git(context)
+      //       .login(_unameController.text, _pwdController.text);
+      //   // 因为登录页返回后，首页会build，所以我们传入false，这样更新user后便不触发更新。
+      //   Provider.of<UserModel>(context, listen: false).user = user;
+      // } on DioError catch (e) {
+      //   //登录失败则提示
+      //   if (e.response?.statusCode == 401) {
+      //     // ToastUtils.show(GmLocalizations.of(context).userNameOrPasswordWrong);
+      //   } else {
+      //     ToastUtils.show(name: e.toString());
+      //   }
+      // } finally {
+      //   // 隐藏loading框
+      //   // Navigator.of(context).pop();
+      // }
       //登录成功则返回
-      if (user != null) {
-        Navigator.of(context).pop();
-      }
+      // if (user != null) {
+      //   Navigator.of(context).pop();
+      // }
     }
   }
 }

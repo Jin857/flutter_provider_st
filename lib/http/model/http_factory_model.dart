@@ -1,5 +1,3 @@
-
-
 enum RuntimeType {
   /// debug
   DEBUG("debug"),
@@ -40,11 +38,19 @@ class HttpFactoryConfig {
   /// 基础接口
   final String baseurl;
 
+  /// 版本号
+  String version;
+
+  /// 版本数字编号
+  String buildNumber;
+
   HttpFactoryConfig({
     this.mode = 0,
     this.runtime = RuntimeType.DEBUG,
     this.isProxy = false,
     this.baseurl = "",
+    this.version = "",
+    this.buildNumber = "",
   });
 
   bool get isdebug =>
@@ -63,6 +69,8 @@ class HttpFactoryConfig {
       runtime: RuntimeType.fromJson(json['runtime'] ?? ""),
       isProxy: json['isProxy'] ?? false,
       baseurl: json['baseurl'] ?? "",
+      version: json["version"] ?? "",
+      buildNumber: json["buildNumber"] ?? "",
     );
   }
 }

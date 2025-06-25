@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/common/profile.dart';
-import 'package:flutter_provider_st/http/github/my_git.dart';
 import 'package:flutter_provider_st/http/github/net_cache.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,7 +45,7 @@ class Global {
     profile.cache = profile.cache;
 
     // 初始化网络请求相关配置
-    Git.init();
+    // Git.init();
   }
 
   // 持久化Profile信息

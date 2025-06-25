@@ -32,31 +32,16 @@ class NetDio {
       validateStatus: (status) {
         return true;
       },
-      baseUrl: url,
-      sendTimeout: _sendTimeout,
-      connectTimeout: _connectTimeout,
-      receiveTimeout: _receiveTimeout,
+      baseUrl: url, // 请求的基础URL
+      sendTimeout: _sendTimeout, // 发送超时时间
+      connectTimeout: _connectTimeout, // 连接超时时间
+      receiveTimeout: _receiveTimeout, // 接收超时时间
     );
+    // 设置代理
     Proxy.isProxy = isProxy;
     dio = Dio(options);
     Proxy.setProxy(dio);
     dio.interceptors.add(HttpInterceptor());
-  }
-
-  /// 更改dio为发送时需要的样子
-  Dio _sendDio([bool isJson = true]) {
-    dio.options.contentType =
-        isJson ? Headers.jsonContentType : Headers.formUrlEncodedContentType;
-    dio.interceptors.add(InterceptorsWrapper(
-      onRequest: (options, handler) async {
-        options.headers.addAll({
-          'Authorization': "Bearer your_token_here",
-          'App-Version': '1.0.0',
-        });
-        return handler.next(options);
-      },
-    ));
-    return dio;
   }
 
   /// 请求，返回参数为 T
@@ -70,7 +55,8 @@ class NetDio {
     bool isJson = true,
   }) async {
     try {
-      Dio dio = _sendDio(isJson);
+      dio.options.contentType =
+          isJson ? Headers.jsonContentType : Headers.formUrlEncodedContentType;
       Response response = await dio.request(
         path,
         data: params,
