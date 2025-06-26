@@ -6,7 +6,6 @@ import 'package:flutter_provider_st/http/factory/protocol/common_http_protocol.d
 import 'package:flutter_provider_st/http/factory/protocol/default_protocol.dart';
 import 'package:flutter_provider_st/http/model/http_model.dart';
 import 'package:flutter_provider_st/models/user.dart';
-import 'package:flutter_provider_st/models/user_model.dart';
 
 class ServerHttpFactory extends HttpFactory {
   final _ServerHttpFactory _protocol;
@@ -34,21 +33,6 @@ class _ServerHttpFactory extends DefaultProtocol {
     String httpURL,
     bool isProxy,
   ) : netClient = NetClient(httpURL: httpURL, isProxy: isProxy);
-
-  @override
-  Future<UserInfo> getUserInfo() async {
-    RestReponse? response;
-    try {
-      response = await netClient.post(
-        url: UserApi.myinfo,
-        params: {},
-      );
-    } catch (e) {
-      print("------>,$e");
-    }
-    UserInfo userInfo = UserInfo.fromJson(response?.data ?? {});
-    return userInfo;
-  }
 
   @override
   Future<User> login(String token) async {

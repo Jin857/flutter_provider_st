@@ -7,6 +7,7 @@ class AssetsConfig {
   static const String lobbybook_04 = 'assets/images/lobby/lobby_book_04.png';
   static const String lobbybook_05 = 'assets/images/lobby/lobby_book_05.png';
   static const String commotop = 'assets/images/common/common_top.png';
+  static const String commonBlack = 'assets/images/common/common_black.png';
 
   /// 图像Logo
   static List<int> headList = [

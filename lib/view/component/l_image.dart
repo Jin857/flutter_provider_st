@@ -17,7 +17,7 @@ class LImage extends StatelessWidget {
 
   const LImage({
     super.key,
-    required String image,
+    required this.image,
     this.width,
     this.height,
     this.scale,
@@ -28,8 +28,7 @@ class LImage extends StatelessWidget {
     this.memCacheWidth,
     this.memCacheHeight,
   })  : alignment = alignment ?? Alignment.center,
-        errorImage = errorImage ?? AssetsConfig.lobbybook_01,
-        image = image == "" ? AssetsConfig.lobbybook_01 : image;
+        errorImage = errorImage ?? AssetsConfig.commonBlack;
 
   @override
   Widget build(BuildContext context) {

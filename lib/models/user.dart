@@ -1,19 +1,20 @@
 class User {
-  ///用户登录名
+  /// 用户登录名
   String login;
 
-  ///用户头像地址
+  /// 用户头像地址
   String avatarUrl;
 
-  ///用户类型，可能是组织
+  /// 用户类型，可能是组织
   String type;
-  //用户名字
+
+  /// 用户名字
   String name;
 
-  ///公司
+  /// 公司
   String company;
 
-  ///博客地址
+  /// 博客地址
   String blog;
 
   /// 用户所处地理位置

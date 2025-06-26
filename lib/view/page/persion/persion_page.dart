@@ -176,7 +176,9 @@ class _PersionPageState extends State<PersionPage> {
                           children: [
                             HeadBottonCard(
                               radius: ((ScreenConfig.width / 4) - 40) / 2,
-                              headIco: AssetsConfig.getHead(31),
+                              headIco: !userModel.isLogin
+                                  ? AssetsConfig.getHead(0)
+                                  : userModel.user.avatarUrl,
                               errorImage: AssetsConfig.getHead(0),
                             ),
                             Container(
