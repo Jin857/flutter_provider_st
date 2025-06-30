@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
+import 'package:flutter_provider_st/provider/lobby_model.dart';
 import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/view/html/flutter_html_widget.dart';
@@ -85,22 +86,27 @@ class _MyHomePageState extends State<MyHomePage> {
                               ),
                             ),
                           ),
-                          // FutureProvider<LobbyModel>(
-                          //   create: (context) => foo.getLocation(),
-                          //   initialData: '加载中...',
-                          //   child: Consumer<String>(
-                          //     builder: (context, data, child) {
-                          //       return Text(
-                          //         "三商共富($data)",
-                          //         style: const TextStyle(
-                          //           color: Colors.white,
-                          //           fontWeight: FontWeight.bold,
-                          //           fontSize: 15,
-                          //         ),
-                          //       );
-                          //     },
-                          //   ),
-                          // ),
+                          FutureProvider<String>(
+                            initialData: "加载中..",
+                            create: (context) async {
+                              await Future.delayed(
+                                Duration(milliseconds: 2000),
+                              );
+                              return "获取新数据";
+                            },
+                            child: Consumer<String>(
+                              builder: (context, data, child) {
+                                return Text(
+                                  "三商共富($data)",
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 15,
+                                  ),
+                                );
+                              },
+                            ),
+                          ),
                         ],
                         rightWidget: [
                           LimitClickButton(

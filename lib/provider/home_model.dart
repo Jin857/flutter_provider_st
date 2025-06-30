@@ -11,7 +11,9 @@ class HomeModel extends ChangeNotifier {
   }
 
   /// 读取本地配置文件
-  Future<void> init() async {}
+  Future<void> init() async {
+    /// 初始化
+  }
 
   @override
   void notifyListeners() {
