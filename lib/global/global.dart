@@ -2,9 +2,9 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/http/http_global.dart';
+import 'package:flutter_provider_st/core/http/http_global.dart';
 import 'package:flutter_provider_st/models/profile.dart';
-import 'package:flutter_provider_st/utils/store.dart';
+import 'package:flutter_provider_st/core/utils/store.dart';
 
 const _themes = <MaterialColor>[
   Colors.blue,

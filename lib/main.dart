@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/initialize/configure_init.dart';
 import 'package:flutter_provider_st/initialize/injection_init.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_provider_st/l10n/localization_intl.dart';
+import 'package:flutter_provider_st/core/l10n/localization_intl.dart';
 import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/locale_model.dart';
 import 'package:flutter_provider_st/provider/theme_model.dart';

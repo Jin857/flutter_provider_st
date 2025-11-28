@@ -1,5 +1,5 @@
 import 'package:flutter_provider_st/global/global.dart';
-import 'package:flutter_provider_st/utils/store.dart';
+import 'package:flutter_provider_st/core/utils/store.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 /// @class : Injection

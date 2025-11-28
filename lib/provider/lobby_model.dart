@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/utils/location_gps_utils.dart';
+import 'package:flutter_provider_st/core/utils/location_gps_utils.dart';
 import 'package:geolocator/geolocator.dart';
 
 // ChangeNotifier 主要有两个方法:
