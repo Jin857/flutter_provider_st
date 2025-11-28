@@ -90,7 +90,25 @@ class LobbyPageModel {
       image: AssetsConfig.lobbymain,
       isCenter: false,
       title: "Stream",
-      subtitle: "Stream",
+      subtitle: "Stream 教程",
+    ),
+    SwellBottonCardModel(
+      image: AssetsConfig.lobbybook_05,
+      isCenter: true,
+      title: "",
+      subtitle: "",
+    ),
+    SwellBottonCardModel(
+      image: AssetsConfig.lobbybook_05,
+      isCenter: true,
+      title: "",
+      subtitle: "",
+    ),
+    SwellBottonCardModel(
+      image: AssetsConfig.lobbymain,
+      isCenter: false,
+      title: "Staggered",
+      subtitle: "网格教程",
     ),
   ];
 }

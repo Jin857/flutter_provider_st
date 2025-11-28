@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/assets_config.dart';
+import 'package:flutter_provider_st/router/st_routers_pages.dart';
 
 class HeroAnimationRouteA extends StatelessWidget {
   const HeroAnimationRouteA({super.key});
@@ -25,13 +26,7 @@ class HeroAnimationRouteA extends StatelessWidget {
                 ),
               ),
               onTap: () {
-                //打开B路由
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const HeroAnimationRouteB(),
-                  ),
-                );
+                Navigator.pushNamed(context, STHeroRoutersName.heroB);
               },
             ),
             const Padding(

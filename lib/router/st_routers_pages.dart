@@ -1,27 +1,75 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/stream/stream_builder_demo.dart';
+import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
+import 'package:flutter_provider_st/view/page/bottombar/bottom_app_bar_page.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/game/game_page.dart';
 import 'package:flutter_provider_st/view/page/login/login.dart';
 import 'package:flutter_provider_st/view/page/new_lobby_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/aligned/aligned_grid_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/masonry/masonry_grid_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/masonry_custom_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/quilted/quilted_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/staggered/staggered_fit_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/staggered/staggered_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/staggered_main.dart';
+import 'package:flutter_provider_st/view/staggered_grid/staired/staired_page.dart';
+import 'package:flutter_provider_st/view/staggered_grid/woven/woven_page.dart';
+part 'st_routers_name.dart';
 
 class StWidgetBuilderRouters {
   static final Map<String, WidgetBuilder> routes = {
-    "/": (context) {
-      /// 这里可以处理跳转问题
+    STRoutersName.main: (context) {
+      /// TODO: 这里处理初始化跳转
       return const NewLobbyPage();
     },
-    "/game": (context) {
+    STRoutersName.game: (context) {
       return const GameMainPage();
     },
-    "/login": (context) {
+    STRoutersName.login: (context) {
       return const Login();
     },
-    "/streamBuilderDemo": (context) {
+    STRoutersName.error: (context) {
+      return const ErrorPage();
+    },
+    STStreamRoutersName.main: (context) {
       return const StreamBuilderDemo();
     },
-    "/error": (context) {
-      return const ErrorPage();
+    STHeroRoutersName.heroA: (context) {
+      return const HeroAnimationRouteA();
+    },
+    STHeroRoutersName.heroB: (context) {
+      return const HeroAnimationRouteB();
+    },
+    STBottomBarRoutersName.bottomAppBarPage: (context) {
+      return const BottomAppBarPage();
+    },
+    STStaggeredRoutersName.main: (context) {
+      return const StaggeredMain();
+    },
+    STStaggeredRoutersName.staggeredPage: (context) {
+      return const StaggeredPage();
+    },
+    STStaggeredRoutersName.staggeredFitPage: (context) {
+      return const StaggeredFitPage();
+    },
+    STStaggeredRoutersName.masonryGridWidget: (context) {
+      return MyMasonryGridWidget();
+    },
+    STStaggeredRoutersName.alignedGridPage: (context) {
+      return const AlignedGridPage();
+    },
+    STStaggeredRoutersName.stairedPage: (context) {
+      return const StairedPage();
+    },
+    STStaggeredRoutersName.wovenPage: (context) {
+      return const WovenPage();
+    },
+    STStaggeredRoutersName.quiltedPage: (context) {
+      return const QuiltedPage();
+    },
+    STStaggeredRoutersName.masonryCustomPage: (context) {
+      return const MasonryCustomPage();
     },
   };
 }

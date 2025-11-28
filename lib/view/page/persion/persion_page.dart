@@ -8,6 +8,7 @@ import 'package:flutter_provider_st/event/event_bus.dart';
 import 'package:flutter_provider_st/component/threetree/render/done_widget.dart';
 import 'package:flutter_provider_st/component/threetree/render/three_box_render.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
+import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/view/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/view/component/button/text_icon_button.dart';
 import 'package:flutter_provider_st/view/component/card/head_botton_card.dart';
@@ -125,7 +126,8 @@ class _PersionPageState extends State<PersionPage> {
                           topWidget: LimitClickButton(
                             onClick: () async {
                               if (!userModel.isLogin) {
-                                Navigator.pushNamed(context, "/login");
+                                Navigator.pushNamed(
+                                    context, STRoutersName.login);
                               }
                             },
                             child: Container(

@@ -1,10 +1,9 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
-import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
+import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/view/html/flutter_html_widget.dart';
-import 'package:flutter_provider_st/view/page/bottombar/bottom_app_bar_page.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/image_lucky_wheel_view.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/widget_lucky_wheel_view.dart';
 import 'package:provider/provider.dart';
@@ -151,30 +150,26 @@ class _MyHomePageState extends State<MyHomePage> {
                                     context: context,
                                   );
                                 } else if (index == 1) {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const HeroAnimationRouteA(),
-                                    ),
-                                  );
+                                  Navigator.pushNamed(
+                                      context, STHeroRoutersName.heroA);
                                 } else if (index == 2) {
-                                  Navigator.pushNamed(context, "/game");
+                                  Navigator.pushNamed(
+                                      context, STRoutersName.game);
                                 } else if (index == 3) {
                                   openImageLuckyWheel(context);
                                 } else if (index == 4) {
                                   openWidgetLuckyWheel(context);
                                 } else if (index == 5) {
-                                  Navigator.push(
+                                  Navigator.pushNamed(
                                     context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const BottomAppBarPage(),
-                                    ),
+                                    STBottomBarRoutersName.bottomAppBarPage,
                                   );
                                 } else if (index == 6) {
                                   Navigator.pushNamed(
-                                      context, "/streamBuilderDemo");
+                                      context, STStreamRoutersName.main);
+                                } else if (index == 9) {
+                                  Navigator.pushNamed(
+                                      context, STStaggeredRoutersName.main);
                                 }
                               },
                             );
