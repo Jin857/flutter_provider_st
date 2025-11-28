@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
-import 'package:flutter_provider_st/view/html/flutter_html_widget.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/image_lucky_wheel_view.dart';
 import 'package:flutter_provider_st/view/page/luckywheel/widget_lucky_wheel_view.dart';
 import 'package:provider/provider.dart';
@@ -190,9 +189,6 @@ class _MyHomePageState extends State<MyHomePage> {
                           ],
                         ),
                       ),
-                    ),
-                    const SliverToBoxAdapter(
-                      child: FlutterHtmlWidget(),
                     ),
                   ],
                 ),
