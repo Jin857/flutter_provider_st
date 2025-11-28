@@ -107,7 +107,7 @@ class BottomNavigationBarButton extends StatelessWidget {
         curve: Curves.easeInOut, // 动画曲线
         child: Container(
           width: width,
-          color: Colors.white.withOpacity(0.0),
+          color: Colors.transparent,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [

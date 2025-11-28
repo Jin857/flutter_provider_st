@@ -135,7 +135,7 @@ class BottomTabDrawPaint extends CustomPainter {
 
     // 创建阴影用的Paint，设置阴影颜色和透明度
     final shadowPaint = Paint()
-      ..color = const Color(0xFF000000).withOpacity(0.12)
+      ..color = const Color(0xFF000000).withValues(alpha: 0.12)
       ..style = PaintingStyle.fill
       ..isAntiAlias = true
       ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8); // 设置阴影的模糊度

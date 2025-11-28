@@ -136,7 +136,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
                         }
                       },
                       child: Container(
-                        color: Colors.white.withOpacity(0.01),
+                        color: Colors.white.withValues(alpha: 0.01),
                         width: double.infinity,
                         height: double.infinity,
                         child: Stack(

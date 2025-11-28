@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
  
 class BoardPainter extends CustomPainter {
   final List<Offset> blackPieces;
@@ -28,12 +27,12 @@ class BoardPainter extends CustomPainter {
     }
  
     // 绘制黑子和白子
-    blackPieces.forEach((offset) {
+    for (var offset in blackPieces) {
       canvas.drawCircle(offset, radius, blackPaint);
-    });
-    whitePieces.forEach((offset) {
+    }
+    for (var offset in whitePieces) {
       canvas.drawCircle(offset, radius, whitePaint);
-    });
+    }
   }
  
   @override

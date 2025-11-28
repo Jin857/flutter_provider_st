@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_provider_st/global/global.dart';
 import 'package:flutter_provider_st/http/api/user_api.dart';
 import 'package:flutter_provider_st/http/base/net_client.dart';
@@ -45,13 +46,12 @@ class _ServerHttpFactory extends DefaultProtocol {
         },
       );
     } catch (e) {
-      print("------>,$e");
+      debugPrint("Error : $e");
     }
     Map<String, dynamic> json = response?.map ?? {};
 
     /// 更新 token
     Global.profile.token = token;
-    print("-------->>> $json");
     return User.fromJson(json);
   }
 }

@@ -117,7 +117,7 @@ class AI {
     BufferMap<Offset> enemy = enemyBetterPosition();
     late Offset defensesPosition;
     for (num key in enemy.keySet) {
-      print("key:${key}");
+      debugPrint("key:$key");
       if (key >= ALIVE4) {
         defensesPosition = enemy[key]!;
         break;
@@ -128,7 +128,7 @@ class AI {
 
     // BufferMap<Offset> our = ourBetterPosition();
     // for (num key in our.keySet) {
-    //   print("key:${key}");
+    //   debugPrint("key:${key}");
     //   if (key >= ALIVE4) {
     //     return our[key]!;
     //   }
@@ -189,7 +189,7 @@ class AI {
   BufferMap<Offset> enemyBetterPosition({maxCount = 5}) {
     Offset offset = Offset.zero;
     BufferMap<Offset> enemyMap = BufferMap.maxCount(5);
-    print("查找敌方最优落子位置");
+    debugPrint("查找敌方最优落子位置");
 
     int count = 0;
     for (int i = 0; i <= LINE_COUNT; i++) {
@@ -204,16 +204,16 @@ class AI {
           count++;
           int time = end.millisecondsSinceEpoch - start.millisecondsSinceEpoch;
           // if (time > 5) {
-          print("查找敌方最优落子位置耗时：$time");
+          debugPrint("查找敌方最优落子位置耗时：$time");
           // }
           if (enemyMap.minKey() < score) {
-            print("-----${offset.dx},${offset.dy}");
+            debugPrint("-----${offset.dx},${offset.dy}");
             enemyMap.put(score, Offset(offset.dx, offset.dy));
           }
         }
       }
     }
-    print("查找敌方最优落子位置次数：$count");
+    debugPrint("查找敌方最优落子位置次数：$count");
     return enemyMap;
   }
 
@@ -320,7 +320,8 @@ class AI {
 
     int ss = score + scoringAloneChessman(first);
     // if (isCanPrintMsg) {
-    print("该子分值为: $ss ,其中单子得分:${scoringAloneChessman(first)}, 组合得分:$score");
+    debugPrint(
+        "该子分值为: $ss ,其中单子得分:${scoringAloneChessman(first)}, 组合得分:$score");
     // }
 
     int jumpAlive4Count = getJumpAlive4Count([first], player);
@@ -385,17 +386,17 @@ class AI {
               limitMax(getJumpAlive4Count(myChessman, player)) * JUMP_ALIVE4;
 
           if (isCanPrintMsg) {
-            print("$printMsg 活2成立, 得分+$ALIVE2");
+            debugPrint("$printMsg 活2成立, 得分+$ALIVE2");
           }
         } else if (isLowerDeath2(myChessman)) {
           score += LOWER_DEATH2;
           if (isCanPrintMsg) {
-            print("$printMsg 低级死2成立 ,得分+$LOWER_DEATH2");
+            debugPrint("$printMsg 低级死2成立 ,得分+$LOWER_DEATH2");
           }
         } else {
           score += DEEP_DEATH2;
           if (isCanPrintMsg) {
-            print("$printMsg 死2成立 ,得分+$DEEP_DEATH2");
+            debugPrint("$printMsg 死2成立 ,得分+$DEEP_DEATH2");
           }
         }
         break;
@@ -405,17 +406,17 @@ class AI {
           score +=
               limitMax(getJumpAlive4Count(myChessman, player)) * JUMP_ALIVE4;
           if (isCanPrintMsg) {
-            print("$printMsg 活3成立, 得分+$ALIVE3");
+            debugPrint("$printMsg 活3成立, 得分+$ALIVE3");
           }
         } else if (isLowerDeath3(myChessman)) {
           score += LOWER_DEATH3;
           if (isCanPrintMsg) {
-            print("$printMsg 低级死3成立 ,得分+$LOWER_DEATH3");
+            debugPrint("$printMsg 低级死3成立 ,得分+$LOWER_DEATH3");
           }
         } else {
           score += DEEP_DEATH3;
           if (isCanPrintMsg) {
-            print("$printMsg 死3成立 ,得分+$DEEP_DEATH3");
+            debugPrint("$printMsg 死3成立 ,得分+$DEEP_DEATH3");
           }
         }
         break;
@@ -424,17 +425,17 @@ class AI {
         if (isAlive4(myChessman)) {
           score += ALIVE4;
           if (isCanPrintMsg) {
-            print("$printMsg 活4成立, 得分+$ALIVE4");
+            debugPrint("$printMsg 活4成立, 得分+$ALIVE4");
           }
         } else if (isLowerDeath4(myChessman)) {
           score += LOWER_DEATH4;
           if (isCanPrintMsg) {
-            print("$printMsg 低级死4成立 ,得分+$LOWER_DEATH4");
+            debugPrint("$printMsg 低级死4成立 ,得分+$LOWER_DEATH4");
           }
         } else {
           score += DEEP_DEATH4;
           if (isCanPrintMsg) {
-            print("$printMsg 死4成立 ,得分+$DEEP_DEATH4");
+            debugPrint("$printMsg 死4成立 ,得分+$DEEP_DEATH4");
           }
         }
         break;
@@ -761,7 +762,7 @@ class AI {
   }
 
   int getJumpAlive4Count(List<Offset> list, Player player) {
-    assert(list.length > 0 && list.length < 4);
+    assert(list.isNotEmpty && list.length < 4);
     int count = 0;
 
     if (list.length == 1) {
@@ -1037,7 +1038,7 @@ class AI {
 // 检查给定位置是否存在特定的棋子
   bool existSpecificChessman(Offset position, Player player) {
     //定义一个不可能生成到棋盘上的棋子
-    Chessman defaultChessman = Chessman(Offset(-1, 0), Player.black);
+    Chessman defaultChessman = Chessman(const Offset(-1, 0), Player.black);
     // 检查棋子列表是否非空
     if (chessmanList.isNotEmpty) {
       // 在棋子列表中查找匹配给定位置的棋子
@@ -1056,7 +1057,7 @@ class AI {
 
   bool canFallChessman(Chessman chessman) {
     //定义一个不可能生成到棋盘上的棋子
-    Chessman defaultChessman = Chessman(Offset(-1, 0), Player.black);
+    Chessman defaultChessman = Chessman(const Offset(-1, 0), Player.black);
     if (chessmanList.isNotEmpty) {
       Chessman cm = chessmanList.firstWhere((Chessman c) {
         //如果找到位置相同的棋子，那么cm就等于这棋子的信息
@@ -1115,6 +1116,7 @@ class AdvancedAI extends AI {
     maxMin = isMaxMin ?? true;
   }
 
+  @override
   Future<Offset> nextByAI({bool isPrintMsg = false}) async {
     Offset pos = needDefenses();
     if (pos != const Offset(-1, 0)) {
@@ -1125,19 +1127,19 @@ class AdvancedAI extends AI {
     DateTime start = DateTime.now();
     ChessNode root = createGameTree();
     DateTime create = DateTime.now();
-    print(
+    debugPrint(
         '创建博弈树耗时：${create.millisecondsSinceEpoch - start.millisecondsSinceEpoch}');
     if (maxMin) {
       maxMinSearch(root);
       DateTime search = DateTime.now();
-      print(
+      debugPrint(
           'MaxMin搜索耗时：${search.millisecondsSinceEpoch - create.millisecondsSinceEpoch}');
     } else {
       alphaBetaSearch(root);
       DateTime search = DateTime.now();
-      print(
+      debugPrint(
           'Alpha-Beta 搜索耗时：${search.millisecondsSinceEpoch - create.millisecondsSinceEpoch}');
-      print("Alpha-Beta 搜索次数: $count");
+      debugPrint("Alpha-Beta 搜索次数: $count");
     }
 
     return root.checked.position;
@@ -1318,7 +1320,7 @@ class AdvancedAI extends AI {
       createChildren(node);
       var create = DateTime.now();
 
-      print(
+      debugPrint(
           '创建第一层第$index个节点耗时：${create.millisecondsSinceEpoch - start.millisecondsSinceEpoch}');
       index++;
     }
@@ -1561,6 +1563,7 @@ class AdvancedAI extends AI {
     return highScorePosition(enemy, chessmanList);
   }
 
+  @override
   bool isBlankPosition(Offset position, {List<Chessman>? chessmanList}) {
     if (!isEffectivePosition(position)) {
       return false;
@@ -1578,6 +1581,7 @@ class AdvancedAI extends AI {
     return true;
   }
 
+  @override
   bool isEffectivePosition(Offset offset) {
     return offset.dx >= 0 &&
         offset.dx <= AI.LINE_COUNT &&

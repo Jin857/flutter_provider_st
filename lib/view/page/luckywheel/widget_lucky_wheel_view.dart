@@ -126,15 +126,15 @@ class _LuckyWheelControllerState extends State<WidgetLuckyWheelController>
     /// 初始化动画监听
     animationController.addListener(() {
       if (animationController.status == AnimationStatus.completed) {
-        print('动画结束了 $luckyIndex ${_luckyPrize.content}');
+        debugPrint('动画结束了 $luckyIndex ${_luckyPrize.content}');
         isRunning = false;
         luckyIndex = 0;
       } else if (animationController.status == AnimationStatus.forward) {
         // 正向运行动画 - 从头到尾都在播放。
-        print('forward');
+        debugPrint('forward');
       } else if (animationController.status == AnimationStatus.reverse) {
         /// 返向运行动画 - 动画从结束到开始向后运行。
-        print('reverse');
+        debugPrint('reverse');
       }
     });
 
@@ -196,14 +196,14 @@ class _LuckyWheelControllerState extends State<WidgetLuckyWheelController>
   }
 
   /// 计算初始角半角位置
-  double get _midTweenDouble {
-    if (widget.luckyPrizesList.isEmpty) {
-      return 0;
-    }
-    double piTween = 1 / widget.luckyPrizesList.length;
-    double midTween = piTween / 2;
-    return midTween;
-  }
+  // double get _midTweenDouble {
+  //   if (widget.luckyPrizesList.isEmpty) {
+  //     return 0;
+  //   }
+  //   double piTween = 1 / widget.luckyPrizesList.length;
+  //   double midTween = piTween / 2;
+  //   return midTween;
+  // }
 
   /// 根据luckyIndex计算出中奖对象
   LuckyPrize get _luckyPrize {

@@ -1,4 +1,5 @@
 // 订阅者回调签名
+// ignore: prefer_generic_function_type_aliases
 typedef void EventCallback(arg);
 
 /// 全局监听

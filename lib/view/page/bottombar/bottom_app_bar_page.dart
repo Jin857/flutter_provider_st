@@ -31,10 +31,10 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.zero,
         color: [
-          Colors.blue.withOpacity(0.6),
-          Colors.blue.withOpacity(0.2),
-          Colors.blue.withOpacity(0.8),
-          Colors.blue.withOpacity(0.3),
+          Colors.blue.withValues(alpha: 0.6),
+          Colors.blue.withValues(alpha: 0.2),
+          Colors.blue.withValues(alpha: 0.8),
+          Colors.blue.withValues(alpha: 0.3),
         ][_currentIdx],
         clipBehavior: Clip.hardEdge,
         shadowColor: Colors.transparent,

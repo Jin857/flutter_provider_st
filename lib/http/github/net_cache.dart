@@ -80,7 +80,10 @@ class NetCache extends Interceptor {
         options.method.toLowerCase() == "get") {
       // 如果缓存数量超过最大数量限制，则先移除最早的一条记录
       if (cache.length == Global.profile.cache.maxCount) {
-        cache.remove(cache[cache.keys.first]);
+        var removeCache = cache[cache.keys.first];
+        if (removeCache != null) {
+          cache.remove(removeCache.response.realUri.toString());
+        }
       }
       String key = options.extra["cacheKey"] ?? options.uri.toString();
       cache[key] = CacheObject(object);

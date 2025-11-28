@@ -19,13 +19,13 @@ class HttpInterceptor extends Interceptor {
 
   @override
   void onResponse(Response response, ResponseInterceptorHandler handler) {
-    print('响应状态码: ${response.statusCode}');
+    debugPrint('响应状态码: ${response.statusCode}');
     super.onResponse(response, handler);
   }
 
   @override
   void onError(DioException err, ErrorInterceptorHandler handler) {
-    print('请求错误: ${err.message}');
+    debugPrint('请求错误: ${err.message}');
     super.onError(err, handler);
   }
 }

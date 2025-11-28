@@ -5,7 +5,7 @@ import 'package:flutter_provider_st/view/component/bottom_nav/bottom_navigation.
 import 'package:flutter_provider_st/view/component/card/swell_botton_card.dart';
 
 class LobbyPageModel {
-  static List<BottomNavigationBarItem> ABottomNavigationBarModels = const [
+  static List<BottomNavigationBarItem> aBottomNavigationBarModels = const [
     BottomNavigationBarItem(
       label: "首页",
       activeIcon: Icon(CupertinoIcons.house_fill, color: Colors.blue),
@@ -85,6 +85,12 @@ class LobbyPageModel {
       isCenter: false,
       title: "领福利",
       subtitle: "Wellfare",
+    ),
+    SwellBottonCardModel(
+      image: AssetsConfig.lobbymain,
+      isCenter: false,
+      title: "Stream",
+      subtitle: "Stream",
     ),
   ];
 }

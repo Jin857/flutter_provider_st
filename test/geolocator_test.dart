@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -11,7 +12,7 @@ void main() {
       52.3546274,
       4.8285838,
     );
-    print("-----> $distanceInMeters");
+    debugPrint("-----> $distanceInMeters");
     // 144851.67191816124
   });
 }

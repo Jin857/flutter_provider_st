@@ -39,8 +39,8 @@ class _PersionPageState extends State<PersionPage> {
         decoration: BoxDecoration(
           gradient: RadialGradient(
             colors: [
-              Colors.blue.withOpacity(0.1),
-              Colors.blue.withOpacity(0.5),
+              Colors.blue.withValues(alpha: 0.1),
+              Colors.blue.withValues(alpha: 0.5),
             ], // 渐变颜色
             center: Alignment.center, // 渐变中心点
             radius: 2.0, // 渐变半径，1.0表示从中心到边界

@@ -1,34 +1,35 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
   /// flutter 链式调用，将大任务拆解成多个小任务
   test("then use", () async {
-    Future(() => print('f1')); // 声明一个匿名 Future
+    Future(() => debugPrint('f1')); // 声明一个匿名 Future
     Future fx = Future(() => null); // 声明一个fx函数，返回null
 
-    Future(() => print('f2')).then((_) {
-      print('f3');
-      scheduleMicrotask(() => print('f4'));
+    Future(() => debugPrint('f2')).then((_) {
+      debugPrint('f3');
+      scheduleMicrotask(() => debugPrint('f4'));
     }).then((_) {
-      print('f5');
+      debugPrint('f5');
     });
 
-    Future(() => print('f6'))
-        .then((_) => Future(() => print('f7')))
-        .then((_) => print('f8'));
+    Future(() => debugPrint('f6'))
+        .then((_) => Future(() => debugPrint('f7')))
+        .then((_) => debugPrint('f8'));
 
-    Future(() => print('f9')); // 声明一个匿名 Future
+    Future(() => debugPrint('f9')); // 声明一个匿名 Future
 
-    fx.then((_) => print('f10'));
+    fx.then((_) => debugPrint('f10'));
 
-    scheduleMicrotask(() => print('f11'));
+    scheduleMicrotask(() => debugPrint('f11'));
 
-    print('f12');
+    debugPrint('f12');
 
-    await Future.delayed(Duration(seconds: 2), () {
-      print('f13');
+    await Future.delayed(const Duration(seconds: 2), () {
+      debugPrint('f13');
     });
   });
 }

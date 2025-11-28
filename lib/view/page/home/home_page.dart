@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/config/screen_config.dart';
-import 'package:flutter_provider_st/provider/lobby_model.dart';
 import 'package:flutter_provider_st/view/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/view/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/view/html/flutter_html_widget.dart';
@@ -36,8 +35,8 @@ class _MyHomePageState extends State<MyHomePage> {
               decoration: BoxDecoration(
                 gradient: RadialGradient(
                   colors: [
-                    Colors.blue.withOpacity(0.1),
-                    Colors.blue.withOpacity(0.6),
+                    Colors.blue.withValues(alpha: .1),
+                    Colors.blue.withValues(alpha: 0.6),
                   ], // 渐变颜色
                   center: Alignment.center, // 渐变中心点
                   radius: 0.5, // 渐变半径，1.0表示从中心到边界
@@ -54,8 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   gradient: LinearGradient(
                     colors: [
-                      Colors.blue.withOpacity(0.5),
-                      Colors.blue.withOpacity(0.1),
+                      Colors.blue.withValues(alpha: 0.5),
+                      Colors.blue.withValues(alpha: 0.1),
                       Colors.transparent
                     ], // 渐变颜色
                     begin: Alignment.topCenter,
@@ -90,7 +89,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             initialData: "加载中..",
                             create: (context) async {
                               await Future.delayed(
-                                Duration(milliseconds: 2000),
+                                const Duration(milliseconds: 2000),
                               );
                               return "获取新数据";
                             },
@@ -147,11 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
                             return SwellBottonCard(
                               data: data,
                               onClick: () async {
-                                await Future.delayed(
-                                  const Duration(seconds: 1),
-                                );
                                 if (index == 0) {
-                                  await AnimationDemo.zoomFlipAnimation(
+                                  AnimationDemo.zoomFlipAnimation(
                                     context: context,
                                   );
                                 } else if (index == 1) {
@@ -167,23 +163,18 @@ class _MyHomePageState extends State<MyHomePage> {
                                 } else if (index == 3) {
                                   openImageLuckyWheel(context);
                                 } else if (index == 4) {
-                                  // Navigator.push(
-                                  //   context,
-                                  //   MaterialPageRoute(
-                                  //     builder: (context) => const Scaffold(
-                                  //       backgroundColor: Color(0xAAC1C1C1),
-                                  //       body: WidgetLuckyWheelController(),
-                                  //     ),
-                                  //   ),
-                                  // );
                                   openWidgetLuckyWheel(context);
                                 } else if (index == 5) {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => BottomAppBarPage(),
+                                      builder: (context) =>
+                                          const BottomAppBarPage(),
                                     ),
                                   );
+                                } else if (index == 6) {
+                                  Navigator.pushNamed(
+                                      context, "/streamBuilderDemo");
                                 }
                               },
                             );

@@ -23,7 +23,7 @@ class ChessmanPaint extends CustomPainter {
     painter = Paint()
       ..isAntiAlias = true
       ..style = PaintingStyle.fill
-      ..color = Color(0x77cdb175);
+      ..color = const Color(0x77cdb175);
     //Offset.zero表示矩形范围的左上角坐标为原点(0,0)，size表示矩形的大小。
     //这个表达式使用&符号将两个对象合并成了一个Rect对象作为canvas.drawRect()方法的第一个参数。
     //实际上，&符号在这里是Dart语言中的语法糖，等效于使用Rect.fromLTWH(0, 0, size.width, size.height)来创建一个矩形。

@@ -66,13 +66,13 @@ class _GameMainPageState extends State<GameMainPage> {
                             winResult.clear();
                           });
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.restart_alt_rounded,
                         ),
                         iconSize: 36,
                         color: Colors.black,
                       ),
-                      Text("重置棋盘")
+                      const Text("重置棋盘")
                     ],
                   ),
                   Column(
@@ -83,7 +83,7 @@ class _GameMainPageState extends State<GameMainPage> {
                             hosting = !hosting;
                           });
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.laptop,
                         ),
                         iconSize: 36,
@@ -103,7 +103,7 @@ class _GameMainPageState extends State<GameMainPage> {
                                 child: Container(
                                   width: 200,
                                   height: 300,
-                                  padding: EdgeInsets.all(16),
+                                  padding: const EdgeInsets.all(16),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
@@ -117,9 +117,9 @@ class _GameMainPageState extends State<GameMainPage> {
                                             gradeOfDifficulty = "简单";
                                           });
                                         },
-                                        child: Text('简单难度-基础AI'),
+                                        child: const Text('简单难度-基础AI'),
                                       ),
-                                      SizedBox(height: 16),
+                                      const SizedBox(height: 16),
                                       ElevatedButton(
                                         onPressed: () {
                                           Navigator.pop(context);
@@ -132,9 +132,9 @@ class _GameMainPageState extends State<GameMainPage> {
                                             gradeOfDifficulty = "中等难度-Max-Min";
                                           });
                                         },
-                                        child: Text('中等难度-Max-Min'),
+                                        child: const Text('中等难度-Max-Min'),
                                       ),
-                                      SizedBox(height: 16),
+                                      const SizedBox(height: 16),
                                       ElevatedButton(
                                         onPressed: () {
                                           Navigator.pop(context);
@@ -148,7 +148,7 @@ class _GameMainPageState extends State<GameMainPage> {
                                                 "高难度-alpha-beta 剪枝";
                                           });
                                         },
-                                        child: Text('高难度-alpha-beta 剪枝'),
+                                        child: const Text('高难度-alpha-beta 剪枝'),
                                       ),
                                     ],
                                   ),
@@ -157,13 +157,13 @@ class _GameMainPageState extends State<GameMainPage> {
                             },
                           );
                         },
-                        icon: Icon(
+                        icon: const Icon(
                           Icons.flash_on,
                         ),
                         iconSize: 36,
                         color: Colors.black,
                       ),
-                      Text("难度选择")
+                      const Text("难度选择")
                     ],
                   ),
                 ],
@@ -225,20 +225,20 @@ class _GameMainPageState extends State<GameMainPage> {
           ownerPlayer: newChessman.owner);
       int enemy =
           ai.chessmanGrade(newChessman.position, ownerPlayer: Player.black);
-      print(
+      debugPrint(
           "[${newChessman.owner == Player.white ? "电脑" : "玩家"}落子(${newChessman.owner == Player.white ? "白方" : "黑方"})] 该子价值评估: 己方:$score, 敌方:$enemy");
 
       //2.对游戏胜利的校验，对游戏和棋的校验
       bool result = checkResult(newChessman);
 
       if (!result && !isHaveAvailablePosition()) {
-        print("和棋!");
+        debugPrint("和棋!");
         showDialog(
             context: context,
             builder: (c) {
               return AlertDialog(
                 title: const Text("游戏结束"),
-                content: Text("和棋"),
+                content: const Text("和棋"),
                 actions: [
                   ElevatedButton(
                     child: const Text('确定'),
@@ -254,10 +254,10 @@ class _GameMainPageState extends State<GameMainPage> {
       }
       //没胜利就调用ai
       if (!result && newChessman.owner != Player.white) {
-        Future.delayed(Duration(milliseconds: 20), () {
+        Future.delayed(const Duration(milliseconds: 20), () {
           Future<Offset> position = ai.nextByAI();
           position.then((position) {
-            print("----------${position}");
+            debugPrint("----------$position");
             fallChessman(position);
             //托管
             if (hosting) {
@@ -267,7 +267,7 @@ class _GameMainPageState extends State<GameMainPage> {
         });
       }
     } else {
-      print("此处无法落子!");
+      debugPrint("此处无法落子!");
     }
 
     setState(() {});
@@ -275,7 +275,7 @@ class _GameMainPageState extends State<GameMainPage> {
 
   //AI托管
   void trusteeship() {
-    Future.delayed(Duration(milliseconds: 20), () {
+    Future.delayed(const Duration(milliseconds: 20), () {
       Future<Offset> position = AI(Player.black).nextByAI();
       position.then((position) {
         fallChessman(position);
@@ -324,7 +324,7 @@ class _GameMainPageState extends State<GameMainPage> {
 
       // 解析：如果计数器达到5，表示有五子相连，输出胜利者信息并返回true
       if (count >= 5) {
-        print("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
+        debugPrint("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         winDialog("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         return true;
       }
@@ -350,7 +350,7 @@ class _GameMainPageState extends State<GameMainPage> {
         count = 0;
       }
       if (count >= 5) {
-        print("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
+        debugPrint("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         winDialog("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         return true;
       }
@@ -376,7 +376,7 @@ class _GameMainPageState extends State<GameMainPage> {
         count = 0;
       }
       if (count >= 5) {
-        print("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
+        debugPrint("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         winDialog("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         return true;
       }
@@ -389,7 +389,7 @@ class _GameMainPageState extends State<GameMainPage> {
     /// o o o x o
     /// o o o o x
     count = 0;
-    winResult..clear();
+    winResult.clear();
     Offset offset =
         Offset((currentX - 4).toDouble(), (currentY - 4).toDouble());
     for (int i = 0; i < 10; i++) {
@@ -402,7 +402,7 @@ class _GameMainPageState extends State<GameMainPage> {
         count = 0;
       }
       if (count >= 5) {
-        print("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
+        debugPrint("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         winDialog("胜利者产生: ${newChessman.owner == Player.white ? "白色" : "黑色"}");
         return true;
       }
@@ -414,7 +414,7 @@ class _GameMainPageState extends State<GameMainPage> {
   // 检查给定位置是否存在特定的棋子
   bool existSpecificChessman(Offset position, Player player) {
     //定义一个不可能生成到棋盘上的棋子
-    Chessman defaultChessman = Chessman(Offset(-1, 0), Player.black);
+    Chessman defaultChessman = Chessman(const Offset(-1, 0), Player.black);
     // 检查棋子列表是否非空
     if (chessmanList.isNotEmpty) {
       // 在棋子列表中查找匹配给定位置的棋子
@@ -433,7 +433,7 @@ class _GameMainPageState extends State<GameMainPage> {
 
   bool canFallChessman(Chessman chessman) {
     //定义一个不可能生成到棋盘上的棋子
-    Chessman defaultChessman = Chessman(Offset(-1, 0), Player.black);
+    Chessman defaultChessman = Chessman(const Offset(-1, 0), Player.black);
     if (chessmanList.isNotEmpty) {
       Chessman cm = chessmanList.firstWhere((Chessman c) {
         //如果找到位置相同的棋子，那么cm就等于这棋子的信息
@@ -454,7 +454,7 @@ class _GameMainPageState extends State<GameMainPage> {
   }
 
   void printFallChessmanInfo(Chessman newChessman) {
-    print(
+    debugPrint(
         "[落子成功], 棋子序号:${newChessman.numberId} ,颜色:${newChessman.owner == Player.white ? "白色" : "黑色"} , 位置 :(${newChessman.position.dx.toInt()} , ${newChessman.position.dy.toInt()})");
   }
 

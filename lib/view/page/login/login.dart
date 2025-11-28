@@ -125,6 +125,7 @@ class _LoginRouteState extends State<LoginRoute> {
       User? user;
       try {
         user = await HttpFactory.instance().user.login(_unameController.text);
+        if (!mounted) return; // 如果 Widget 不再挂载，则直接退出，不执行后续操作
         // 因为登录页返回后，首页会build，所以我们传入false，这样更新user后便不触发更新。
         Provider.of<UserModel>(context, listen: false).user = user;
       } on DioException catch (e) {

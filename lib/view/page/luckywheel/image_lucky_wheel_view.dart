@@ -95,13 +95,13 @@ class _LuckyWheelControllerState extends State<ImageLuckyWheelController>
     animationController.addListener(() {
       if (animationController.status == AnimationStatus.completed) {
         isRunning = false;
-        print('动画结束了');
+        debugPrint('动画结束了');
       } else if (animationController.status == AnimationStatus.forward) {
         // 正向运行动画 - 从头到尾都在播放。
-        print('forward');
+        debugPrint('forward');
       } else if (animationController.status == AnimationStatus.reverse) {
         /// 返向运行动画 - 动画从结束到开始向后运行。
-        print('reverse');
+        debugPrint('reverse');
       }
     });
 

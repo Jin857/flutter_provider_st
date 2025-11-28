@@ -80,12 +80,13 @@ class BufferMap<V> {
     return "${sb.toString().substring(0, sb.toString().length - 2)}}";
   }
 
-  // 获取第一个元素的值
-  V? get first => buffer[buffer.keys.toList()
+  List<num> get bufferKeys => buffer.keys.toList()
     ..sort((num a, num b) {
       return b.compareTo(a);
-    })
-    ..first];
+    });
+
+  // 获取第一个元素的值
+  V? get first => buffer[bufferKeys.first];
 
 // 获取键的最小值
   num minKey() {
@@ -108,7 +109,7 @@ class BufferMap<V> {
       ..sort((num a, num b) {
         return b.compareTo(a);
       });
-    return list.isNotEmpty ? MapEntry(list.last, buffer[list.last]!) : null;
+    return list.isNotEmpty ? MapEntry(list.last, buffer[list.last] as V) : null;
   }
 
   // 获取所有键的列表
@@ -151,7 +152,9 @@ class BufferMap<V> {
       ..sort((num a, num b) {
         return b.compareTo(a);
       });
-    return list.isNotEmpty ? MapEntry(list.first, buffer[list.first]!) : null;
+    return list.isNotEmpty
+        ? MapEntry(list.first, buffer[list.first] as V)
+        : null;
   }
 }
 
@@ -194,10 +197,9 @@ class BufferChessmanList {
   BufferChessmanList.maxCount({this.maxCount = 5});
 
   void _checkSize() {
-    buffer
-      ..sort((Chessman a, Chessman b) {
-        return b.score - a.score;
-      });
+    buffer.sort((Chessman a, Chessman b) {
+      return b.score - a.score;
+    });
 
     while (buffer.length > maxCount) {
       buffer.remove(buffer.last);
@@ -216,10 +218,9 @@ class BufferChessmanList {
     if (buffer.isEmpty) {
       return double.negativeInfinity;
     }
-    buffer
-      ..sort((Chessman a, Chessman b) {
-        return b.score - a.score;
-      });
+    buffer.sort((Chessman a, Chessman b) {
+      return b.score - a.score;
+    });
     return buffer.last.score;
   }
 }

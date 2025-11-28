@@ -5,7 +5,7 @@ class MyRenderObject extends RenderBox {
   @override
   void performLayout() {
     // 设置子元素的大小为固定大小
-    size = Size(200, 200);
+    size = const Size(200, 200);
   }
 
   @override

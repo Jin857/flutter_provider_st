@@ -60,7 +60,7 @@ class _LobbyPageState extends State<LobbyPage> {
               },
               shouldRebuild: (pre, next) => false,
               builder: (ctx, counterPro, child) {
-                print("floatingActionButton展示的位置builder被调用");
+                debugPrint("floatingActionButton展示的位置builder被调用");
                 return FloatingActionButton(
                   child: child,
                   onPressed: () {
@@ -73,10 +73,10 @@ class _LobbyPageState extends State<LobbyPage> {
             bottomNavigationBar: BottomAppBar(
               padding: EdgeInsets.zero,
               color: [
-                Colors.blue.withOpacity(0.6),
-                Colors.blue.withOpacity(0.2),
-                Colors.blue.withOpacity(0.8),
-                Colors.blue.withOpacity(0.3),
+                Colors.blue.withValues(alpha: 0.6),
+                Colors.blue.withValues(alpha: 0.2),
+                Colors.blue.withValues(alpha: 0.8),
+                Colors.blue.withValues(alpha: 0.3),
               ][_currentIdx],
               clipBehavior: Clip.hardEdge,
               shadowColor: Colors.transparent,

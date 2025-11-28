@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 
 class Tile extends StatelessWidget {
   const Tile({
-    Key? key,
+    super.key,
     required this.index,
     this.height,
     this.width,
     this.onTap,
-  }) : super(key: key);
+  });
 
   final double? height;
   final double? width;

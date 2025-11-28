@@ -20,7 +20,7 @@ class MyToast {
               alignment: Alignment.center,
               child: Center(
                 child: Card(
-                  color: Colors.grey.withOpacity(0.6),
+                  color: Colors.grey.withValues(alpha: 0.6),
                   child: Padding(
                     padding: const EdgeInsets.all(8),
                     child: Text(message),

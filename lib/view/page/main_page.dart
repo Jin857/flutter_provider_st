@@ -5,6 +5,7 @@ import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/locale_model.dart';
 import 'package:flutter_provider_st/provider/theme_model.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
+import 'package:flutter_provider_st/stream/stream_builder_demo.dart';
 import 'package:flutter_provider_st/view/page/error_page.dart';
 import 'package:flutter_provider_st/view/page/game/game_page.dart';
 import 'package:flutter_provider_st/view/page/login/login.dart';
@@ -43,6 +44,9 @@ class MainPage extends StatelessWidget {
                   },
                   "/login": (context) {
                     return const Login();
+                  },
+                  "/streamBuilderDemo": (context) {
+                    return const StreamBuilderDemo();
                   },
                   "/error": (context) {
                     return const ErrorPage();

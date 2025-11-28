@@ -25,7 +25,7 @@ class AnimatedBottomNavigationBar extends StatelessWidget {
         borderRadius: const BorderRadius.all(Radius.circular(20)),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
+            color: Colors.grey.withValues(alpha: 0.1),
             spreadRadius: 2,
             blurRadius: 5,
             offset: const Offset(0, 3), // 更改阴影位置
@@ -39,7 +39,7 @@ class AnimatedBottomNavigationBar extends StatelessWidget {
           onTap: () {
             // 实现左右移动动画逻辑（此处仅为示例）
             // 可以考虑使用Transform或Positioned等组件来实现更复杂的动画效果
-            print("----------");
+            debugPrint("----------");
           },
           child: MyBottomNavigation(
             width: ScreenConfig.width - 20,
