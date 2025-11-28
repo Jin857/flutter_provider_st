@@ -44,6 +44,9 @@ class MoveBarBottom extends StatefulWidget {
   /// 圆形大小
   final double circle;
 
+  /// 动画时长 - milliseconds
+  final int moveMS;
+
   const MoveBarBottom({
     super.key,
     required this.tabIndex,
@@ -56,6 +59,7 @@ class MoveBarBottom extends StatefulWidget {
     required this.backgroundColor,
     required this.iconBuilder,
     required this.textBuilder,
+    this.moveMS = 300,
   })  : bumpHeight = bumpHeight ?? 12,
         bumpWidth = bumpWidth ?? 40,
         height = height ?? 60,
@@ -128,7 +132,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
                   right: 0,
                   child: TweenAnimationBuilder(
                     tween: Tween<double>(begin: start, end: end),
-                    duration: const Duration(milliseconds: 200),
+                    duration: Duration(milliseconds: widget.moveMS),
                     onEnd: () {
                       start = end;
                     },
@@ -165,6 +169,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
                                 alignment: Alignment.center,
                                 children: [
                                   IconMoveUI(
+                                    moveMS: widget.moveMS,
                                     icon: e.icon != null
                                         ? widget.iconBuilder(e.icon!)
                                         : const SizedBox(),

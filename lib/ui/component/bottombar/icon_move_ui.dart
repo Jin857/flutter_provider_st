@@ -6,6 +6,7 @@ class IconMoveUI extends StatefulWidget {
   final double bumpHeight;
   final bool select;
   final double circle;
+  final int moveMS;
   const IconMoveUI({
     super.key,
     required this.icon,
@@ -13,6 +14,7 @@ class IconMoveUI extends StatefulWidget {
     required this.bumpHeight,
     required this.select,
     required this.circle,
+    required this.moveMS,
   });
 
   @override
@@ -58,7 +60,7 @@ class IconMoveUIState extends State<IconMoveUI> {
   Widget build(BuildContext context) {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: start, end: end),
-      duration: const Duration(milliseconds: 100),
+      duration: Duration(milliseconds: widget.moveMS),
       onEnd: () {},
       builder: (BuildContext context, double val, __) {
         return Positioned(
