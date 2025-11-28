@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
-import 'package:flutter_provider_st/ui/view/bottombar/move_bar_bottom.dart';
+import 'package:flutter_provider_st/ui/component/bottombar/move_bar_bottom.dart';
 import 'package:flutter_provider_st/page/error_page.dart';
 import 'package:flutter_provider_st/page/home/home_page.dart';
 import 'package:flutter_provider_st/page/persion/persion_page.dart';
@@ -54,19 +54,37 @@ class _LobbyPageState extends State<NewLobbyPage> {
           Colors.blue.shade300,
         ][_currentIdx],
         tabIndex: _currentIdx,
-        height: ScreenConfig.bottomNavigationBarHeight,
-        circle: 18.w,
+        height: ScreenConfig.bottomNavigationBarHeight.h + 16.h,
+        circle: 16.h,
+        bumpWidth: 46.h,
+        bumpHeight: 16.h,
         onChangeIdex: (index) => {
           onchanged(index),
           pageController.jumpToPage(index),
         },
         tablist: [
-          MyTabBarModel(title: "首页", icon: const Icon(Icons.home)),
-          MyTabBarModel(title: "发现", icon: const Icon(Icons.search)),
-          MyTabBarModel(title: "发布", icon: const Icon(Icons.add)),
-          MyTabBarModel(title: "消息", icon: const Icon(Icons.message)),
-          MyTabBarModel(title: "我", icon: const Icon(Icons.person)),
+          MyTabBarModel(title: "首页", icon: Icons.home),
+          MyTabBarModel(title: "发现", icon: Icons.search),
+          MyTabBarModel(title: "发布", icon: Icons.add),
+          MyTabBarModel(title: "消息", icon: Icons.message),
+          MyTabBarModel(title: "我", icon: Icons.person),
         ],
+        iconBuilder: (IconData icon) {
+          return Icon(
+            icon,
+            size: 16.h,
+            color: Colors.black87,
+          );
+        },
+        textBuilder: (String text) {
+          return Text(
+            text,
+            style: TextStyle(
+              color: Colors.black,
+              fontSize: 8.h,
+            ),
+          );
+        },
       ),
       body: PageView(
         controller: pageController,

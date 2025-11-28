@@ -41,7 +41,6 @@ class BottomTabMenu extends StatelessWidget {
   }
 }
 
-/// 大转盘样式
 class BottomTabDrawPaint extends CustomPainter {
   final double leftRightRadius;
   final double centerRadius;
@@ -67,27 +66,20 @@ class BottomTabDrawPaint extends CustomPainter {
     path.lineTo(0, leftRightRadius);
     path.cubicTo(
       0,
-      leftRightRadius / 3 + 0.5.h,
+      leftRightRadius / 3 + 0.5,
       leftRightRadius / 3,
-      0.5.h,
+      0.5,
       leftRightRadius,
-      0.5.h,
+      0.5,
     );
 
-    path.lineTo(size.width / 2 - centerRadius - centerARadius, 0.5.h);
+    path.lineTo(size.width / 2 - centerRadius - centerARadius, 0.5);
     path.quadraticBezierTo(
       size.width / 2 - centerRadius,
-      0.5.h,
+      0.5,
       size.width / 2 - centerRadius,
       centerARadius,
     );
-
-    // path.quadraticBezierTo(
-    //   size.width / 2 - centerRadius,
-    //   centerRadius + centerARadius,
-    //   size.width / 2,
-    //   centerRadius + centerARadius,
-    // );
 
     path.cubicTo(
       size.width / 2 - centerRadius,
@@ -107,26 +99,19 @@ class BottomTabDrawPaint extends CustomPainter {
       centerARadius,
     );
 
-    // path.quadraticBezierTo(
-    //   size.width / 2 + centerRadius,
-    //   centerRadius + centerARadius,
-    //   size.width / 2 + centerRadius,
-    //   centerARadius,
-    // );
-
     path.quadraticBezierTo(
       size.width / 2 + centerRadius,
-      0.5.h,
+      0.5,
       size.width / 2 + centerRadius + centerARadius,
-      0.5.h,
+      0.5,
     );
 
-    path.lineTo(size.width - leftRightRadius, 0.5.h);
+    path.lineTo(size.width - leftRightRadius, 0.5);
     path.cubicTo(
       size.width - leftRightRadius / 3,
-      0.5.h,
+      0.5,
       size.width,
-      leftRightRadius / 3 + 0.5.h,
+      leftRightRadius / 3 + 0.5,
       size.width,
       leftRightRadius,
     );

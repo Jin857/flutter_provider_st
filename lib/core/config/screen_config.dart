@@ -1,24 +1,22 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 /// 全局屏幕信息
 class ScreenConfig {
   static PlatformDispatcher platformDispatcher = PlatformDispatcher.instance;
 
   /// 顶部标题栏高度
-  static double toolbarHeight = ScreenUtil().setHeight(56);
+  static double toolbarHeight = 56;
 
   /// 底部导航栏高度
-  static double bottomNavigationBarHeight = ScreenUtil().setHeight(60);
+  static double bottomNavigationBarHeight = 40;
 
   /// 顶部状态栏高
   static final double topPadding =
       MediaQueryData.fromView(platformDispatcher.views.first).padding.top;
 
-  /// 顶部标题栏+padding
-  static double topPaddingToolbarHeight =
-      ScreenUtil().setHeight(56) + topPadding;
+  /// 顶部标题栏 + padding
+  static double topPaddingToolbarHeight = 56 + topPadding;
 
   /// 底部状态栏高
   static final double bottomPadding =

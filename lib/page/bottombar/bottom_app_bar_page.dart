@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/ui/component/canvas/bottom_tab_menu.dart';
 import 'package:flutter_provider_st/ui/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
-import 'package:flutter_provider_st/ui/view/bottombar/move_bar_bottom.dart';
+import 'package:flutter_provider_st/ui/component/bottombar/move_bar_bottom.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomAppBarPage extends StatefulWidget {
@@ -48,7 +48,6 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
       ),
       body: Stack(
         clipBehavior: Clip.none,
-        // alignment: Alignment.center,
         children: [
           Positioned(
             top: 50.w,
@@ -94,15 +93,31 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
               backgroundColor: Colors.white,
               tabIndex: 0,
               height: 58.h,
-              circle: 18.w,
+              circle: 18.h,
               onChangeIdex: (index) => {},
               tablist: [
-                MyTabBarModel(title: "首页", icon: const Icon(Icons.home)),
-                MyTabBarModel(title: "发现", icon: const Icon(Icons.search)),
-                MyTabBarModel(title: "发布", icon: const Icon(Icons.add)),
-                MyTabBarModel(title: "消息", icon: const Icon(Icons.message)),
-                MyTabBarModel(title: "我", icon: const Icon(Icons.person)),
+                MyTabBarModel(title: "首页", icon: Icons.home),
+                MyTabBarModel(title: "发现", icon: Icons.search),
+                MyTabBarModel(title: "发布", icon: Icons.add),
+                MyTabBarModel(title: "消息", icon: Icons.message),
+                MyTabBarModel(title: "我", icon: Icons.person),
               ],
+              iconBuilder: (IconData icon) {
+                return Icon(
+                  icon,
+                  size: 24.h,
+                  color: Colors.black87,
+                );
+              },
+              textBuilder: (String text) {
+                return Text(
+                  text,
+                  style: TextStyle(
+                    color: Colors.black26,
+                    fontSize: 10.h,
+                  ),
+                );
+              },
             ),
           ),
         ],

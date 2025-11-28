@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 底部导航栏掏空背景样式
 class BottoCenterTopMenu extends StatelessWidget {
@@ -51,6 +50,7 @@ class BottomTabDrawPaint extends CustomPainter {
   final double leftC;
   final double circle;
   final Color backgroundColor;
+  final double shadowOffset;
 
   BottomTabDrawPaint({
     required this.bumpHeight,
@@ -58,6 +58,7 @@ class BottomTabDrawPaint extends CustomPainter {
     required this.leftC,
     required this.circle,
     required this.backgroundColor,
+    this.shadowOffset = 4,
   });
 
   @override
@@ -67,34 +68,50 @@ class BottomTabDrawPaint extends CustomPainter {
       ..style = PaintingStyle.fill // 填充样式
       ..isAntiAlias = true; // 开启抗锯齿
 
-    var path = Path();
+    /// 整体样式路径
+    final path = Path()
+      ..moveTo(0, size.height) // 左下角(初始点)
+      ..lineTo(0, bumpHeight) // 左上角
+      ..lineTo(leftC, bumpHeight)
+      ..cubicTo(
+        leftC + bumpWidth / 4,
+        0,
+        leftC + bumpWidth * 3 / 4,
+        0,
+        leftC + bumpWidth,
+        bumpHeight,
+      )
+      ..lineTo(size.width, bumpHeight) // 右上角
+      ..lineTo(size.width, size.height) // 右下角
+      ..lineTo(0, size.height) // 左下角(回到初始点)
+      ..close();
 
-    path.moveTo(0, size.height); // 左下角(初始点)
-    path.lineTo(0, bumpHeight + 0.5.h); // 左上角
-    path.lineTo(leftC, bumpHeight + 0.5.h);
-
-    path.cubicTo(
-      leftC + bumpWidth / 4,
-      0.5.h,
-      leftC + bumpWidth * 3 / 4,
-      0.5.h,
-      leftC + bumpWidth,
-      bumpHeight + 0.5.h,
-    );
-
-    path.lineTo(size.width, bumpHeight + 0.5.h); // 右上角
-    path.lineTo(size.width, size.height); // 右下角
-    path.lineTo(0, size.height); // 左下角(回到初始点)
+    /// 创建向上偏移的阴影路径
+    Path shadowPath = Path()
+      ..moveTo(0, -shadowOffset) // 向上偏移4
+      ..lineTo(0, bumpHeight - shadowOffset) // 注意：这里我们仍然保持凸起，但是整体向上移动
+      ..lineTo(leftC, bumpHeight - shadowOffset)
+      ..cubicTo(
+        leftC + bumpWidth / 4,
+        -shadowOffset, // 同样向上偏移
+        leftC + bumpWidth * 3 / 4,
+        -shadowOffset,
+        leftC + bumpWidth,
+        bumpHeight - shadowOffset,
+      )
+      ..lineTo(size.width, bumpHeight - shadowOffset)
+      ..lineTo(size.width, -shadowOffset)
+      ..close();
 
     /// 创建阴影用的Paint，设置阴影颜色和透明度
     final shadowPaint = Paint()
-      ..color = const Color(0xFF000000).withValues(alpha: 0.12)
+      ..color = const Color(0xFF000000).withValues(alpha: .1)
       ..style = PaintingStyle.fill
       ..isAntiAlias = true
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 8); // 设置阴影的模糊度
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 10); // 设置阴影的模糊度
 
-    canvas.drawPath(path, shadowPaint);
     canvas.drawPath(path, paint);
+    canvas.drawPath(shadowPath, shadowPaint);
 
     /// 画一个圆 位置与凸起位置一致
     paint.color = Colors.blue;
