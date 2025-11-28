@@ -5,11 +5,8 @@ import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/locale_model.dart';
 import 'package:flutter_provider_st/provider/theme_model.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
-import 'package:flutter_provider_st/stream/stream_builder_demo.dart';
-import 'package:flutter_provider_st/view/page/error_page.dart';
-import 'package:flutter_provider_st/view/page/game/game_page.dart';
-import 'package:flutter_provider_st/view/page/login/login.dart';
-import 'package:flutter_provider_st/view/page/new_lobby_page.dart';
+import 'package:flutter_provider_st/router/st_routers_pages.dart';
+import 'package:flutter_provider_st/router/st_unknown_route.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -34,38 +31,19 @@ class MainPage extends StatelessWidget {
               return MaterialApp(
                 debugShowCheckedModeBanner: true,
                 initialRoute: "/",
-                routes: {
-                  "/": (context) {
-                    /// 这里可以处理跳转问题
-                    return const NewLobbyPage();
-                  },
-                  "/game": (context) {
-                    return const GameMainPage();
-                  },
-                  "/login": (context) {
-                    return const Login();
-                  },
-                  "/streamBuilderDemo": (context) {
-                    return const StreamBuilderDemo();
-                  },
-                  "/error": (context) {
-                    return const ErrorPage();
-                  },
-                },
+                routes: StWidgetBuilderRouters.routes,
+                // 路由生成器
                 onGenerateRoute: (settings) {
                   debugPrint("当前跳转路由:${settings.name}");
                   return null;
                 },
-                onUnknownRoute: (settings) {
-                  return MaterialPageRoute(builder: (_) => const ErrorPage());
-                },
+                onUnknownRoute: stUnknownRoute,
                 title: 'Flutter Provider(状态管理) ST',
                 locale: localeModel.getLocale(),
                 //我们只支持美国英语和中文简体
                 supportedLocales: const [
                   Locale('zh', 'CN'), // 中文简体
                   Locale('en', 'US'), // 美国英语
-                  //其他Locales
                 ],
                 localizationsDelegates: const [
                   // 本地化的代理类
