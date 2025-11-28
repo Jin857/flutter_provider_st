@@ -4,8 +4,8 @@ import 'package:flutter_provider_st/core/config/assets_config.dart';
 import 'package:flutter_provider_st/core/http/http_factory.dart';
 import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
-import 'package:flutter_provider_st/ui/view/component/l_image.dart';
-import 'package:flutter_provider_st/ui/view/component/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/image/l_image.dart';
+import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 

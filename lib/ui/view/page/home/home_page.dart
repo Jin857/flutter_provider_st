@@ -2,16 +2,16 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
-import 'package:flutter_provider_st/ui/view/component/layout/left_right_layout.dart';
+import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/ui/view/page/luckywheel/image_lucky_wheel_view.dart';
 import 'package:flutter_provider_st/ui/view/page/luckywheel/widget_lucky_wheel_view.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/ui/view/model/lobby_page_model.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/ui/view/animation/demo/animation_demo.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:flutter_provider_st/ui/view/component/card/swell_botton_card.dart';
+import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});

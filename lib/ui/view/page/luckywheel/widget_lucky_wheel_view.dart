@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_provider_st/core/config/assets_config.dart';
-import 'package:flutter_provider_st/ui/view/component/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 import 'package:flutter_provider_st/ui/view/page/luckywheel/component/custom_lucky_darw_paint.dart';
 import 'package:flutter_provider_st/ui/view/page/luckywheel/component/custom_pointer.dart';
 

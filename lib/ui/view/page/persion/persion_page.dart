@@ -9,16 +9,16 @@ import 'package:flutter_provider_st/ui/component/threetree/render/done_widget.da
 import 'package:flutter_provider_st/ui/component/threetree/render/three_box_render.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
-import 'package:flutter_provider_st/ui/view/component/button/text_icon_button.dart';
-import 'package:flutter_provider_st/ui/view/component/card/head_botton_card.dart';
-import 'package:flutter_provider_st/ui/view/component/card/top_title_card.dart';
-import 'package:flutter_provider_st/ui/view/component/l_image.dart';
-import 'package:flutter_provider_st/ui/view/component/layout/left_right_layout.dart';
-import 'package:flutter_provider_st/ui/view/component/layout/top_bottom_flex_layout.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/button/text_icon_button.dart';
+import 'package:flutter_provider_st/ui/component/card/head_botton_card.dart';
+import 'package:flutter_provider_st/ui/component/card/top_title_card.dart';
+import 'package:flutter_provider_st/ui/component/image/l_image.dart';
+import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
+import 'package:flutter_provider_st/ui/component/layout/top_bottom_flex_layout.dart';
 import 'package:flutter_provider_st/ui/component/threetree/render/custom_center_render.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_provider_st/ui/view/component/layout/proportional_segmentation_horizontal.dart';
+import 'package:flutter_provider_st/ui/component/layout/proportional_segmentation_horizontal.dart';
 import 'package:provider/provider.dart';
 
 class PersionPage extends StatefulWidget {

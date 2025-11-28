@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/secondary_interface.dart';
+import 'package:flutter_provider_st/ui/component/layout/secondary_interface.dart';
 
 class MasonryCustomPage extends StatelessWidget {
   const MasonryCustomPage({super.key});

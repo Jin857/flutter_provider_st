@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/core/http/base/http_exception.dart';
 import 'package:flutter_provider_st/core/http/interceptor/http_interceptor.dart';
 import 'package:flutter_provider_st/core/http/model/http_model.dart';
 import 'package:flutter_provider_st/core/http/proxy/proxy.dart';
-import 'package:flutter_provider_st/ui/view/component/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 
 class NetDio {
   late Dio dio;

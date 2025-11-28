@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/l_image.dart';
+import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 
 class HeadBottonCard extends StatelessWidget {
   final double radius;

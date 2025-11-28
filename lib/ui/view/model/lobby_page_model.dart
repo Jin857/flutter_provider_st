@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/core/config/assets_config.dart';
-import 'package:flutter_provider_st/ui/view/component/bottom_nav/bottom_navigation.dart';
-import 'package:flutter_provider_st/ui/view/component/card/swell_botton_card.dart';
+import 'package:flutter_provider_st/ui/component/bottom_nav/bottom_navigation.dart';
+import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
 class LobbyPageModel {
   static List<BottomNavigationBarItem> aBottomNavigationBarModels = const [

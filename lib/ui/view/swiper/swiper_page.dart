@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/l_image.dart';
+import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 // 目前使用在 Home 中。需要根据后面使用情况进行适配

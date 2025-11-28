@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/l_image.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/image/l_image.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 
 /// 膨胀风卡片数据对象
 class SwellBottonCardModel {

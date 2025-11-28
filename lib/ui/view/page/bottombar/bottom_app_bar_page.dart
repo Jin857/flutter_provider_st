@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/ui/view/canvas/bottom_tab_menu.dart';
-import 'package:flutter_provider_st/ui/view/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/ui/view/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/view/page/bottombar/move_bar_bottom.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

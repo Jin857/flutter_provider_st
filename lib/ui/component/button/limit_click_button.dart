@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 
 class LimitClickButton extends StatefulWidget {
   final Widget child;

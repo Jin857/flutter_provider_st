@@ -3,7 +3,7 @@ import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
 import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/lobby_model.dart';
-import 'package:flutter_provider_st/ui/view/component/bottom_nav/bottom_navigation.dart';
+import 'package:flutter_provider_st/ui/component/bottom_nav/bottom_navigation.dart';
 import 'package:flutter_provider_st/ui/view/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/view/page/error_page.dart';
 import 'package:flutter_provider_st/ui/view/page/home/home_page.dart';

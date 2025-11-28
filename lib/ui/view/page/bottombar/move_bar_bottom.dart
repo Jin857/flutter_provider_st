@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/ui/view/canvas/botto_center_top_menu.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyTabBarModel {

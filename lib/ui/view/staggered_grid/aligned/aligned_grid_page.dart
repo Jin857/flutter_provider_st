@@ -1,6 +1,6 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/secondary_interface.dart';
+import 'package:flutter_provider_st/ui/component/layout/secondary_interface.dart';
 import 'package:flutter_provider_st/ui/view/staggered_grid/common.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 

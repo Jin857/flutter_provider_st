@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/component/button/limit_click_button.dart';
-import 'package:flutter_provider_st/ui/view/component/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 
 /// 打开等比例幸运大转盘弹窗
 openImageLuckyWheel(BuildContext context) async {
