@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/stream/stream_builder_demo.dart';
-import 'package:flutter_provider_st/ui/view/animation/hero/hero_animation_route.dart';
-import 'package:flutter_provider_st/ui/view/page/bottombar/bottom_app_bar_page.dart';
-import 'package:flutter_provider_st/ui/view/page/error_page.dart';
-import 'package:flutter_provider_st/ui/view/page/game/game_page.dart';
-import 'package:flutter_provider_st/ui/view/page/login/login.dart';
-import 'package:flutter_provider_st/ui/view/page/new_lobby_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/aligned/aligned_grid_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/masonry/masonry_grid_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/masonry_custom_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/quilted/quilted_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/staggered/staggered_fit_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/staggered/staggered_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/staggered_main.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/staired/staired_page.dart';
-import 'package:flutter_provider_st/ui/view/staggered_grid/woven/woven_page.dart';
+import 'package:flutter_provider_st/ui/component/stream/stream_builder_demo.dart';
+import 'package:flutter_provider_st/ui/component/animation/hero/hero_animation_route.dart';
+import 'package:flutter_provider_st/page/bottombar/bottom_app_bar_page.dart';
+import 'package:flutter_provider_st/page/error_page.dart';
+import 'package:flutter_provider_st/page/game/game_page.dart';
+import 'package:flutter_provider_st/page/login/login.dart';
+import 'package:flutter_provider_st/page/new_lobby_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/aligned/aligned_grid_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/masonry/masonry_grid_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/masonry_custom_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/quilted/quilted_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/staggered/staggered_fit_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/staggered/staggered_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/staggered_main.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/staired/staired_page.dart';
+import 'package:flutter_provider_st/ui/component/staggered_grid/woven/woven_page.dart';
 part 'st_routers_name.dart';
 
 class StWidgetBuilderRouters {
