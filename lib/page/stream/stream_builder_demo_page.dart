@@ -9,12 +9,11 @@ Stream<int> countStream() async* {
   }
 }
 
-class StreamBuilderDemo extends StatelessWidget {
-  const StreamBuilderDemo({super.key});
+class StreamBuilderDemoPage extends StatelessWidget {
+  const StreamBuilderDemoPage({super.key});
 
   @override
   Widget build(BuildContext context) {
-    debugPrint("-------<<<<<<StreamBuilderDemo>>>>>");
     return Scaffold(
       appBar: AppBar(title: const Text('StreamBuilder 示例')),
       body: Center(
@@ -24,7 +23,6 @@ class StreamBuilderDemo extends StatelessWidget {
 
           // builder 函数接收快照 (snapshot)
           builder: (BuildContext context, AsyncSnapshot<int> snapshot) {
-            debugPrint("-----_>>>>> 只有这里更新了 $snapshot <<<<<-----");
             // 2. 根据快照的状态判断并渲染 UI
             if (snapshot.hasError) {
               // 发生错误时的 UI

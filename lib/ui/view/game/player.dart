@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 //玩家
 class Player {
   static final Player black = Player(Colors.black);
