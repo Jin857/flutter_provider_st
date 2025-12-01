@@ -1,12 +1,11 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
-import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
-import 'package:flutter_provider_st/ui/component/animation/demo/animation_demo.dart';
+import 'package:flutter_provider_st/ui/component/snackbar/snackbar_animation.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
@@ -163,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 data: data,
                                 onClick: () async {
                                   if (index == 0) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.lineAnimation(
                                         context: context, title: "三商共富");
                                   } else if (index == 1) {
                                     Navigator.pushNamed(
@@ -172,10 +171,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.pushNamed(
                                         context, STRoutersName.game);
                                   } else if (index == 3) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.flipAnimation(
                                         context: context, title: "游戏");
                                   } else if (index == 4) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.zoomAnimation(
                                         context: context, title: "底部当行栏");
                                   } else if (index == 5) {
                                     Navigator.pushNamed(
@@ -186,10 +185,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.pushNamed(
                                         context, STStreamRoutersName.main);
                                   } else if (index == 7) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.zoomFlipAnimation(
                                         context: context, title: "Stream");
                                   } else if (index == 8) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.lineAnimation(
                                         context: context, title: "Staggered");
                                   } else if (index == 9) {
                                     Navigator.pushNamed(
@@ -200,7 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       STRoutersName.luckyWheel,
                                     );
                                   } else if (index == 11) {
-                                    AnimationDemo.zoomFlipAnimation(
+                                    SnackbarAnimation.zoomFlipAnimation(
                                         context: context, title: "抽奖转盘");
                                   }
                                 },
