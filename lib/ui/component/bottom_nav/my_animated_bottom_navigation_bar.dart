@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/ui/component/bottom_nav/bottom_navigation.dart';
 
 class AnimatedBottomNavigationBar extends StatelessWidget {
@@ -42,7 +42,7 @@ class AnimatedBottomNavigationBar extends StatelessWidget {
             debugPrint("----------");
           },
           child: MyBottomNavigation(
-            width: ScreenConfig.width - 20,
+            width: screenWidth - 20,
             normalColor: Colors.black45,
             selectColor: Colors.blue,
             onTap: onTap,

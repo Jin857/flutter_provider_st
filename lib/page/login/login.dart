@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/core/http/http_factory.dart';
 import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
@@ -31,7 +31,7 @@ class Login extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       LImage(
-                        image: AssetsConfig.lobbymain,
+                        image: lobbymain,
                         width: 120.w,
                       ),
                     ],

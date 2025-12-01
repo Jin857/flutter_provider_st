@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 
 class HeroAnimationRouteA extends StatelessWidget {
@@ -20,7 +20,7 @@ class HeroAnimationRouteA extends StatelessWidget {
                 tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
                 child: ClipOval(
                   child: Image.asset(
-                    AssetsConfig.getHead(21),
+                    getHead(21),
                     width: 50.0,
                   ),
                 ),
@@ -52,7 +52,7 @@ class HeroAnimationRouteB extends StatelessWidget {
       body: Center(
         child: Hero(
           tag: "avatar", //唯一标记，前后两个路由页Hero的tag必须相同
-          child: Image.asset(AssetsConfig.getHead(21)),
+          child: Image.asset(getHead(21)),
         ),
       ),
     );

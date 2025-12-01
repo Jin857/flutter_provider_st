@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 
 /// 等比分幸运大转盘
@@ -126,7 +127,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
           Align(
             alignment: Alignment.center,
             child: Image.asset(
-              'assets/images/lucky_wheel/bg_zhuanpan.png',
+              lucky_wheel_ZP,
               width: 300,
             ),
           ),
@@ -135,7 +136,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
             child: RotationTransition(
                 turns: _animation,
                 child: Image.asset(
-                  'assets/images/lucky_wheel/bg_superjiangpin.png',
+                  lucky_wheel_SJP,
                   width: 290,
                 )),
           ),
@@ -144,7 +145,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
             child: GestureDetector(
               onTap: buttonOnClickStartRun,
               child: Image.asset(
-                'assets/images/lucky_wheel/ic_pointer.png',
+                lucky_wheel_P,
                 width: 150,
               ),
             ),

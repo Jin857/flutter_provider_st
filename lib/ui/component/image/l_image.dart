@@ -1,6 +1,6 @@
 // 自动识别图片类型 是本地还是网络图片
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 
 class LImage extends StatelessWidget {
@@ -28,7 +28,7 @@ class LImage extends StatelessWidget {
     this.memCacheWidth,
     this.memCacheHeight,
   })  : alignment = alignment ?? Alignment.center,
-        errorImage = errorImage ?? AssetsConfig.commonBlack;
+        errorImage = errorImage ?? commonBlack;
 
   @override
   Widget build(BuildContext context) {

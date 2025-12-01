@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 
 class HomeTopSwitch extends StatefulWidget implements PreferredSizeWidget {
   final Function(int index) onChange;
@@ -72,7 +72,7 @@ class _HomeTopSwitchState extends State<HomeTopSwitch> {
         child: Row(
           children: [
             SizedBox(
-              width: ScreenConfig.width - 40,
+              width: screenWidth - 40,
               child: CustomScrollView(
                 controller: _scrollController,
                 scrollDirection: Axis.horizontal,

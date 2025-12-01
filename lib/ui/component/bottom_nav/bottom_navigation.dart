@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 
 class MyBottomNavigationBarItem {
   /// 文本
@@ -63,7 +63,7 @@ class MyBottomNavigation extends StatelessWidget {
           selectColor: selectColor,
           normalColor: normalColor,
           select: key == tabIndex,
-          width: (width ?? ScreenConfig.width) / item.length,
+          width: (width ?? screenWidth) / item.length,
           bottomNavigationBarItem: value,
         ),
       );

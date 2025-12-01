@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
 import 'package:flutter_provider_st/ui/component/bottombar/move_bar_bottom.dart';
 import 'package:flutter_provider_st/page/error_page.dart';
@@ -54,7 +54,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
           Colors.blue.shade300,
         ][_currentIdx],
         tabIndex: _currentIdx,
-        height: ScreenConfig.bottomNavigationBarHeight.h + 16.h,
+        height: bottomNavigationBarHeight.h + 16.h,
         circle: 16.h,
         bumpWidth: 46.h,
         bumpHeight: 16.h,

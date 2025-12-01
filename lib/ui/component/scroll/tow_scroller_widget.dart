@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/ui/component/popup/in_use_popup/home_channel_popup.dart';
 import 'package:flutter_provider_st/ui/component/popup/popup_page.dart';
 import 'package:flutter_provider_st/ui/component/card/product_card.dart';
@@ -86,7 +86,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
               pinned: true, // 使 AppBar 始终吸顶
               backgroundColor: Colors.blue.shade200,
               surfaceTintColor: Colors.transparent,
-              toolbarHeight: ScreenConfig.toolbarHeight,
+              toolbarHeight: toolbarHeight,
               title: SizedBox(
                 width: double.infinity,
                 height: 42,
@@ -112,7 +112,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                         clipBehavior: Clip.none,
                         children: [
                           Positioned(
-                            top: -(ScreenConfig.topPaddingToolbarHeight + 10),
+                            top: -(topPaddingToolbarHeight + 10),
                             left: -20,
                             right: -20,
                             child: Container(
@@ -183,7 +183,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                         backgroundColor: Colors.white,
                         context: context,
                         insetPadding: EdgeInsets.only(
-                          top: ScreenConfig.toolbarHeight + tabHeight,
+                          top: toolbarHeight + tabHeight,
                         ),
                         child: HomeChannelPopup(
                           list: list,
@@ -256,7 +256,7 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                     ),
                     gridDelegate:
                         SliverSimpleGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: ScreenConfig.width / 2,
+                      maxCrossAxisExtent: screenWidth / 2,
                     ),
                   ),
                 ),

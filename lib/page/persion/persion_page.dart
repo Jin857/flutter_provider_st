@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
-import 'package:flutter_provider_st/core/config/text_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
+import 'package:flutter_provider_st/constants/text.dart';
 import 'package:flutter_provider_st/ui/component/threetree/element/element_button.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
 import 'package:flutter_provider_st/ui/component/threetree/render/done_widget.dart';
@@ -48,7 +48,7 @@ class _PersionPageState extends State<PersionPage> {
           ),
         ),
         child: Container(
-          margin: EdgeInsets.only(top: ScreenConfig.topPadding),
+          margin: EdgeInsets.only(top: topPaddingToolbarHeight),
           width: double.infinity,
           height: double.infinity,
           child: CustomScrollView(
@@ -142,7 +142,7 @@ class _PersionPageState extends State<PersionPage> {
                                     !userModel.isLogin
                                         ? "尚未登陆"
                                         : userModel.user.login,
-                                    style: TextConfig.bigTitleStyle,
+                                    style: bigTitleStyle,
                                   ),
                                   const TextIconButton(
                                     title: "查看编辑个人资料",
@@ -177,11 +177,11 @@ class _PersionPageState extends State<PersionPage> {
                           runSpacing: 10,
                           children: [
                             HeadBottonCard(
-                              radius: ((ScreenConfig.width / 4) - 40) / 2,
+                              radius: ((screenWidth / 4) - 40) / 2,
                               headIco: !userModel.isLogin
-                                  ? AssetsConfig.getHead(0)
+                                  ? getHead(0)
                                   : userModel.user.avatarUrl,
-                              errorImage: AssetsConfig.getHead(0),
+                              errorImage: getHead(0),
                             ),
                             Container(
                               padding: const EdgeInsets.symmetric(
@@ -232,19 +232,19 @@ class _PersionPageState extends State<PersionPage> {
                       children: [
                         _textIconButton(
                           title: "测试",
-                          image: AssetsConfig.getHead(1),
+                          image: getHead(1),
                         ),
                         _textIconButton(
                           title: "测试",
-                          image: AssetsConfig.getHead(4),
+                          image: getHead(4),
                         ),
                         _textIconButton(
                           title: "测试",
-                          image: AssetsConfig.getHead(3),
+                          image: getHead(3),
                         ),
                         _textIconButton(
                           title: "测试",
-                          image: AssetsConfig.getHead(2),
+                          image: getHead(2),
                         ),
                       ],
                     ),

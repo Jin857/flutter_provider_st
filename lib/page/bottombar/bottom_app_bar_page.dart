@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
 import 'package:flutter_provider_st/ui/component/canvas/bottom_tab_menu.dart';
 import 'package:flutter_provider_st/ui/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
@@ -39,7 +38,7 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
         clipBehavior: Clip.hardEdge,
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        height: ScreenConfig.bottomNavigationBarHeight,
+        height: kBottomNavigationBarHeight,
         child: AnimatedBottomNavigationBar(
           currentIndex: _currentIdx,
           onTap: (index) => onchanged(index),

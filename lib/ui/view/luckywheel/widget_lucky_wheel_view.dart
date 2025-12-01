@@ -4,7 +4,7 @@ import 'dart:ui' as ui;
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 import 'package:flutter_provider_st/ui/view/luckywheel/component/custom_lucky_darw_paint.dart';
 import 'package:flutter_provider_st/ui/view/luckywheel/component/custom_pointer.dart';
@@ -36,7 +36,7 @@ class WidgetLuckyWheelUI extends StatelessWidget {
   Future<List<ui.Image>> loadImages() async {
     final List<ui.Image> images = [];
     for (int i = 0; i < luckyPrizesList.length; i++) {
-      var img = await getAssetImage(AssetsConfig.getHead(i + 1));
+      var img = await getAssetImage(getHead(i + 1));
       images.add(img);
     }
     return images;

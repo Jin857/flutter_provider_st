@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/ui/component/popup/top_popup/top_centent_page.dart';
 import 'package:flutter_provider_st/ui/component/popup/top_popup/top_title_page.dart';
 
@@ -16,7 +16,7 @@ class HomeChannelPopup extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TopCententPage(
-      height: ScreenConfig.height / 2,
+      height: screenHeight / 2,
       child: SingleChildScrollView(
         child: Column(
           children: [

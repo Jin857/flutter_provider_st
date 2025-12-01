@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/ui/component/bottombar/icon_move_ui.dart';
 import 'package:flutter_provider_st/ui/component/canvas/botto_center_top_menu.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
@@ -85,7 +85,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
   @override
   void initState() {
     super.initState();
-    oneTabWidth = ScreenConfig.width / widget.tablist.length;
+    oneTabWidth = screenWidth / widget.tablist.length;
     _tabIndex = widget.tabIndex;
     setIndexByIndex(widget.tabIndex, false);
   }

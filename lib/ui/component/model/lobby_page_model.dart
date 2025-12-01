@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/assets_config.dart';
+import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/ui/component/bottom_nav/bottom_navigation.dart';
 import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
@@ -51,61 +51,61 @@ class LobbyPageModel {
   ];
   static List<SwellBottonCardModel> swellBottonCardModels = [
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_01,
+      image: lobbybook_01,
       isCenter: true,
       title: "",
       subtitle: "",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_02,
+      image: lobbybook_02,
       isCenter: false,
-      title: "去主页",
-      subtitle: "Home",
+      title: "Hero",
+      subtitle: "Hero Animation",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_03,
+      image: lobbybook_03,
       isCenter: false,
-      title: "去购物",
-      subtitle: "Shopping",
+      title: "五子棋",
+      subtitle: "Game(五子棋)",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_04,
+      image: lobbybook_04,
       isCenter: true,
       title: "",
       subtitle: "",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_05,
+      image: lobbybook_05,
       isCenter: true,
       title: "",
       subtitle: "",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbymain,
+      image: lobbymain,
       isCenter: false,
-      title: "领福利",
-      subtitle: "Wellfare",
+      title: "导航栏",
+      subtitle: "底部导航栏",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbymain,
+      image: lobbymain,
       isCenter: false,
       title: "Stream",
       subtitle: "Stream 教程",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_05,
+      image: lobbybook_05,
       isCenter: true,
       title: "",
       subtitle: "",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbybook_05,
+      image: lobbybook_05,
       isCenter: true,
       title: "",
       subtitle: "",
     ),
     SwellBottonCardModel(
-      image: AssetsConfig.lobbymain,
+      image: lobbymain,
       isCenter: false,
       title: "Staggered",
       subtitle: "网格教程",

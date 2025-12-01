@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
 import 'package:flutter_provider_st/provider/counter_provider.dart';
 import 'package:flutter_provider_st/provider/lobby_model.dart';
@@ -81,7 +81,7 @@ class _LobbyPageState extends State<LobbyPage> {
               clipBehavior: Clip.hardEdge,
               shadowColor: Colors.transparent,
               surfaceTintColor: Colors.transparent,
-              height: ScreenConfig.bottomNavigationBarHeight,
+              height: bottomNavigationBarHeight,
               child: MyBottomNavigation(
                 normalColor: Colors.black45,
                 selectColor: Colors.white,

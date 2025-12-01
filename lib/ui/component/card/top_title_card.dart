@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/text_config.dart';
+import 'package:flutter_provider_st/constants/text.dart';
 import 'package:flutter_provider_st/ui/component/button/text_icon_button.dart';
 import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
 
@@ -49,7 +49,7 @@ class TopTitleCard extends StatelessWidget {
             leftWidget: [
               Text(
                 title,
-                style: TextConfig.smallTitleStyle,
+                style: smallTitleStyle,
               )
             ],
             rightWidget: [

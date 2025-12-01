@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/core/config/screen_config.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/page/luckywheel/image_lucky_wheel_dialog.dart';
@@ -41,7 +41,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               child: Container(
-                margin: EdgeInsets.only(top: ScreenConfig.topPadding),
+                margin: EdgeInsets.only(top: topPaddingToolbarHeight),
                 width: double.infinity,
                 height: double.infinity,
                 decoration: BoxDecoration(
