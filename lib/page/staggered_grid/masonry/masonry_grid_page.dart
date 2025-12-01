@@ -4,11 +4,10 @@ import 'package:flutter_provider_st/ui/component/secondary/secondary_interface.d
 import 'package:flutter_provider_st/page/staggered_grid/common.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
-// ignore: must_be_immutable
 class MyMasonryGridWidget extends StatelessWidget {
   final int itemCount = 12;
-  List<String> log = <String>[];
-
+  final List<String> log = <String>[];
+  
   MyMasonryGridWidget({super.key});
 
   @override

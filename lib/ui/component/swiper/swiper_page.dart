@@ -3,17 +3,15 @@ import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 import 'package:flutter_swiper_null_safety/flutter_swiper_null_safety.dart';
 
 // 目前使用在 Home 中。需要根据后面使用情况进行适配
-// ignore: must_be_immutable
 class MySwiperWidget extends StatefulWidget {
-  List<String> imgList;
-  PageIndicatorLayout? layout;
-  double? pointHeight;
-  double? height;
-  BoxFit? fit;
+  final List<String> imgList;
+  final PageIndicatorLayout? layout;
+  final double? pointHeight;
+  final double? height;
+  final BoxFit? fit;
+  final Function(int index) onTap;
 
-  Function(int index) onTap;
-
-  MySwiperWidget({
+  const MySwiperWidget({
     super.key,
     this.pointHeight = 150,
     this.height = 160,
