@@ -12,11 +12,7 @@ import 'package:flutter/material.dart';
 class MySnackbar extends StatefulWidget {
   final Widget? child;
   final Duration duration;
-  const MySnackbar({
-    super.key,
-    required this.child,
-    required this.duration,
-  });
+  const MySnackbar({super.key, required this.child, required this.duration});
 
   @override
   State<MySnackbar> createState() => MySnackbarState();
@@ -25,40 +21,12 @@ class MySnackbar extends StatefulWidget {
 class MySnackbarState extends State<MySnackbar> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    return Align(
-      alignment: Alignment.topCenter,
-      child: Material(
-        type: MaterialType.transparency,
-        child: SafeArea(
-          minimum: EdgeInsets.zero,
-          bottom: false,
-          top: true,
-          left: false,
-          right: false,
-          child: Stack(
-            children: [
-              if (widget.child != null) widget.child!,
-            ],
-          ),
-        ),
+    return Material(
+      type: MaterialType.transparency,
+      child: Stack(
+        clipBehavior: Clip.none,
+        children: [if (widget.child != null) widget.child!],
       ),
     );
   }
-}
-
-/// 创建 OverlayEntry 对象
-OverlayEntry createOverlayEntries(MySnackbar child) {
-  return OverlayEntry(
-    builder: (context) => Semantics(
-      focused: false,
-      container: true,
-      explicitChildNodes: true,
-      child: Container(
-        margin: const EdgeInsets.only(top: 56),
-        child: child,
-      ),
-    ),
-    maintainState: false,
-    opaque: false,
-  );
 }

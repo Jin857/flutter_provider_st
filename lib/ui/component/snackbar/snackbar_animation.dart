@@ -17,7 +17,7 @@ class SnackbarAnimation {
     MySnackbarController controller = MySnackbarController(
       context: context,
       snackbar: MySnackbar(
-        duration: const Duration(seconds: 10),
+        duration: const Duration(seconds: 2),
         child: FlipMove(
           duration: 1000,
           showBack: true,
@@ -43,7 +43,7 @@ class SnackbarAnimation {
     MySnackbarController controller = MySnackbarController(
       context: context,
       snackbar: MySnackbar(
-          duration: const Duration(seconds: 10),
+          duration: const Duration(seconds: 2),
           child: ZoomMove(
             duration: 1000,
             child: SnackbarWidget(
@@ -63,7 +63,7 @@ class SnackbarAnimation {
     MySnackbarController controller = MySnackbarController(
       context: context,
       snackbar: MySnackbar(
-          duration: const Duration(seconds: 10),
+          duration: const Duration(seconds: 2),
           child: LineMove(
             duration: 1000,
             beginOffset: const Offset(200, 100),
@@ -87,7 +87,7 @@ class SnackbarAnimation {
     MySnackbarController controller = MySnackbarController(
       context: context,
       snackbar: MySnackbar(
-        duration: const Duration(seconds: 5),
+        duration: const Duration(seconds: 2),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           child: ClipRRect(

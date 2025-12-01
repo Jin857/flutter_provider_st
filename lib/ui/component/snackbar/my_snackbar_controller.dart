@@ -4,50 +4,50 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_provider_st/ui/component/snackbar/my_snackbar.dart';
 
 class MySnackbarController {
-  /// Key
+  /// 全局 Key 用于访问 MySnackbarState
   final key = GlobalKey<MySnackbarState>();
 
-  /// 传入对象
+  /// 自定义 Snackbar 组件
   final MySnackbar snackbar;
 
-  /// OverlayEntry 对象集合处理加载/卸载逻辑
+  /// 本地保存 OverlayEntry 对象列表
   final _overlayEntries = <OverlayEntry>[];
 
-  /// 通过 Overlay.of(context) 获取当前上下文中的 Overlay
+  /// OverlayState 对象 用于插入和移除 OverlayEntry
   final OverlayState overlayState;
 
-  /// 初始化方法
+  /// 构造函数
   MySnackbarController({
     required BuildContext context,
     required this.snackbar,
   }) : overlayState = Overlay.of(context);
 
-  /// 计时器 用于处理多久后计时器关闭
+  /// 计时器 用于自动关闭 Snackbar
   Timer? _timer;
 
   /// 展示 Snackbar
   Future<void> show() async {
     var overlayEntries = createOverlayEntries(snackbar);
 
-    /// 本地保存
+    /// 缓存 OverlayEntry 对象
     _overlayEntries.add(overlayEntries);
 
-    /// 将 OverlayEntry 插入到 Overlay 中
+    /// 插入 OverlayEntry 对象
     overlayState.insert(overlayEntries);
 
-    /// 添加关闭倒计时
+    /// 添加计时器 自动关闭
     _addTimer(duration: snackbar.duration);
     return;
   }
 
-  /// 关闭清理缓存对象
+  /// 关闭 Snackbar
   Future<void> close() async {
     _cancelTimer();
     _removeOverlay();
     return;
   }
 
-  /// 删除当前页面保存的 OverlayEntry 对象
+  /// 移除 OverlayEntry 对象
   void _removeOverlay() {
     for (var element in _overlayEntries) {
       element.remove();
@@ -62,11 +62,25 @@ class MySnackbarController {
     _timer = Timer(duration, close);
   }
 
-  /// 清理计时器
+  /// 取消计时器
   void _cancelTimer() {
     if (_timer != null && _timer!.isActive) {
       _timer!.cancel();
       _timer = null;
     }
+  }
+
+  /// 创建 OverlayEntry 对象
+  OverlayEntry createOverlayEntries(MySnackbar child) {
+    return OverlayEntry(
+      builder: (context) => Semantics(
+        focused: false,
+        container: true,
+        explicitChildNodes: true,
+        child: Container(margin: const EdgeInsets.only(top: 56), child: child),
+      ),
+      maintainState: false,
+      opaque: false,
+    );
   }
 }
