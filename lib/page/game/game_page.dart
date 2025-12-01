@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/game/ai.dart';
-import 'package:flutter_provider_st/ui/view/game/chessman.dart';
-import 'package:flutter_provider_st/ui/view/game/common.dart';
-import 'package:flutter_provider_st/ui/view/game/player.dart';
+import 'package:flutter_provider_st/ui/view/game/gomoku/ai.dart';
+import 'package:flutter_provider_st/ui/view/game/gomoku/chessman.dart';
+import 'package:flutter_provider_st/ui/view/game/gomoku/common.dart';
+import 'package:flutter_provider_st/ui/view/game/gomoku/player.dart';
 
-import '../../ui/view/game/chessman_paint.dart';
+import '../../ui/view/game/gomoku/chessman_paint.dart';
 
 class GameMainPage extends StatefulWidget {
   const GameMainPage({super.key});
@@ -19,28 +19,21 @@ class _GameMainPageState extends State<GameMainPage> {
   String gradeOfDifficulty = "简单";
 
   //默认难度为简单
-  var ai = AI(Player.white);
+  // var ai = AI(Player.white);
 
-  // isMaxMin为true使用max-min算法，为false使用alpha-beta 剪枝算法
-  // var ai = AdvancedAI(Player.white, isMaxMin: false);
+  // isMaxMin 为true使用 max-min 算法，为false使用 alpha-beta 剪枝算法
+  var ai = AdvancedAI(Player.white, isMaxMin: false);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("五子棋AI版"),
+        title: Text("五子棋($gradeOfDifficulty)"),
       ),
       body: Padding(
         padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
         child: Column(
           children: [
-            Text(
-              "当前难度：$gradeOfDifficulty",
-              style: const TextStyle(fontSize: 20),
-            ),
-            const SizedBox(
-              height: 12,
-            ),
             // 棋盘
             GestureDetector(
               child: CustomPaint(
@@ -113,7 +106,7 @@ class _GameMainPageState extends State<GameMainPage> {
                                           setState(() {
                                             chessmanList.clear();
                                             winResult.clear();
-                                            ai = AI(Player.white);
+                                            ai = AdvancedAI(Player.white);
                                             gradeOfDifficulty = "简单";
                                           });
                                         },
@@ -257,7 +250,6 @@ class _GameMainPageState extends State<GameMainPage> {
         Future.delayed(const Duration(milliseconds: 20), () {
           Future<Offset> position = ai.nextByAI();
           position.then((position) {
-            debugPrint("----------$position");
             fallChessman(position);
             //托管
             if (hosting) {
