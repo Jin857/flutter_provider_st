@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
+/// 横向等比例分割布局
 class ProportionalSegmentationHorizontalModel {
   String key;
   String value;

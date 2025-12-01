@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 左右布局组件
 class LeftRightLayout extends StatelessWidget {
   final List<Widget> leftWidget;
   final List<Widget> rightWidget;

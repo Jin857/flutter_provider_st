@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/assets.dart';
-import 'package:flutter_provider_st/ui/component/bottom_nav/bottom_navigation.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/bottom_navigation.dart';
 import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
 class LobbyPageModel {

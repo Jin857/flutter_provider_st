@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/screen.dart';
-import 'package:flutter_provider_st/ui/component/bottombar/icon_move_ui.dart';
-import 'package:flutter_provider_st/ui/component/canvas/botto_center_top_menu.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/icon_move_ui.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/move_bar_canvas.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 
 /// 底部导航栏数据
-class MyTabBarModel {
+class MoveTabBarModel {
   String title;
   IconData? icon;
-  MyTabBarModel({
+  MoveTabBarModel({
     required this.title,
     this.icon,
   });
 }
 
-class MoveBarBottom extends StatefulWidget {
+class MoveTabBar extends StatefulWidget {
   /// 底部按钮数据
-  final List<MyTabBarModel> tablist;
+  final List<MoveTabBarModel> tablist;
 
   /// - [tabIndex] 初始化选择的序列号
   /// - [注意] tabIndex < tablist.length
@@ -47,7 +47,7 @@ class MoveBarBottom extends StatefulWidget {
   /// 动画时长 - milliseconds
   final int moveMS;
 
-  const MoveBarBottom({
+  const MoveTabBar({
     super.key,
     required this.tabIndex,
     required this.tablist,
@@ -66,10 +66,10 @@ class MoveBarBottom extends StatefulWidget {
         circle = circle ?? 20;
 
   @override
-  State<MoveBarBottom> createState() => _MoveBarBottomState();
+  State<MoveTabBar> createState() => _MoveTabBarState();
 }
 
-class _MoveBarBottomState extends State<MoveBarBottom> {
+class _MoveTabBarState extends State<MoveTabBar> {
   /// 当前选择的tab序列号
   int _tabIndex = 0;
 
@@ -91,7 +91,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
   }
 
   @override
-  void didUpdateWidget(covariant MoveBarBottom oldWidget) {
+  void didUpdateWidget(covariant MoveTabBar oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.tabIndex != _tabIndex && widget.tabIndex != oldWidget.tabIndex) {
       _tabIndex = widget.tabIndex;
@@ -137,7 +137,7 @@ class _MoveBarBottomState extends State<MoveBarBottom> {
                       start = end;
                     },
                     builder: (BuildContext context, double val, __) {
-                      return BottoCenterTopMenu(
+                      return MoveBarCanvas(
                         height: widget.height,
                         leftC: val,
                         bumpHeight: widget.bumpHeight,

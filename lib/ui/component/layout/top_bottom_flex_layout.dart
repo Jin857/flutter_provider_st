@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// 上下弹性布局
 class TopBottomFlexLayout extends StatelessWidget {
   final int topFlex;
   final Widget topWidget;

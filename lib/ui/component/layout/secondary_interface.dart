@@ -1,26 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/ui/component/layout/top_menu_common_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// 二级界面统一样式组建
-// ignore: must_be_immutable
+/// 二级界面
 class SecondaryInterface extends StatelessWidget {
-  Widget? child;
-  String title;
-  Widget? titleWidget;
-  List<Widget>? actions;
-  PreferredSizeWidget? bottom;
-  PreferredSizeWidget? appBar;
-  Widget? leading;
-  Widget? bottomNavigationBar;
-  Widget? floatingActionButton;
-  Color? backgroundColor;
-  Color? headBackgroundCokor;
-  Color? titleTextColor;
-  double? toolbarHeight;
-  double? titleSpacing;
-  Function()? onBack;
-  Widget? flexibleSpace;
-  bool? resizeToAvoidBottomInset;
-  SecondaryInterface({
+  final Widget? child;
+  final String title;
+  final Widget? titleWidget;
+  final List<Widget>? actions;
+  final PreferredSizeWidget? bottom;
+  final PreferredSizeWidget? appBar;
+  final Widget? leading;
+  final Widget? bottomNavigationBar;
+  final Widget? floatingActionButton;
+  final Color? backgroundColor;
+  final Color? headBackgroundCokor;
+  final Color? titleTextColor;
+  final double toolbarHeight;
+  final double? titleSpacing;
+  final Function()? onBack;
+  final Widget? flexibleSpace;
+  final bool? resizeToAvoidBottomInset;
+  final Widget? bottomSheet;
+  final ShapeBorder? shape;
+  const SecondaryInterface({
     super.key,
     this.child,
     this.title = "",
@@ -31,22 +34,25 @@ class SecondaryInterface extends StatelessWidget {
     this.leading,
     this.bottomNavigationBar,
     this.floatingActionButton,
-    this.backgroundColor = const Color(0xFFF5F5F5),
+    this.backgroundColor = Colors.white,
     this.headBackgroundCokor = Colors.white,
     this.titleTextColor = Colors.black,
     this.onBack,
-    this.toolbarHeight,
+    double? toolbarHeight,
     this.titleSpacing,
     this.flexibleSpace,
     this.resizeToAvoidBottomInset = true,
-  });
+    this.bottomSheet,
+    this.shape,
+  }) : toolbarHeight = toolbarHeight ?? 60;
 
   @override
   Widget build(BuildContext context) {
     TextStyle toptext = TextStyle(
       color: titleTextColor,
-      fontSize: 18,
-      fontWeight: FontWeight.w500,
+      fontSize: 16.sp,
+      fontWeight: FontWeight.w600,
+      height: 1.50,
     );
     Widget myTitleWidget = Text(
       title,
@@ -61,33 +67,38 @@ class SecondaryInterface extends StatelessWidget {
       backgroundColor: backgroundColor,
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,
+      bottomSheet: bottomSheet,
       appBar: appBar ??
           AppBar(
+            leadingWidth: 60, // 设置 leading 的总宽度
             flexibleSpace: flexibleSpace,
             toolbarHeight: toolbarHeight,
             centerTitle: true,
-            titleSpacing: titleSpacing,
+            titleSpacing: titleSpacing ?? 20.w,
             title: myTitleWidget,
             bottom: bottom,
             backgroundColor: headBackgroundCokor,
+            shadowColor: Colors.transparent,
+            surfaceTintColor: Colors.transparent,
             notificationPredicate: (notification) {
               return notification.depth == 0;
             },
+            shape: shape,
+            actionsPadding: EdgeInsets.symmetric(horizontal: 20.w),
             leading: leading ??
-                IconButton(
-                  enableFeedback: false,
-                  highlightColor: Colors.black12,
-                  hoverColor: Colors.black12,
-                  icon: Icon(
-                    Icons.arrow_back_ios_new,
-                    color: titleTextColor,
+                Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  child: TopMenuCommonButton(
+                    iconData: Icons.arrow_back_ios,
+                    color: headBackgroundCokor,
+                    onTap: () {
+                      if (onBack != null) {
+                        onBack!();
+                      } else {
+                        Navigator.of(context).pop();
+                      }
+                    },
                   ),
-                  onPressed: () => {
-                    if (onBack != null)
-                      {onBack!()}
-                    else
-                      {Navigator.pop(context)}
-                  },
                 ),
             actions: actions,
           ),

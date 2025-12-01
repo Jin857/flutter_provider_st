@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-// 底部导航栏掏空背景样式
-class BottoCenterTopMenu extends StatelessWidget {
+/// MoveBar 导航栏背景样式绘制
+class MoveBarCanvas extends StatelessWidget {
   /// 底部高度
   final double height;
 
@@ -19,7 +19,7 @@ class BottoCenterTopMenu extends StatelessWidget {
 
   final Color backgroundColor;
 
-  const BottoCenterTopMenu({
+  const MoveBarCanvas({
     super.key,
     required this.height,
     required this.bumpHeight,
@@ -33,18 +33,19 @@ class BottoCenterTopMenu extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomPaint(
       size: Size(double.infinity, height + bumpHeight),
-      painter: BottomTabDrawPaint(
+      painter: _MoveBarCanvasDrawPaint(
         bumpWidth: bumpWidth,
         bumpHeight: bumpHeight,
         leftC: leftC,
         circle: circle,
         backgroundColor: backgroundColor,
+        shadowOffset: 4,
       ),
     );
   }
 }
 
-class BottomTabDrawPaint extends CustomPainter {
+class _MoveBarCanvasDrawPaint extends CustomPainter {
   final double bumpHeight;
   final double bumpWidth;
   final double leftC;
@@ -52,7 +53,7 @@ class BottomTabDrawPaint extends CustomPainter {
   final Color backgroundColor;
   final double shadowOffset;
 
-  BottomTabDrawPaint({
+  _MoveBarCanvasDrawPaint({
     required this.bumpHeight,
     required this.bumpWidth,
     required this.leftC,

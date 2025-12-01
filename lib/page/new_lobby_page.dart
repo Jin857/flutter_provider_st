@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
-import 'package:flutter_provider_st/ui/component/bottombar/move_bar_bottom.dart';
+import 'package:flutter_provider_st/page/find/find_page.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/move_tab_bar.dart';
 import 'package:flutter_provider_st/page/error_page.dart';
 import 'package:flutter_provider_st/page/home/home_page.dart';
 import 'package:flutter_provider_st/page/persion/persion_page.dart';
-import 'package:flutter_provider_st/ui/component/scroll/tow_scroller_widget.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewLobbyPage extends StatefulWidget {
@@ -45,7 +45,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
     return Scaffold(
       drawerEdgeDragWidth: 0.0,
       resizeToAvoidBottomInset: false,
-      bottomNavigationBar: MoveBarBottom(
+      bottomNavigationBar: MoveTabBar(
         backgroundColor: [
           Colors.blue.shade100,
           Colors.blue.shade200,
@@ -63,11 +63,11 @@ class _LobbyPageState extends State<NewLobbyPage> {
           pageController.jumpToPage(index),
         },
         tablist: [
-          MyTabBarModel(title: "首页", icon: Icons.home),
-          MyTabBarModel(title: "发现", icon: Icons.search),
-          MyTabBarModel(title: "发布", icon: Icons.add),
-          MyTabBarModel(title: "消息", icon: Icons.message),
-          MyTabBarModel(title: "我", icon: Icons.person),
+          MoveTabBarModel(title: "首页", icon: Icons.home),
+          MoveTabBarModel(title: "发现", icon: Icons.search),
+          MoveTabBarModel(title: "发布", icon: Icons.add),
+          MoveTabBarModel(title: "消息", icon: Icons.message),
+          MoveTabBarModel(title: "我", icon: Icons.person),
         ],
         iconBuilder: (IconData icon) {
           return Icon(
@@ -93,7 +93,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
         },
         children: const [
           MyHomePage(),
-          TowScrollerWidget(),
+          FindPage(),
           ErrorPage(),
           ErrorPage(),
           PersionPage(),

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/component/canvas/bottom_tab_menu.dart';
-import 'package:flutter_provider_st/ui/component/bottom_nav/my_animated_bottom_navigation_bar.dart';
-import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/my_animated_bottom_navigation_bar.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/circle_bar/circle_tab_bar.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
-import 'package:flutter_provider_st/ui/component/bottombar/move_bar_bottom.dart';
+import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/move_tab_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BottomAppBarPage extends StatefulWidget {
@@ -38,7 +37,7 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
         clipBehavior: Clip.hardEdge,
         shadowColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
-        height: kBottomNavigationBarHeight,
+        height: 60.h,
         child: AnimatedBottomNavigationBar(
           currentIndex: _currentIdx,
           onTap: (index) => onchanged(index),
@@ -52,54 +51,24 @@ class _BottomAppBarPageeState extends State<BottomAppBarPage> {
             top: 50.w,
             left: 0,
             right: 0,
-            child: SizedBox(
-              height: 60.h,
-              width: double.infinity,
-              child: Stack(
-                clipBehavior: Clip.none,
-                alignment: Alignment.topCenter,
-                children: [
-                  BottomTabMenu(
-                    height: 60.h,
-                    leftRightRadius: 20.h,
-                    centerRadius: 36.w,
-                    centerARadius: 6.w,
-                    centerACoefficient: 0.65,
-                  ),
-                  Positioned(
-                    top: -30.w + 6.w,
-                    child: LimitClickButton(
-                      onClick: () async {},
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Colors.amber,
-                          borderRadius: BorderRadius.all(Radius.circular(30.w)),
-                        ),
-                        width: 60.w,
-                        height: 60.w,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
+            child: const CircleTabBar(),
           ),
           Positioned(
             top: 110.h,
             left: 0,
             right: 0,
-            child: MoveBarBottom(
+            child: MoveTabBar(
               backgroundColor: Colors.white,
               tabIndex: 0,
               height: 58.h,
               circle: 18.h,
               onChangeIdex: (index) => {},
               tablist: [
-                MyTabBarModel(title: "首页", icon: Icons.home),
-                MyTabBarModel(title: "发现", icon: Icons.search),
-                MyTabBarModel(title: "发布", icon: Icons.add),
-                MyTabBarModel(title: "消息", icon: Icons.message),
-                MyTabBarModel(title: "我", icon: Icons.person),
+                MoveTabBarModel(title: "首页", icon: Icons.home),
+                MoveTabBarModel(title: "发现", icon: Icons.search),
+                MoveTabBarModel(title: "发布", icon: Icons.add),
+                MoveTabBarModel(title: "消息", icon: Icons.message),
+                MoveTabBarModel(title: "我", icon: Icons.person),
               ],
               iconBuilder: (IconData icon) {
                 return Icon(
