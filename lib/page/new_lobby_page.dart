@@ -6,6 +6,7 @@ import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/move_tab_ba
 import 'package:flutter_provider_st/page/error_page.dart';
 import 'package:flutter_provider_st/page/home/home_page.dart';
 import 'package:flutter_provider_st/page/persion/persion_page.dart';
+import 'package:flutter_provider_st/ui/component/keep_alive/keep_alive_wrapper.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class NewLobbyPage extends StatefulWidget {
@@ -92,11 +93,26 @@ class _LobbyPageState extends State<NewLobbyPage> {
           onchanged(index),
         },
         children: const [
-          MyHomePage(),
-          FindPage(),
-          ErrorPage(),
-          ErrorPage(),
-          PersionPage(),
+          KeepAliveWrapper(
+            keepAlive: true,
+            child: MyHomePage(),
+          ),
+          KeepAliveWrapper(
+            keepAlive: true,
+            child: FindPage(),
+          ),
+          KeepAliveWrapper(
+            keepAlive: true,
+            child: ErrorPage(),
+          ),
+          KeepAliveWrapper(
+            keepAlive: true,
+            child: ErrorPage(),
+          ),
+          KeepAliveWrapper(
+            keepAlive: true,
+            child: PersionPage(),
+          ),
         ],
       ),
     );
