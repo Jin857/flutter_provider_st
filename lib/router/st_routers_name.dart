@@ -11,6 +11,9 @@ abstract class STRoutersName {
   /// 大厅
   static const game = '/game';
 
+  /// 自定义大转盘
+  static const luckyWheel = '/LuckyWheel';
+
   /// 异常界面
   static const error = '/error';
 }

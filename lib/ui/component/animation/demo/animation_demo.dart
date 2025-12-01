@@ -73,7 +73,8 @@ class AnimationDemo {
   }
 
   /// 缩放+旋转
-  static Future<void> zoomFlipAnimation({required BuildContext context}) async {
+  static Future<void> zoomFlipAnimation(
+      {required BuildContext context, String title = ""}) async {
     MySnackbarController controller = MySnackbarController(
       context: context,
       snackbar: MySnackbar(
@@ -87,11 +88,35 @@ class AnimationDemo {
                 color: Colors.blue,
                 width: double.infinity,
                 height: 60,
+                child: title.isNotEmpty
+                    ? Center(
+                        child: Text(
+                          title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      )
+                    : null,
               ),
               backWidget: Container(
                 color: Colors.red,
                 width: double.infinity,
                 height: 60,
+                child: title.isNotEmpty
+                    ? Center(
+                        child: Text(
+                          title,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 18,
+                          ),
+                        ),
+                      )
+                    : null,
               ),
             )),
       ),

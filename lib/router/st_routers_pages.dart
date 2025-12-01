@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/page/luckywheel/lucky_wheel_list_page.dart';
 import 'package:flutter_provider_st/page/stream/stream_builder_demo_page.dart';
 import 'package:flutter_provider_st/ui/component/animation/hero/hero_animation_route.dart';
 import 'package:flutter_provider_st/page/bottombar/bottom_app_bar_page.dart';
@@ -25,6 +26,9 @@ class StWidgetBuilderRouters {
     },
     STRoutersName.game: (context) {
       return const GameMainPage();
+    },
+    STRoutersName.luckyWheel: (context) {
+      return const LuckyWheelListPage();
     },
     STRoutersName.login: (context) {
       return const Login();

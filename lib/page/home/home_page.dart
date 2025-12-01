@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
-import 'package:flutter_provider_st/page/luckywheel/image_lucky_wheel_dialog.dart';
-import 'package:flutter_provider_st/page/luckywheel/widget_lucky_wheel_dialog.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_model.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
@@ -146,8 +144,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               onClick: () async {
                                 if (index == 0) {
                                   AnimationDemo.zoomFlipAnimation(
-                                    context: context,
-                                  );
+                                      context: context, title: "三商共富");
                                 } else if (index == 1) {
                                   Navigator.pushNamed(
                                       context, STHeroRoutersName.heroA);
@@ -155,9 +152,11 @@ class _MyHomePageState extends State<MyHomePage> {
                                   Navigator.pushNamed(
                                       context, STRoutersName.game);
                                 } else if (index == 3) {
-                                  openImageLuckyWheel(context);
+                                  AnimationDemo.zoomFlipAnimation(
+                                      context: context, title: "游戏");
                                 } else if (index == 4) {
-                                  openWidgetLuckyWheel(context);
+                                  AnimationDemo.zoomFlipAnimation(
+                                      context: context, title: "底部当行栏");
                                 } else if (index == 5) {
                                   Navigator.pushNamed(
                                     context,
@@ -166,9 +165,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                 } else if (index == 6) {
                                   Navigator.pushNamed(
                                       context, STStreamRoutersName.main);
+                                } else if (index == 7) {
+                                  AnimationDemo.zoomFlipAnimation(
+                                      context: context, title: "Stream");
+                                } else if (index == 8) {
+                                  AnimationDemo.zoomFlipAnimation(
+                                      context: context, title: "Staggered");
                                 } else if (index == 9) {
                                   Navigator.pushNamed(
                                       context, STStaggeredRoutersName.main);
+                                } else if (index == 10) {
+                                  Navigator.pushNamed(
+                                    context,
+                                    STRoutersName.luckyWheel,
+                                  );
                                 }
                               },
                             );

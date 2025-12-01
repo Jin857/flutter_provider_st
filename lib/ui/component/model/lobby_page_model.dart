@@ -110,5 +110,17 @@ class LobbyPageModel {
       title: "Staggered",
       subtitle: "网格教程",
     ),
+    SwellBottonCardModel(
+      image: lucky_wheel_ZP,
+      isCenter: false,
+      title: "大转盘",
+      subtitle: "大转盘教程",
+    ),
+    SwellBottonCardModel(
+      image: lucky_wheel_ZP,
+      isCenter: true,
+      title: "",
+      subtitle: "",
+    ),
   ];
 }
