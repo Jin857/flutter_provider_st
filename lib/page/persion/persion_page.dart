@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/constants/text.dart';
-import 'package:flutter_provider_st/ui/component/threetree/element/element_button.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
-import 'package:flutter_provider_st/ui/component/threetree/render/done_widget.dart';
-import 'package:flutter_provider_st/ui/component/threetree/render/three_box_render.dart';
 import 'package:flutter_provider_st/provider/user_model.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
@@ -16,9 +13,8 @@ import 'package:flutter_provider_st/ui/component/card/top_title_card.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 import 'package:flutter_provider_st/ui/component/layout/left_right_layout.dart';
 import 'package:flutter_provider_st/ui/component/layout/top_bottom_flex_layout.dart';
-import 'package:flutter_provider_st/ui/component/threetree/render/custom_center_render.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_provider_st/ui/component/layout/proportional_segmentation_horizontal.dart';
+import 'package:flutter_provider_st/ui/component/secondary/proportional_segmentation_horizontal.dart';
 import 'package:provider/provider.dart';
 
 class PersionPage extends StatefulWidget {
@@ -248,45 +244,6 @@ class _PersionPageState extends State<PersionPage> {
                         ),
                       ],
                     ),
-                  ),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: SizedBox(
-                  child: Column(
-                    children: [
-                      const ElementButtonWidget(),
-                      CustomCenterRender(
-                        child: Container(
-                          width: 100,
-                          height: 100,
-                          color: Colors.amber,
-                        ),
-                      ),
-                      ThreeBoxRender(
-                        children: [
-                          Container(
-                            width: 100,
-                            height: 100,
-                            color: Colors.red,
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            color: Colors.blue,
-                          ),
-                          Container(
-                            width: 100,
-                            height: 100,
-                            color: Colors.yellow,
-                          ),
-                        ],
-                      ),
-                      const DoneWidget(
-                        color: Colors.red,
-                        strokeWidth: 2,
-                      ),
-                    ],
                   ),
                 ),
               ),
