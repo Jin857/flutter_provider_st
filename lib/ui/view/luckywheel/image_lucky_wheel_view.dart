@@ -127,7 +127,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
           Align(
             alignment: Alignment.center,
             child: Image.asset(
-              lucky_wheel_ZP,
+              luckyWheelZP,
               width: 300,
             ),
           ),
@@ -136,7 +136,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
             child: RotationTransition(
                 turns: _animation,
                 child: Image.asset(
-                  lucky_wheel_SJP,
+                  luckyWheelSJP,
                   width: 290,
                 )),
           ),
@@ -145,7 +145,7 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
             child: GestureDetector(
               onTap: buttonOnClickStartRun,
               child: Image.asset(
-                lucky_wheel_P,
+                luckyWheelP,
                 width: 150,
               ),
             ),

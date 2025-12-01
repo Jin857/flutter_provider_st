@@ -1,3 +1,5 @@
+// ignore_for_file: constant_identifier_names
+
 /// 请求类型枚举
 enum HttpMethod {
   GET("get"),

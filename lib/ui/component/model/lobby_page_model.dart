@@ -111,13 +111,13 @@ class LobbyPageModel {
       subtitle: "网格教程",
     ),
     SwellBottonCardModel(
-      image: lucky_wheel_Logo,
+      image: luckyWheelLogo,
       isCenter: false,
       title: "大转盘",
       subtitle: "大转盘教程",
     ),
     SwellBottonCardModel(
-      image: lucky_wheel_Logo,
+      image: luckyWheelLogo,
       isCenter: true,
       title: "",
       subtitle: "",

@@ -1,8 +1,8 @@
 /// 转盘相关资源
-const String lucky_wheel_ZP = 'assets/images/lucky_wheel/bg_zhuanpan.png';
-const String lucky_wheel_SJP = 'assets/images/lucky_wheel/bg_superjiangpin.png';
-const String lucky_wheel_P = "assets/images/lucky_wheel/ic_pointer.png";
-const String lucky_wheel_Logo = "assets/images/lucky_wheel/bg_logo.png";
+const String luckyWheelZP = 'assets/images/lucky_wheel/bg_zhuanpan.png';
+const String luckyWheelSJP = 'assets/images/lucky_wheel/bg_superjiangpin.png';
+const String luckyWheelP = "assets/images/lucky_wheel/ic_pointer.png";
+const String luckyWheelLogo = "assets/images/lucky_wheel/bg_logo.png";
 const String lobbymain = 'assets/images/lobby/lobby_main.png';
 const String lobbybook_01 = 'assets/images/lobby/lobby_book_01.png';
 const String lobbybook_02 = 'assets/images/lobby/lobby_book_02.png';
