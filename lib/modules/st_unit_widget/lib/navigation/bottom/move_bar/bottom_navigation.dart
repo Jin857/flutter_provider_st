@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/constants/screen.dart';
 
 class MyBottomNavigationBarItem {
   /// 文本
@@ -15,14 +14,14 @@ class MyBottomNavigationBarItem {
 
   final bool showIcon;
 
-  MyBottomNavigationBarItem(
-      {required this.title,
-      this.selectIcons,
-      this.normalIcons,
-      this.selectWidget,
-      this.normalWidget,
-      bool? showIcon})
-      : showIcon = showIcon ?? true;
+  MyBottomNavigationBarItem({
+    required this.title,
+    this.selectIcons,
+    this.normalIcons,
+    this.selectWidget,
+    this.normalWidget,
+    bool? showIcon,
+  }) : showIcon = showIcon ?? true;
 }
 
 /// 编辑底部导航栏
@@ -54,6 +53,8 @@ class MyBottomNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final contextWidth = MediaQuery.of(context).size.width;
+
     List<BottomNavigationBarButton> listb = [];
     item.asMap().forEach((key, value) {
       listb.add(
@@ -63,7 +64,7 @@ class MyBottomNavigation extends StatelessWidget {
           selectColor: selectColor,
           normalColor: normalColor,
           select: key == tabIndex,
-          width: (width ?? screenWidth) / item.length,
+          width: (width ?? contextWidth) / item.length,
           bottomNavigationBarItem: value,
         ),
       );
@@ -93,8 +94,8 @@ class BottomNavigationBarButton extends StatelessWidget {
     Color? selectColor,
     Color? normalColor,
     required this.bottomNavigationBarItem,
-  })  : selectColor = selectColor ?? Colors.red,
-        normalColor = normalColor ?? Colors.black54;
+  }) : selectColor = selectColor ?? Colors.red,
+       normalColor = normalColor ?? Colors.black54;
 
   @override
   Widget build(BuildContext context) {
@@ -116,12 +117,12 @@ class BottomNavigationBarButton extends StatelessWidget {
                       select
                           ? bottomNavigationBarItem.selectIcons ?? Icons.abc
                           : bottomNavigationBarItem.normalIcons ??
-                              Icons.abc_outlined,
+                                Icons.abc_outlined,
                       color: select ? selectColor : normalColor,
                     )
                   : select
-                      ? bottomNavigationBarItem.selectWidget!
-                      : bottomNavigationBarItem.normalWidget!,
+                  ? bottomNavigationBarItem.selectWidget!
+                  : bottomNavigationBarItem.normalWidget!,
               if (bottomNavigationBarItem.title.isNotEmpty)
                 Text(
                   bottomNavigationBarItem.title,

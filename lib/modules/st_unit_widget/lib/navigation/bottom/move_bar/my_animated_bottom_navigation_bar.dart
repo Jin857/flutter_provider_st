@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/constants/screen.dart';
-import 'package:flutter_provider_st/ui/component/bottom_bar/move_bar/bottom_navigation.dart';
+import 'package:st_unit_widget/navigation/bottom/move_bar/bottom_navigation.dart';
 
 class AnimatedBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
@@ -16,6 +15,8 @@ class AnimatedBottomNavigationBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final contextWidth = MediaQuery.of(context).size.width;
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 1000), // 动画持续时间
       curve: Curves.easeInOut, // 动画曲线
@@ -42,7 +43,7 @@ class AnimatedBottomNavigationBar extends StatelessWidget {
             debugPrint("----------");
           },
           child: MyBottomNavigation(
-            width: screenWidth - 20,
+            width: contextWidth - 20,
             normalColor: Colors.black45,
             selectColor: Colors.blue,
             onTap: onTap,

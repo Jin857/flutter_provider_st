@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 // 底部导航栏掏空背景样式
 class BottomTabMenu extends StatelessWidget {
@@ -17,15 +16,15 @@ class BottomTabMenu extends StatelessWidget {
 
   final double centerACoefficient;
 
-  BottomTabMenu({
+  const BottomTabMenu({
     super.key,
     required this.height,
     required this.leftRightRadius,
     required this.centerRadius,
     double? centerARadius,
     double? centerACoefficient,
-  })  : centerACoefficient = centerACoefficient ?? 0.7,
-        centerARadius = centerARadius ?? 20.w;
+  }) : centerACoefficient = centerACoefficient ?? 0.7,
+       centerARadius = centerARadius ?? 20;
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +56,8 @@ class BottomTabDrawPaint extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     var paint = Paint()
       ..color = Colors.white
-      ..style = PaintingStyle.fill // 填充样式
+      ..style = PaintingStyle
+          .fill // 填充样式
       ..isAntiAlias = true; // 开启抗锯齿
 
     var path = Path();

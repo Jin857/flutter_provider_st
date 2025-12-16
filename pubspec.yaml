@@ -32,6 +32,10 @@ dependencies:
     sdk: flutter
   flutter_localizations:
     sdk: flutter
+  samll_game:
+    path: ./lib/modules/samll_game
+  st_unit_widget:
+    path: ./lib/modules/st_unit_widget
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
@@ -53,6 +57,7 @@ dependencies:
   yaml: ^3.1.3
   package_info_plus: ^8.3.0
   intl: ^0.20.2
+  
 
 dev_dependencies:
   flutter_test:
