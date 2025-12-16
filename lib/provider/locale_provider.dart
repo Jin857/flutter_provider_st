@@ -2,7 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter_provider_st/provider/profile_change_notifier.dart';
 
-class LocaleModel extends ProfileChangeNotifier {
+class LocaleProvider extends ProfileChangeNotifier {
   // 获取当前用户的APP语言配置Locale类，如果为null，则语言跟随系统语言
   Locale? getLocale() {
     if (profile.locale.isEmpty) return null;

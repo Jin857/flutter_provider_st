@@ -4,9 +4,9 @@ import 'package:flutter_provider_st/initialize/injection_init.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_provider_st/core/l10n/localization_intl.dart';
 import 'package:flutter_provider_st/provider/counter_provider.dart';
-import 'package:flutter_provider_st/provider/locale_model.dart';
-import 'package:flutter_provider_st/provider/theme_model.dart';
-import 'package:flutter_provider_st/provider/user_model.dart';
+import 'package:flutter_provider_st/provider/locale_provider.dart';
+import 'package:flutter_provider_st/provider/theme_provider.dart';
+import 'package:flutter_provider_st/provider/user_provider.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/router/st_unknown_route.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -30,13 +30,14 @@ class MainPage extends StatelessWidget {
       builder: (_, child) {
         return MultiProvider(
           providers: [
-            ChangeNotifierProvider(create: (_) => ThemeModel()),
-            ChangeNotifierProvider(create: (_) => UserModel()),
-            ChangeNotifierProvider(create: (_) => LocaleModel()),
+            ChangeNotifierProvider(create: (_) => ThemeProvider()),
+            ChangeNotifierProvider(create: (_) => UserProvider()),
+            ChangeNotifierProvider(create: (_) => LocaleProvider()),
             ChangeNotifierProvider(create: (_) => CounterProvider()),
           ],
-          child: Consumer2<ThemeModel, LocaleModel>(
-            builder: (BuildContext context, themeModel, localeModel, child) {
+          child: Consumer2<ThemeProvider, LocaleProvider>(
+            builder:
+                (BuildContext context, themeProvider, localeProvider, child) {
               return MaterialApp(
                 debugShowCheckedModeBanner: true,
                 initialRoute: "/",
@@ -48,7 +49,7 @@ class MainPage extends StatelessWidget {
                 },
                 onUnknownRoute: stUnknownRoute,
                 title: 'Flutter Provider(状态管理) ST',
-                locale: localeModel.getLocale(),
+                locale: localeProvider.getLocale(),
                 //我们只支持美国英语和中文简体
                 supportedLocales: const [
                   Locale('zh', 'CN'), // 中文简体
@@ -62,9 +63,9 @@ class MainPage extends StatelessWidget {
                   DemoLocalizationsDelegate(),
                 ],
                 localeResolutionCallback: (mlocale, supportedLocales) {
-                  if (localeModel.getLocale() != null) {
+                  if (localeProvider.getLocale() != null) {
                     //如果已经选定语言，则不跟随系统
-                    return localeModel.getLocale();
+                    return localeProvider.getLocale();
                   } else {
                     //跟随系统
                     Locale locale;
@@ -78,7 +79,7 @@ class MainPage extends StatelessWidget {
                   }
                 },
                 theme: ThemeData(
-                  primarySwatch: themeModel.theme,
+                  primarySwatch: themeProvider.theme,
                   useMaterial3: true,
                 ),
               );

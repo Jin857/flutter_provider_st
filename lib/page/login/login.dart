@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/core/http/http_factory.dart';
 import 'package:flutter_provider_st/models/user.dart';
-import 'package:flutter_provider_st/provider/user_model.dart';
+import 'package:flutter_provider_st/provider/user_provider.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -127,7 +127,7 @@ class _LoginRouteState extends State<LoginRoute> {
         user = await HttpFactory.instance().user.login(_unameController.text);
         if (!mounted) return; // 如果 Widget 不再挂载，则直接退出，不执行后续操作
         // 因为登录页返回后，首页会build，所以我们传入false，这样更新user后便不触发更新。
-        Provider.of<UserModel>(context, listen: false).user = user;
+        Provider.of<UserProvider>(context, listen: false).user = user;
       } on DioException catch (e) {
         //登录失败则提示
         if (e.response?.statusCode == 401) {

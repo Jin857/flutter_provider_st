@@ -2,7 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_provider_st/provider/home_model.dart';
+import 'package:flutter_provider_st/provider/home_provider.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/ui/component/snackbar/snackbar_animation.dart';
@@ -19,8 +19,8 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => HomeModel(),
-      child: Consumer<HomeModel>(
+      create: (context) => HomeProvider(),
+      child: Consumer<HomeProvider>(
         builder: (context, model, child) {
           return Scaffold(
             body: Container(

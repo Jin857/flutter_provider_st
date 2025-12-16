@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/global/global.dart';
 import 'package:flutter_provider_st/provider/profile_change_notifier.dart';
 
-class ThemeModel extends ProfileChangeNotifier {
+class ThemeProvider extends ProfileChangeNotifier {
   // 获取当前主题，如果为设置主题，则默认使用蓝色主题
   MaterialColor get theme => Global.themes.firstWhere(
         (e) => e.toARGB32() == profile.theme,

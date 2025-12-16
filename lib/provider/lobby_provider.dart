@@ -8,11 +8,11 @@ import 'package:geolocator/geolocator.dart';
 // ChangeNotifier 主要有两个方法:
 // addListener 注册监听。
 // notifyListeners 触发监听回调。
-class LobbyModel extends ChangeNotifier {
+class LobbyProvider extends ChangeNotifier {
   /// 位置信息
   Position? position;
 
-  LobbyModel() {
+  LobbyProvider() {
     loadConfig();
   }
 

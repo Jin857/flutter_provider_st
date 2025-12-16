@@ -4,7 +4,7 @@ import 'package:flutter_provider_st/constants/assets.dart';
 import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/constants/text.dart';
 import 'package:flutter_provider_st/core/event/event_bus.dart';
-import 'package:flutter_provider_st/provider/user_model.dart';
+import 'package:flutter_provider_st/provider/user_provider.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
 import 'package:flutter_provider_st/ui/component/button/text_icon_button.dart';
@@ -27,7 +27,7 @@ class PersionPage extends StatefulWidget {
 class _PersionPageState extends State<PersionPage> {
   @override
   Widget build(Object cont) {
-    UserModel userModel = Provider.of<UserModel>(context);
+    UserProvider userModel = Provider.of<UserProvider>(context);
     return Scaffold(
       backgroundColor: Colors.white,
       body: Container(
