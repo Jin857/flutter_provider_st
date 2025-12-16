@@ -19,6 +19,13 @@ class _LobbyPageState extends State<NewLobbyPage> {
   late int _currentIdx = 0;
   late PageController pageController;
 
+  /// 悬浮面板相关参数
+  final double minChildHight = 58;
+  final double minChildSize =
+      58 / (screenHeight - (bottomNavigationBarHeight.h + 16.h));
+  final double initialChildSize = 0.5;
+  final bool isShow = true;
+
   @override
   void initState() {
     super.initState();
@@ -46,6 +53,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
       drawerEdgeDragWidth: 0.0,
       resizeToAvoidBottomInset: false,
       bottomNavigationBar: MoveTabBar(
+        width: screenWidth,
         backgroundColor: [
           Colors.blue.shade100,
           Colors.blue.shade200,
@@ -86,33 +94,88 @@ class _LobbyPageState extends State<NewLobbyPage> {
           );
         },
       ),
-      body: PageView(
-        controller: pageController,
-        onPageChanged: (int index) => {
-          onchanged(index),
+      body: DraggableBottomSheet(
+        key: const Key("STDraggable"),
+        maxChildSize: 1,
+        show: isShow,
+        minChildSize: minChildSize,
+        initialChildSize: initialChildSize,
+        mainWidget: PageView(
+          controller: pageController,
+          onPageChanged: (int index) => {
+            onchanged(index),
+          },
+          children: const [
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: MyHomePage(),
+            ),
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: FindPage(),
+            ),
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: ErrorPage(),
+            ),
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: ErrorPage(),
+            ),
+            KeepAliveWrapper(
+              keepAlive: true,
+              child: PersionPage(),
+            ),
+          ],
+        ),
+        builder: (
+          BuildContext context,
+          ScrollController scrollController,
+          double currentSize,
+        ) {
+          return _LobbyDraggable(
+            currentSize: currentSize,
+            scrollController: scrollController,
+          );
         },
-        children: const [
-          KeepAliveWrapper(
-            keepAlive: true,
-            child: MyHomePage(),
+      ),
+    );
+  }
+}
+
+/// 悬浮面板内容
+class _LobbyDraggable extends StatelessWidget {
+  final double currentSize;
+  final ScrollController scrollController;
+  const _LobbyDraggable({
+    required this.currentSize,
+    required this.scrollController,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.blueAccent.withValues(alpha: currentSize + 0.3),
+        borderRadius: const BorderRadius.only(
+          topLeft: Radius.circular(16),
+          topRight: Radius.circular(16),
+        ),
+      ),
+      child: SingleChildScrollView(
+        controller: scrollController,
+        child: Center(
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(
+              "当前面板高度比例: ${currentSize.toStringAsFixed(2)}",
+              style: const TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
           ),
-          KeepAliveWrapper(
-            keepAlive: true,
-            child: FindPage(),
-          ),
-          KeepAliveWrapper(
-            keepAlive: true,
-            child: ErrorPage(),
-          ),
-          KeepAliveWrapper(
-            keepAlive: true,
-            child: ErrorPage(),
-          ),
-          KeepAliveWrapper(
-            keepAlive: true,
-            child: PersionPage(),
-          ),
-        ],
+        ),
       ),
     );
   }

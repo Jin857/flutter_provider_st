@@ -42,6 +42,9 @@ class MoveTabBar extends StatefulWidget {
   /// 动画时长 - milliseconds
   final int moveMS;
 
+  /// 宽度
+  final double width;
+
   const MoveTabBar({
     super.key,
     required this.tabIndex,
@@ -55,6 +58,7 @@ class MoveTabBar extends StatefulWidget {
     required this.iconBuilder,
     required this.textBuilder,
     this.moveMS = 300,
+    this.width = double.infinity,
   }) : bumpHeight = bumpHeight ?? 12,
        bumpWidth = bumpWidth ?? 40,
        height = height ?? 60,
@@ -80,7 +84,7 @@ class _MoveTabBarState extends State<MoveTabBar> {
   @override
   void initState() {
     super.initState();
-    oneTabWidth = MediaQuery.of(context).size.width / widget.tablist.length;
+    oneTabWidth = widget.width / widget.tablist.length;
     _tabIndex = widget.tabIndex;
     setIndexByIndex(widget.tabIndex, false);
   }
