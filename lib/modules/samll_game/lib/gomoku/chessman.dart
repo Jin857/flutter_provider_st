@@ -1,6 +1,6 @@
 //棋子
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/game/gomoku/player.dart';
+import 'package:samll_game/gomoku/player.dart';
 
 import 'common.dart';
 

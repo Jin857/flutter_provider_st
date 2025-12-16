@@ -1,10 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/view/game/gomoku/ai.dart';
-import 'package:flutter_provider_st/ui/view/game/gomoku/chessman.dart';
-import 'package:flutter_provider_st/ui/view/game/gomoku/common.dart';
-import 'package:flutter_provider_st/ui/view/game/gomoku/player.dart';
 
-import '../../ui/view/game/gomoku/chessman_paint.dart';
+import 'package:samll_game/samll_game.dart';
 
 class GameMainPage extends StatefulWidget {
   const GameMainPage({super.key});
