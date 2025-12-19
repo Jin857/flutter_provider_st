@@ -1,14 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:flutter_provider_st/ui/component/snackbar/my_snackbar.dart';
+import 'package:samll_game/snackbar/st_snackbar.dart';
 
-class MySnackbarController {
+class STSnackbarController {
   /// 全局 Key 用于访问 MySnackbarState
-  final key = GlobalKey<MySnackbarState>();
+  final key = GlobalKey<STSnackbarState>();
 
   /// 自定义 Snackbar 组件
-  final MySnackbar snackbar;
+  final STSnackbar snackbar;
 
   /// 本地保存 OverlayEntry 对象列表
   final _overlayEntries = <OverlayEntry>[];
@@ -17,7 +17,7 @@ class MySnackbarController {
   final OverlayState overlayState;
 
   /// 构造函数
-  MySnackbarController({
+  STSnackbarController({
     required BuildContext context,
     required this.snackbar,
   }) : overlayState = Overlay.of(context);
@@ -71,7 +71,7 @@ class MySnackbarController {
   }
 
   /// 创建 OverlayEntry 对象
-  OverlayEntry createOverlayEntries(MySnackbar child) {
+  OverlayEntry createOverlayEntries(STSnackbar child) {
     return OverlayEntry(
       builder: (context) => Semantics(
         focused: false,

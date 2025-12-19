@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/st_toast.dart';
 
 class LimitClickButton extends StatefulWidget {
   final Widget child;
@@ -49,7 +49,7 @@ class _LimitClickButtonState extends State<LimitClickButton> {
     return GestureDetector(
       onTap: () async {
         if (chick) {
-          ToastUtils.show(name: widget.toastString);
+          STToast.show(context: context, message: widget.toastString);
           return;
         }
         setState(() {

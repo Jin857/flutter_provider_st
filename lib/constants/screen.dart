@@ -39,3 +39,20 @@ final double bodyHeight = screenHeight -
     toolbarHeight -
     bottomPadding -
     bottomNavigationBarHeight;
+
+// 获取根 Context（需要确保 WidgetsBinding 已初始化）
+BuildContext? get overlayContext {
+  try {
+    // 获取 WidgetsBinding 实例
+    final binding = WidgetsBinding.instance;
+
+    // 通过 RenderObjectToWidgetAdapter 获取根 context
+    if (binding.rootElement != null) {
+      // renderViewElement 是根 Element，可以作为 context 使用
+      return binding.rootElement;
+    }
+  } catch (e) {
+    print('获取 overlay context 失败: $e');
+  }
+  return null;
+}

@@ -8,17 +8,18 @@ import 'package:flutter/material.dart';
  * 内存管理：正确管理 OverlayEntry 的生命周期，避免内存泄漏。
  * 性能考虑：虽然 Overlay 很有用，但过度使用可能会影响性能，特别是在有大量动画或复杂 UI 的情况下。
  */
+
 /// 自定义活动弹窗，不受页面影响
-class MySnackbar extends StatefulWidget {
+class STSnackbar extends StatefulWidget {
   final Widget? child;
   final Duration duration;
-  const MySnackbar({super.key, required this.child, required this.duration});
+  const STSnackbar({super.key, required this.child, required this.duration});
 
   @override
-  State<MySnackbar> createState() => MySnackbarState();
+  State<STSnackbar> createState() => STSnackbarState();
 }
 
-class MySnackbarState extends State<MySnackbar> with TickerProviderStateMixin {
+class STSnackbarState extends State<STSnackbar> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Material(

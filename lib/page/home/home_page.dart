@@ -1,11 +1,12 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/page/luckywheel/lucky_wheel_list_page.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_provider.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
-import 'package:flutter_provider_st/ui/component/snackbar/snackbar_animation.dart';
+import 'package:flutter_provider_st/modules/samll_game/lib/snackbar/st_snackbar_animation.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
 
@@ -119,8 +120,29 @@ class _MyHomePageState extends State<MyHomePage> {
                           actions: [
                             LimitClickButton(
                               onClick: () async {
-                                await Future.delayed(
-                                  const Duration(seconds: 1),
+                                showModalBottomSheet(
+                                  context: context,
+                                  isScrollControlled: true, // 允许全高
+                                  builder: (BuildContext context) {
+                                    return SizedBox(
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.9, // 设定高度，例如屏幕的90%
+                                      child: Navigator(
+                                        // 嵌套 Navigator
+                                        onGenerateRoute: (settings) {
+                                          // 定义您的路由逻辑，例如：
+                                          Widget page =
+                                              const LuckyWheelListPage();
+                                          return MaterialPageRoute(
+                                            settings: settings,
+                                            builder: (context) => page,
+                                          );
+                                        },
+                                        initialRoute: '/',
+                                      ),
+                                    );
+                                  },
                                 );
                               },
                               child: const Padding(
@@ -162,7 +184,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 data: data,
                                 onClick: () async {
                                   if (index == 0) {
-                                    SnackbarAnimation.lineAnimation(
+                                    STSnackbarAnimation.lineAnimation(
                                         context: context, title: "三商共富");
                                   } else if (index == 1) {
                                     Navigator.pushNamed(
@@ -171,10 +193,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.pushNamed(
                                         context, STRoutersName.game);
                                   } else if (index == 3) {
-                                    SnackbarAnimation.flipAnimation(
+                                    STSnackbarAnimation.flipAnimation(
                                         context: context, title: "游戏");
                                   } else if (index == 4) {
-                                    SnackbarAnimation.zoomAnimation(
+                                    STSnackbarAnimation.zoomAnimation(
                                         context: context, title: "底部当行栏");
                                   } else if (index == 5) {
                                     Navigator.pushNamed(
@@ -185,10 +207,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                     Navigator.pushNamed(
                                         context, STStreamRoutersName.main);
                                   } else if (index == 7) {
-                                    SnackbarAnimation.zoomFlipAnimation(
+                                    STSnackbarAnimation.zoomFlipAnimation(
                                         context: context, title: "Stream");
                                   } else if (index == 8) {
-                                    SnackbarAnimation.lineAnimation(
+                                    STSnackbarAnimation.lineAnimation(
                                         context: context, title: "Staggered");
                                   } else if (index == 9) {
                                     Navigator.pushNamed(
@@ -199,7 +221,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                       STRoutersName.luckyWheel,
                                     );
                                   } else if (index == 11) {
-                                    SnackbarAnimation.zoomFlipAnimation(
+                                    STSnackbarAnimation.zoomFlipAnimation(
                                         context: context, title: "抽奖转盘");
                                   }
                                 },

@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/constants/assets.dart';
-import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/st_toast.dart';
 
 /// 等比分幸运大转盘
 class ImageLuckyWheelUI extends StatefulWidget {
@@ -86,7 +86,10 @@ class _ImageLuckyWheelUIState extends State<ImageLuckyWheelUI>
     if (isRunning == false) {
       isRunning = true;
     } else {
-      ToastUtils.show(name: "抽奖中，请稍等");
+      STToast.show(
+        context: context,
+        message: "抽奖中，请稍等",
+      );
       return;
     }
     start();

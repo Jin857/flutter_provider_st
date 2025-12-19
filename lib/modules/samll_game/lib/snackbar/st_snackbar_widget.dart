@@ -1,39 +1,35 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/constants/screen.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-enum ToastType { success, error, warning, info }
+enum STToastType { success, error, warning, info }
 
-class SnackbarWidget extends StatelessWidget {
+class STSnackbarWidget extends StatelessWidget {
   final String title;
-  final ToastType type;
-  const SnackbarWidget({super.key, required this.title, required this.type});
+  final STToastType type;
+  const STSnackbarWidget({super.key, required this.title, required this.type});
 
   Color get _getBackgroundColor {
     switch (type) {
-      case ToastType.success:
+      case STToastType.success:
         return Colors.green;
-      case ToastType.error:
+      case STToastType.error:
         return Colors.red;
-      case ToastType.warning:
+      case STToastType.warning:
         return Colors.deepOrange;
-      case ToastType.info:
+      case STToastType.info:
         return Colors.blue;
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final contextWidth = MediaQuery.of(context).size.width;
     return Container(
       alignment: Alignment.topCenter,
       constraints: BoxConstraints(
-        maxWidth: screenWidth - 20, // 最大宽度 300
+        maxWidth: contextWidth - 20, // 最大宽度 300
       ),
       child: Container(
-        padding: const EdgeInsets.symmetric(
-          vertical: 20,
-          horizontal: 24,
-        ),
+        padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 24),
         decoration: BoxDecoration(
           color: _getBackgroundColor,
           borderRadius: BorderRadius.circular(16),
@@ -43,7 +39,7 @@ class SnackbarWidget extends StatelessWidget {
           overflow: TextOverflow.ellipsis,
           maxLines: 3,
           style: TextStyle(
-            fontSize: 14.sp,
+            fontSize: 14,
             color: Colors.white,
             fontWeight: FontWeight.w500,
             height: 1.43,

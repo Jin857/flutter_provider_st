@@ -1,10 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_provider_st/constants/screen.dart';
 import 'package:flutter_provider_st/core/http/base/http_exception.dart';
 import 'package:flutter_provider_st/core/http/interceptor/http_interceptor.dart';
 import 'package:flutter_provider_st/core/http/model/http_model.dart';
 import 'package:flutter_provider_st/core/http/proxy/proxy.dart';
-import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/st_toast.dart';
 
 class NetDio {
   late Dio dio;
@@ -72,7 +73,7 @@ class NetDio {
       return parse(response);
     } on DioException catch (e) {
       final NetError netError = HttpException.handleException(e);
-      ToastUtils.show(name: netError.msg);
+      STToast.show(context: overlayContext, message: netError.msg);
       return netError;
     }
   }
@@ -86,7 +87,8 @@ class NetDio {
 
     ///  请求异常
     if (response.statusCode != 200) {
-      ToastUtils.show(name: "${response.statusMessage} ");
+      STToast.show(
+          context: overlayContext, message: "${response.statusMessage}");
       throw Exception('HTTP Error ${response.statusCode}');
     }
 

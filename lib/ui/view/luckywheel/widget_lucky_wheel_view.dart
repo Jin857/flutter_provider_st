@@ -5,7 +5,7 @@ import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_provider_st/constants/assets.dart';
-import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/st_toast.dart';
 import 'package:flutter_provider_st/ui/view/luckywheel/component/custom_lucky_darw_paint.dart';
 import 'package:flutter_provider_st/ui/view/luckywheel/component/custom_pointer.dart';
 
@@ -152,7 +152,10 @@ class _LuckyWheelControllerState extends State<WidgetLuckyWheelController>
   /// 点击开始按钮
   void buttonOnClickStartRun() {
     if (isRunning) {
-      ToastUtils.show(name: "抽奖中，请稍等");
+      STToast.show(
+        context: context,
+        message: "抽奖中，请稍等",
+      );
       return;
     }
     isRunning = true;

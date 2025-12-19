@@ -5,7 +5,7 @@ import 'package:flutter_provider_st/core/http/http_factory.dart';
 import 'package:flutter_provider_st/models/user.dart';
 import 'package:flutter_provider_st/provider/user_provider.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
-import 'package:flutter_provider_st/ui/component/toast/toast_util.dart';
+import 'package:flutter_provider_st/ui/component/toast/st_toast.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 
@@ -133,7 +133,7 @@ class _LoginRouteState extends State<LoginRoute> {
         if (e.response?.statusCode == 401) {
           // ToastUtils.show(GmLocalizations.of(context).userNameOrPasswordWrong);
         } else {
-          ToastUtils.show(name: e.toString());
+          STToast.show(context: context, message: e.toString());
         }
       } finally {
         // 隐藏loading框

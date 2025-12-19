@@ -36,8 +36,12 @@ class MainPage extends StatelessWidget {
             ChangeNotifierProvider(create: (_) => CounterProvider()),
           ],
           child: Consumer2<ThemeProvider, LocaleProvider>(
-            builder:
-                (BuildContext context, themeProvider, localeProvider, child) {
+            builder: (
+              BuildContext context,
+              themeProvider,
+              localeProvider,
+              child,
+            ) {
               return MaterialApp(
                 debugShowCheckedModeBanner: true,
                 initialRoute: "/",
