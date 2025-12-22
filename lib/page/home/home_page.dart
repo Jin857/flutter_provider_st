@@ -1,14 +1,15 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/modules/samll_game/lib/marquee/new_marquee.dart';
 import 'package:flutter_provider_st/page/luckywheel/lucky_wheel_list_page.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter_provider_st/provider/home_provider.dart';
 import 'package:flutter_provider_st/ui/component/model/lobby_page_model.dart';
 import 'package:flutter_provider_st/ui/component/button/limit_click_button.dart';
-import 'package:flutter_provider_st/modules/samll_game/lib/snackbar/st_snackbar_animation.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_provider_st/ui/component/card/swell_botton_card.dart';
+import 'package:samll_game/samll_game.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -156,9 +157,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             LimitClickButton(
                               onClick: () async {
-                                await Future.delayed(
-                                  const Duration(seconds: 1),
-                                );
+                                // await Future.delayed(
+                                //   const Duration(seconds: 1),
+                                // );
+                                STNewMarquee.show(
+                                    context: context,
+                                    message: "阿莱克斯黑科技啊手机卡上的空间啊还是肯德基哈快睡觉");
                               },
                               child: const Padding(
                                 padding: EdgeInsets.all(10),
