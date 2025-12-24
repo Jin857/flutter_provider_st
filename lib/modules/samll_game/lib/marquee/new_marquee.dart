@@ -1,14 +1,16 @@
 //通过 Overlay 实现 Toast
 import 'package:flutter/material.dart';
 import 'package:samll_game/marquee/line_move.dart';
-import 'package:samll_game/marquee/st_marquee_controller.dart';
+import 'package:samll_game/marquee/st_one_marquee_controller.dart';
 import 'package:samll_game/marquee/st_marquee_widget.dart';
 import 'package:samll_game/snackbar/st_snackbar.dart';
 
 class STNewMarquee {
+  static List<StOneMarqueeController> list = [];
+  static bool hasAdd = false;
+
   /// -[context] 容器
   /// -[message] 消息内容
-  /// -[seconds] 关闭时间
   static void show({
     required BuildContext? context,
     required String message,
@@ -21,25 +23,44 @@ class STNewMarquee {
         textDirection: TextDirection.ltr,
       );
       textPainter.layout();
-      final tw = textPainter.width;
+      final tw = textPainter.width + 40;
       var w = tw + sw;
-      var sc = w / 100;
-      StMarqueeController controller = StMarqueeController(
+      var sc = ((w / 100) * 1000).toInt();
+      StOneMarqueeController controller = StOneMarqueeController(
         context: context,
+        textWidth: tw,
         snackbar: STSnackbar(
-          duration: Duration(milliseconds: (sc * 1000).toInt()),
+          duration: Duration(milliseconds: sc),
           child: LineMove(
             curve: Curves.linear,
-            duration: (sc * 1000).toInt(),
-            beginOffset: Offset(sw, 0),
-            endOffset: Offset(-tw, 0),
-            width: sw,
-            height: 60,
+            duration: sc,
+            textWidth: tw,
+            scWidth: sw,
             child: StMarqueeWidget(title: message, fontSize: 14),
+            onCanAddOther: () {
+              hasAdd = false;
+              _show();
+            },
           ),
         ),
+        onClose: (c) {
+          debugPrint("${c.key}");
+        },
       );
-      await controller.show();
+      if (!hasAdd) {
+        hasAdd = true;
+        await controller.show();
+      } else {
+        list.add(controller);
+      }
+    }
+  }
+
+  static Future<void> _show() async {
+    if (list.isNotEmpty) {
+      hasAdd = true;
+      list.first.show();
+      list.removeAt(0);
     }
   }
 }

@@ -1,85 +1,65 @@
-import 'dart:async';
-
 import 'package:flutter/widgets.dart';
+import 'package:samll_game/marquee/line_move.dart';
+import 'package:samll_game/marquee/st_marquee_widget.dart';
+import 'package:samll_game/marquee/st_one_marquee_controller.dart';
 import 'package:samll_game/snackbar/st_snackbar.dart';
 
-/// 单个控制器
+/// 这里需要是个单例，用来统一管理 Marquee
 class StMarqueeController {
-  /// 全局 Key 用于访问 MySnackbarState
-  final key = GlobalKey<STSnackbarState>();
+  /// 需要初始化通道数
+  int channelNumber = 3;
 
-  /// 自定义 Snackbar 组件
-  final STSnackbar snackbar;
+  StMarqueeController._();
+  static StMarqueeController get instance => _instance;
+  static final StMarqueeController _instance = StMarqueeController._();
 
-  /// 本地保存 OverlayEntry 对象列表
-  final _overlayEntries = <OverlayEntry>[];
+  /// 所有的跑马灯
+  List<StOneMarqueeController> stMarquee = [];
 
-  /// OverlayState 对象 用于插入和移除 OverlayEntry
-  final OverlayState overlayState;
+  /// 每条通道中的内容
+  Map<int, List<StOneMarqueeController>> channelM = {};
 
-  /// 构造函数
-  StMarqueeController({required BuildContext context, required this.snackbar})
-    : overlayState = Overlay.of(context);
-
-  /// 计时器 用于自动关闭 Snackbar
-  Timer? _timer;
-
-  /// 展示 Snackbar
-  Future<void> show() async {
-    var overlayEntries = createOverlayEntries(snackbar);
-
-    /// 缓存 OverlayEntry 对象
-    _overlayEntries.add(overlayEntries);
-
-    /// 插入 OverlayEntry 对象
-    overlayState.insert(overlayEntries);
-
-    /// 添加计时器 自动关闭
-    _addTimer(duration: snackbar.duration);
-    return;
-  }
-
-  /// 关闭 Snackbar
-  Future<void> close() async {
-    _cancelTimer();
-    _removeOverlay();
-    return;
-  }
-
-  /// 移除 OverlayEntry 对象
-  void _removeOverlay() {
-    for (var element in _overlayEntries) {
-      element.remove();
-      element.dispose();
-    }
-    _overlayEntries.clear();
-  }
-
-  /// 添加计时器
-  void _addTimer({required Duration duration}) {
-    _cancelTimer();
-    _timer = Timer(duration, close);
-  }
-
-  /// 取消计时器
-  void _cancelTimer() {
-    if (_timer != null && _timer!.isActive) {
-      _timer!.cancel();
-      _timer = null;
+  /// 展示跑马灯
+  Future<void> add({
+    required BuildContext? context,
+    required String message,
+  }) async {
+    if (context != null && context.mounted) {
+      var sw = MediaQuery.of(context).size.width;
+      // 计算文本宽度
+      final textPainter = TextPainter(
+        text: TextSpan(text: message, style: const TextStyle(fontSize: 14)),
+        textDirection: TextDirection.ltr,
+      );
+      textPainter.layout();
+      final tw = textPainter.width;
+      var w = tw + sw;
+      var sc = w / 100;
+      stMarquee.add(
+        StOneMarqueeController(
+          context: context,
+          textWidth: tw,
+          snackbar: STSnackbar(
+            duration: Duration(milliseconds: (sc * 1000).toInt()),
+            child: LineMove(
+              curve: Curves.linear,
+              duration: (sc * 1000).toInt(),
+              textWidth: tw,
+              scWidth: sw,
+              child: StMarqueeWidget(title: message, fontSize: 14),
+            ),
+          ),
+          onClose: (c) {
+            stMarquee.remove(c);
+          },
+        ),
+      );
     }
   }
 
-  /// 创建 OverlayEntry 对象
-  OverlayEntry createOverlayEntries(STSnackbar child) {
-    return OverlayEntry(
-      builder: (context) => Semantics(
-        focused: false,
-        container: true,
-        explicitChildNodes: true,
-        child: Container(margin: const EdgeInsets.only(top: 56), child: child),
-      ),
-      maintainState: false,
-      opaque: false,
-    );
+  /// 通道检测
+  /// 只有一条通道 - 需要等待第一条跑完后再去添加
+  Future<void> selectChannel() async {
+    ///
   }
 }

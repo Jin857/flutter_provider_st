@@ -162,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                                 // );
                                 STNewMarquee.show(
                                     context: context,
-                                    message: "阿莱克斯黑科技啊手机卡上的空间啊还是肯德基哈快睡觉");
+                                    message: "阿莱克斯黑科技啊");
                               },
                               child: const Padding(
                                 padding: EdgeInsets.all(10),

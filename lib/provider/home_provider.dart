@@ -10,13 +10,18 @@ class HomeProvider extends ChangeNotifier {
     init();
   }
 
+  bool isloading = false;
+
   /// 读取本地配置文件
   Future<void> init() async {
     /// 初始化
+    await Future.delayed(const Duration(seconds: 2));
+    isloading = true;
+    notifyListeners();
   }
 
-  @override
-  void notifyListeners() {
-    super.notifyListeners(); // 通知依赖的Widget更新
-  }
+  // @override
+  // void notifyListeners() {
+  //   super.notifyListeners(); // 通知依赖的Widget更新
+  // }
 }
