@@ -1,65 +1,73 @@
 import 'package:flutter/widgets.dart';
-import 'package:samll_game/marquee/line_move.dart';
-import 'package:samll_game/marquee/st_marquee_widget.dart';
-import 'package:samll_game/marquee/st_one_marquee_controller.dart';
-import 'package:samll_game/snackbar/st_snackbar.dart';
+import 'package:samll_game/marquee/controller/st_channel_marquee_controller.dart';
 
 /// 这里需要是个单例，用来统一管理 Marquee
 class StMarqueeController {
   /// 需要初始化通道数
   int channelNumber = 3;
 
-  StMarqueeController._();
+  double height = 50;
+
+  /// 需要加载的文本列表
+  List<StMarqueeString> needRunString = [];
+
+  /// 每条通道中的内容
+  List<StChannelMarqueeController> channelMarquee = [];
+
+  StMarqueeController._() {
+    init();
+  }
+
   static StMarqueeController get instance => _instance;
   static final StMarqueeController _instance = StMarqueeController._();
 
-  /// 所有的跑马灯
-  List<StOneMarqueeController> stMarquee = [];
+  /// 配置参数
+  void setting({int? schannelNumber, double? sheight}) {
+    if (schannelNumber != null) {
+      channelNumber = schannelNumber;
+    }
+    if (sheight != null) {
+      height = sheight;
+    }
+  }
 
-  /// 每条通道中的内容
-  Map<int, List<StOneMarqueeController>> channelM = {};
+  /// 初始化
+  void init() {
+    for (var i = 0; i < channelNumber; i++) {
+      channelMarquee.add(
+        StChannelMarqueeController(
+          channelNum: i,
+          height: i * height,
+          onCanAdd: onCanAdd,
+        ),
+      );
+    }
+  }
+
+  void onCanAdd(StChannelMarqueeController channelMarquee) {
+    if (needRunString.isNotEmpty) {
+      StMarqueeString map = needRunString.first;
+      channelMarquee.show(context: map.context, text: map.message);
+      needRunString.removeAt(0);
+    }
+  }
 
   /// 展示跑马灯
   Future<void> add({
     required BuildContext? context,
     required String message,
   }) async {
-    if (context != null && context.mounted) {
-      var sw = MediaQuery.of(context).size.width;
-      // 计算文本宽度
-      final textPainter = TextPainter(
-        text: TextSpan(text: message, style: const TextStyle(fontSize: 14)),
-        textDirection: TextDirection.ltr,
-      );
-      textPainter.layout();
-      final tw = textPainter.width;
-      var w = tw + sw;
-      var sc = w / 100;
-      stMarquee.add(
-        StOneMarqueeController(
-          context: context,
-          textWidth: tw,
-          snackbar: STSnackbar(
-            duration: Duration(milliseconds: (sc * 1000).toInt()),
-            child: LineMove(
-              curve: Curves.linear,
-              duration: (sc * 1000).toInt(),
-              textWidth: tw,
-              scWidth: sw,
-              child: StMarqueeWidget(title: message, fontSize: 14),
-            ),
-          ),
-          onClose: (c) {
-            stMarquee.remove(c);
-          },
-        ),
-      );
+    var canChannel = channelMarquee.where((channel) => channel.isCanAdd);
+    if (canChannel.isNotEmpty) {
+      canChannel.first.show(context: context, text: message);
+    } else {
+      needRunString.add(StMarqueeString(context: context, message: message));
     }
   }
+}
 
-  /// 通道检测
-  /// 只有一条通道 - 需要等待第一条跑完后再去添加
-  Future<void> selectChannel() async {
-    ///
-  }
+class StMarqueeString {
+  final BuildContext? context;
+  final String message;
+  StMarqueeString({required this.context, required this.message});
 }

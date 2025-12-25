@@ -1,6 +1,5 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:flutter_provider_st/modules/samll_game/lib/marquee/new_marquee.dart';
 import 'package:flutter_provider_st/page/luckywheel/lucky_wheel_list_page.dart';
 import 'package:flutter_provider_st/router/st_routers_pages.dart';
 import 'package:provider/provider.dart';
@@ -157,12 +156,9 @@ class _MyHomePageState extends State<MyHomePage> {
                             ),
                             LimitClickButton(
                               onClick: () async {
-                                // await Future.delayed(
-                                //   const Duration(seconds: 1),
-                                // );
-                                STNewMarquee.show(
+                                StMarqueeController.instance.add(
                                     context: context,
-                                    message: "阿莱克斯黑科技啊");
+                                    message: "阿斯科利结婚快结婚啊上课就好啊卢卡申科就啊啥的");
                               },
                               child: const Padding(
                                 padding: EdgeInsets.all(10),

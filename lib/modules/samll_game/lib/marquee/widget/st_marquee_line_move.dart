@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 /// 线性移动动画
-class LineMove extends StatefulWidget {
+class StMarqueeLineMove extends StatefulWidget {
   /// 移动对象
   final Widget child;
 
@@ -21,6 +21,8 @@ class LineMove extends StatefulWidget {
   /// 移动结束后隐藏
   final bool endHide;
 
+  final double height;
+
   /// 运动曲线
   /// linear : 匀速的
   /// decelerate : 匀减速
@@ -30,7 +32,7 @@ class LineMove extends StatefulWidget {
   /// easeInOut : 开始慢，然后加速，最后再减速
   final Curve curve;
 
-  const LineMove({
+  const StMarqueeLineMove({
     super.key,
     required this.child,
     required this.duration,
@@ -42,14 +44,16 @@ class LineMove extends StatefulWidget {
     required this.textWidth,
     required this.scWidth,
     this.onCanAddOther,
+    this.height = 0,
   }) : endHide = endHide ?? false,
        curve = curve ?? Curves.easeOut;
 
   @override
-  State<LineMove> createState() => _LineMoveState();
+  State<StMarqueeLineMove> createState() => _StMarqueeLineMoveState();
 }
 
-class _LineMoveState extends State<LineMove> with TickerProviderStateMixin {
+class _StMarqueeLineMoveState extends State<StMarqueeLineMove>
+    with TickerProviderStateMixin {
   late AnimationController controller;
   late Animation<Offset> animation;
   late bool hide = false;
@@ -77,7 +81,7 @@ class _LineMoveState extends State<LineMove> with TickerProviderStateMixin {
   }
 
   @override
-  void didUpdateWidget(LineMove oldWidget) {
+  void didUpdateWidget(StMarqueeLineMove oldWidget) {
     super.didUpdateWidget(oldWidget);
   }
 
@@ -95,7 +99,7 @@ class _LineMoveState extends State<LineMove> with TickerProviderStateMixin {
           }
         });
     return Positioned(
-      top: 0,
+      top: widget.height,
       left: 0,
       child: Offstage(
         offstage: hide,
