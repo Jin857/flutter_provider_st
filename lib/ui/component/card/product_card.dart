@@ -1,3 +1,10 @@
+/*
+ * product_card.dart
+ * 描述：商品卡片
+ * 创建人：IVAN
+ * 创建时间：2025-12-29
+ * 最后修改：IVAN - 2025-12-29
+ */
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/ui/component/card/dashed_quadrilateral_border.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
@@ -19,6 +26,11 @@ class ProductCard extends StatelessWidget {
   /// 副标题文本样式
   final TextStyle subtitleStyle;
 
+  /// -[image] 商品图片
+  /// -[name] 商品名称
+  /// -[nameStyle] 名称文本样式
+  /// -[subtitle] 副标题
+  /// -[subtitleStyle] 副标题文本样式
   ProductCard({
     super.key,
     String? image,

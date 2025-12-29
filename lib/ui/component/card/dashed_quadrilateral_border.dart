@@ -1,3 +1,11 @@
+/*
+ * dashed_quadrilateral_border.dart
+ * 描述：四边形虚线边框 - 可修改虚线颜色 - 可能多个颜色。这里的虚线是绘制的, 所有虚线类型可以是 棱形/正方形/长方形 等等... 
+ * 创建人：IVAN
+ * 创建时间：2025-12-29
+ * 最后修改：IVAN - 2025-12-29
+ */
+
 import 'package:flutter/material.dart';
 
 class DashedQuadrilateralBorder extends StatelessWidget {
@@ -22,6 +30,13 @@ class DashedQuadrilateralBorder extends StatelessWidget {
   /// 颜色
   final List<Color> colors;
 
+  /// -[child] 虚线边框内部Widget
+  /// -[dashedWidth] 虚线长度
+  /// -[dashedHeight] 虚线高度
+  /// -[dashedSpacing] 虚线之间间距
+  /// -[dashedPadding] 虚线边框内部内容边距
+  /// -[skew] 每个虚线的 水平线左右/竖线上线 线条倾斜度
+  /// -[colors] 颜色
   const DashedQuadrilateralBorder({
     super.key,
     required this.child,
@@ -51,13 +66,28 @@ class DashedQuadrilateralBorder extends StatelessWidget {
   }
 }
 
+/// 绘制盒子
 class _DashedQuadrilateralPainter extends CustomPainter {
+  /// 虚线宽度
   final double dashedWidth;
+
+  /// 虚线高度
   final double dashedHeight;
+
+  /// 虚线间距
   final double dashedSpacing;
+
+  /// 倾斜角度(0-1)
   final double skew;
+
+  /// 颜色
   final List<Color> colors;
 
+  /// -[dashedWidth] 虚线长度
+  /// -[dashedHeight] 虚线高度
+  /// -[dashedSpacing] 虚线之间间距
+  /// -[skew] 每个虚线的 水平线左右/竖线上线 线条倾斜度
+  /// -[colors] 颜色
   _DashedQuadrilateralPainter({
     required this.dashedWidth,
     required this.dashedHeight,
@@ -71,6 +101,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
     final totalLength = dashedWidth + dashedSpacing;
     final halfHeight = dashedHeight / 2;
     final skewOffset = dashedHeight * skew; // 倾斜偏移量
+    /// 水平上
     _drawHorizontalLine(
       canvas,
       size,
@@ -82,6 +113,8 @@ class _DashedQuadrilateralPainter extends CustomPainter {
       skewOffset: skewOffset,
       isTop: true,
     );
+
+    /// 水平下
     _drawHorizontalLine(
       canvas,
       size,
@@ -93,15 +126,21 @@ class _DashedQuadrilateralPainter extends CustomPainter {
       skewOffset: skewOffset,
       isTop: false,
     );
+
+    /// 垂直右
     _drawVerticalLine(
-      canvas, size, colors,
+      canvas,
+      size,
+      colors,
       x: size.width - halfHeight,
       totalLength: totalLength,
-      width: dashedHeight, // 交换宽高
-      height: dashedWidth, // 交换宽高
+      width: dashedHeight,
+      height: dashedWidth,
       skewOffset: skewOffset,
       isRight: true,
     );
+
+    /// 垂直左
     _drawVerticalLine(
       canvas,
       size,
@@ -115,6 +154,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
     );
   }
 
+  /// 绘制上下虚线
   void _drawHorizontalLine(
     Canvas canvas,
     Size size,
@@ -152,9 +192,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
         path.lineTo(p3.dx > size.width ? size.width : p3.dx, p3.dy);
         path.lineTo(p4.dx > size.width ? size.width : p4.dx, p4.dy);
       }
-
       path.close();
-
       final paint = Paint()
         ..color = colors[i % colors.length]
         ..style = PaintingStyle.fill;
@@ -163,6 +201,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
     }
   }
 
+  /// 绘制左右虚线
   void _drawVerticalLine(
     Canvas canvas,
     Size size,

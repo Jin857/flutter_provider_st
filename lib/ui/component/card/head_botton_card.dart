@@ -1,10 +1,27 @@
+/*
+ * head_botton_card.dart
+ * 描述：用户圆形图像
+ * 创建人：IVAN
+ * 创建时间：2025-12-29
+ * 最后修改：IVAN - 2025-12-29
+ */
+
 import 'package:flutter/material.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 
 class HeadBottonCard extends StatelessWidget {
+  /// 圆形图像半径
   final double radius;
+
+  /// 图像路径
   final String headIco;
+
+  /// 异常图片路径
   final String errorImage;
+
+  /// -[radius] 圆形图像半径
+  /// -[headIco] 图像路径
+  /// -[errorImage] 异常图片路径
   const HeadBottonCard({
     super.key,
     required this.radius,
