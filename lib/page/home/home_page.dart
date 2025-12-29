@@ -17,6 +17,21 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  late StMarqueeController stMarqueeController;
+  @override
+  void initState() {
+    super.initState();
+    stMarqueeController = StMarqueeController();
+    stMarqueeController.setting();
+    stMarqueeController.init();
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    stMarqueeController.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(

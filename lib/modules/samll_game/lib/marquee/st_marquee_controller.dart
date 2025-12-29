@@ -1,11 +1,19 @@
+/*
+ * st_marquee_controller.dart
+ * 描述：弹幕效果
+ * 创建人：IVAN
+ * 创建时间：2025-12-29
+ * 最后修改：IVAN - 2025-12-29
+ */
+
 import 'package:flutter/widgets.dart';
 import 'package:samll_game/marquee/controller/st_channel_marquee_controller.dart';
 
-/// 这里需要是个单例，用来统一管理 Marquee
 class StMarqueeController {
   /// 需要初始化通道数
   int channelNumber = 3;
 
+  /// 每条通道的高度
   double height = 50;
 
   /// 需要加载的文本列表
@@ -14,14 +22,14 @@ class StMarqueeController {
   /// 每条通道中的内容
   List<StChannelMarqueeController> channelMarquee = [];
 
-  StMarqueeController._() {
-    init();
-  }
+  StMarqueeController();
 
   static StMarqueeController get instance => _instance;
-  static final StMarqueeController _instance = StMarqueeController._();
+  static final StMarqueeController _instance = StMarqueeController();
 
   /// 配置参数
+  /// -[schannelNumber] 通道数
+  /// -[sheight] 通道高度
   void setting({int? schannelNumber, double? sheight}) {
     if (schannelNumber != null) {
       channelNumber = schannelNumber;
@@ -32,6 +40,7 @@ class StMarqueeController {
   }
 
   /// 初始化
+  /// 在使用前需要初始化通道
   void init() {
     for (var i = 0; i < channelNumber; i++) {
       channelMarquee.add(
@@ -44,6 +53,7 @@ class StMarqueeController {
     }
   }
 
+  /// 添加跑马灯
   void onCanAdd(StChannelMarqueeController channelMarquee) {
     if (needRunString.isNotEmpty) {
       StMarqueeString map = needRunString.first;
@@ -63,6 +73,14 @@ class StMarqueeController {
     } else {
       needRunString.add(StMarqueeString(context: context, message: message));
     }
+  }
+
+  void dispose() {
+    needRunString.clear();
+    for (var item in channelMarquee) {
+      item.dispose();
+    }
+    channelMarquee.clear();
   }
 }
 

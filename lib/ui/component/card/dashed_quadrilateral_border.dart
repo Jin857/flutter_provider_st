@@ -30,6 +30,9 @@ class DashedQuadrilateralBorder extends StatelessWidget {
   /// 颜色
   final List<Color> colors;
 
+  /// 设置那条边框显示或者不显示虚线
+  final DashedQuadrilateralBorderType type;
+
   /// -[child] 虚线边框内部Widget
   /// -[dashedWidth] 虚线长度
   /// -[dashedHeight] 虚线高度
@@ -37,6 +40,7 @@ class DashedQuadrilateralBorder extends StatelessWidget {
   /// -[dashedPadding] 虚线边框内部内容边距
   /// -[skew] 每个虚线的 水平线左右/竖线上线 线条倾斜度
   /// -[colors] 颜色
+  /// -[type] 用来设置那个边框不显示虚线
   const DashedQuadrilateralBorder({
     super.key,
     required this.child,
@@ -46,6 +50,7 @@ class DashedQuadrilateralBorder extends StatelessWidget {
     this.dashedPadding,
     this.skew = 0.6,
     required this.colors,
+    this.type = const DashedQuadrilateralBorderType.all(),
   });
 
   @override
@@ -57,9 +62,15 @@ class DashedQuadrilateralBorder extends StatelessWidget {
         dashedSpacing: dashedSpacing,
         skew: skew,
         colors: colors,
+        type: type,
       ),
       child: Padding(
-        padding: dashedPadding ?? EdgeInsets.all(dashedHeight),
+        padding: dashedPadding ??
+            EdgeInsets.only(
+                left: type.left ? dashedHeight : 0,
+                right: type.right ? dashedHeight : 0,
+                top: type.top ? dashedHeight : 0,
+                bottom: type.bottom ? dashedHeight : 0),
         child: child,
       ),
     );
@@ -83,17 +94,22 @@ class _DashedQuadrilateralPainter extends CustomPainter {
   /// 颜色
   final List<Color> colors;
 
+  /// 设置那条边框显示或者不显示虚线
+  final DashedQuadrilateralBorderType type;
+
   /// -[dashedWidth] 虚线长度
   /// -[dashedHeight] 虚线高度
   /// -[dashedSpacing] 虚线之间间距
   /// -[skew] 每个虚线的 水平线左右/竖线上线 线条倾斜度
   /// -[colors] 颜色
+  /// /// -[type] 用来设置那个边框不显示虚线
   _DashedQuadrilateralPainter({
     required this.dashedWidth,
     required this.dashedHeight,
     required this.dashedSpacing,
     required this.skew,
     required this.colors,
+    required this.type,
   });
 
   @override
@@ -102,56 +118,64 @@ class _DashedQuadrilateralPainter extends CustomPainter {
     final halfHeight = dashedHeight / 2;
     final skewOffset = dashedHeight * skew; // 倾斜偏移量
     /// 水平上
-    _drawHorizontalLine(
-      canvas,
-      size,
-      colors,
-      y: halfHeight,
-      totalLength: totalLength,
-      width: dashedWidth,
-      height: dashedHeight,
-      skewOffset: skewOffset,
-      isTop: true,
-    );
+    if (type.top) {
+      _drawHorizontalLine(
+        canvas,
+        size,
+        colors,
+        y: halfHeight,
+        totalLength: totalLength,
+        width: dashedWidth,
+        height: dashedHeight,
+        skewOffset: skewOffset,
+        isTop: true,
+      );
+    }
 
     /// 水平下
-    _drawHorizontalLine(
-      canvas,
-      size,
-      colors,
-      y: size.height - halfHeight,
-      totalLength: totalLength,
-      width: dashedWidth,
-      height: dashedHeight,
-      skewOffset: skewOffset,
-      isTop: false,
-    );
+    if (type.bottom) {
+      _drawHorizontalLine(
+        canvas,
+        size,
+        colors,
+        y: size.height - halfHeight,
+        totalLength: totalLength,
+        width: dashedWidth,
+        height: dashedHeight,
+        skewOffset: skewOffset,
+        isTop: false,
+      );
+    }
 
     /// 垂直右
-    _drawVerticalLine(
-      canvas,
-      size,
-      colors,
-      x: size.width - halfHeight,
-      totalLength: totalLength,
-      width: dashedHeight,
-      height: dashedWidth,
-      skewOffset: skewOffset,
-      isRight: true,
-    );
+    if (type.right) {
+      _drawVerticalLine(
+        canvas,
+        size,
+        colors,
+        x: size.width - halfHeight,
+        totalLength: totalLength,
+        width: dashedHeight,
+        height: dashedWidth,
+        skewOffset: skewOffset,
+        isRight: true,
+      );
+    }
 
     /// 垂直左
-    _drawVerticalLine(
-      canvas,
-      size,
-      colors,
-      x: halfHeight,
-      totalLength: totalLength,
-      width: dashedHeight,
-      height: dashedWidth,
-      skewOffset: skewOffset,
-      isRight: false,
-    );
+    if (type.left) {
+      _drawVerticalLine(
+        canvas,
+        size,
+        colors,
+        x: halfHeight,
+        totalLength: totalLength,
+        width: dashedHeight,
+        height: dashedWidth,
+        skewOffset: skewOffset,
+        isRight: false,
+      );
+    }
   }
 
   /// 绘制上下虚线
@@ -180,7 +204,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
         final p4 = Offset(startX - skewOffset, y + halfHeight);
         path.moveTo(p1.dx > size.width ? size.width : p1.dx, p1.dy);
         path.lineTo(p2.dx > size.width ? size.width : p2.dx, p2.dy);
-        path.lineTo(p3.dx, p3.dy);
+        path.lineTo(p3.dx > size.width ? size.width : p3.dx, p3.dy);
         path.lineTo(p4.dx < 0 ? 0 : p4.dx, p4.dy);
       } else {
         final p1 = Offset(startX - skewOffset, y - halfHeight);
@@ -188,7 +212,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
         final p3 = Offset(endX, y + halfHeight);
         final p4 = Offset(startX, y + halfHeight);
         path.moveTo(p1.dx < 0 ? 0 : p1.dx, p1.dy);
-        path.lineTo(p2.dx, p2.dy);
+        path.lineTo(p2.dx > size.width ? size.width : p2.dx, p2.dy);
         path.lineTo(p3.dx > size.width ? size.width : p3.dx, p3.dy);
         path.lineTo(p4.dx > size.width ? size.width : p4.dx, p4.dy);
       }
@@ -249,4 +273,24 @@ class _DashedQuadrilateralPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+}
+
+class DashedQuadrilateralBorderType {
+  final bool top;
+  final bool bottom;
+  final bool left;
+  final bool right;
+  DashedQuadrilateralBorderType({
+    required this.top,
+    required this.bottom,
+    required this.left,
+    required this.right,
+  });
+
+  const DashedQuadrilateralBorderType.all({
+    this.top = true,
+    this.bottom = true,
+    this.left = true,
+    this.right = true,
+  });
 }

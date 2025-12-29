@@ -63,6 +63,12 @@ class ProductCard extends StatelessWidget {
         children: [
           DashedQuadrilateralBorder(
             colors: const [Colors.red, Colors.green, Colors.white],
+            type: DashedQuadrilateralBorderType(
+              top: true,
+              bottom: true,
+              left: true,
+              right: true,
+            ),
             child: Container(
               alignment: Alignment.center,
               decoration: const BoxDecoration(

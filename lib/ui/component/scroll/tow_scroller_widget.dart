@@ -95,7 +95,6 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
                 ),
               ),
             ),
-
             SliverToBoxAdapter(
               child: Container(
                 padding: const EdgeInsets.all(10),
@@ -212,57 +211,61 @@ class _TowScrollerWidgetState extends State<TowScrollerWidget> {
             ),
           ];
         },
-        body: PageView.builder(
-          controller: page,
-          onPageChanged: (value) {
-            setState(() {
-              selectListIndex = value;
-            });
-            _scrollToTop();
-          },
-          itemCount: list.length,
-          itemBuilder: (context, pageIndex) {
-            return CustomScrollView(
-              key: PageStorageKey<String>(list[pageIndex]),
-              slivers: <Widget>[
-                SliverPadding(
-                  padding: const EdgeInsets.symmetric(vertical: 5),
-                  sliver: SliverMasonryGrid(
-                    crossAxisSpacing: 5,
-                    mainAxisSpacing: 5,
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final isOdd = index % 2 == 1;
-                        final imageIdex = index % 4;
-                        return Container(
-                          alignment: Alignment.center,
-                          color: isOdd ? Colors.white : const Color(0xFFEAEAEA),
-                          child: GestureDetector(
-                            onTap: () {},
-                            child: ProductCard(
-                              image: images[imageIdex],
-                              name:
-                                  "${list[selectListIndex]}-卡片内容($index)-$imageIdex",
-                              subtitle: index % 3 == 1
-                                  ? "卡拉斯京卢卡斯家了阿斯利。"
-                                  : index % 3 == 2
-                                      ? "卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。"
-                                      : "卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。",
+        body: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 4),
+          child: PageView.builder(
+            controller: page,
+            onPageChanged: (value) {
+              setState(() {
+                selectListIndex = value;
+              });
+              _scrollToTop();
+            },
+            itemCount: list.length,
+            itemBuilder: (context, pageIndex) {
+              return CustomScrollView(
+                key: PageStorageKey<String>(list[pageIndex]),
+                slivers: <Widget>[
+                  SliverPadding(
+                    padding: const EdgeInsets.symmetric(vertical: 5),
+                    sliver: SliverMasonryGrid(
+                      crossAxisSpacing: 5,
+                      mainAxisSpacing: 5,
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final isOdd = index % 2 == 1;
+                          final imageIdex = index % 4;
+                          return Container(
+                            alignment: Alignment.center,
+                            color:
+                                isOdd ? Colors.white : const Color(0xFFEAEAEA),
+                            child: GestureDetector(
+                              onTap: () {},
+                              child: ProductCard(
+                                image: images[imageIdex],
+                                name:
+                                    "${list[selectListIndex]}-卡片内容($index)-$imageIdex",
+                                subtitle: index % 3 == 1
+                                    ? "卡拉斯京卢卡斯家了阿斯利。"
+                                    : index % 3 == 2
+                                        ? "卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。"
+                                        : "卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。卡拉斯京卢卡斯家了阿斯利康将阿斯科利阿斯科利将阿斯利康将，啊商家阿斯利康将阿三，失联客机啊算了。",
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                      childCount: 30,
-                    ),
-                    gridDelegate:
-                        SliverSimpleGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: screenWidth / 2,
+                          );
+                        },
+                        childCount: 30,
+                      ),
+                      gridDelegate:
+                          SliverSimpleGridDelegateWithMaxCrossAxisExtent(
+                        maxCrossAxisExtent: screenWidth / 2,
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

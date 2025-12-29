@@ -93,4 +93,10 @@ class StOneMarqueeController {
       opaque: false,
     );
   }
+
+  void dispose() {
+    close();
+    overlayState.dispose();
+    _overlayEntries.clear();
+  }
 }

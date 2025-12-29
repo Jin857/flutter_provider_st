@@ -74,4 +74,11 @@ class StChannelMarqueeController {
   void remove(StOneMarqueeController controller) {
     marqueeList.remove(controller);
   }
+
+  void dispose() {
+    for (var item in marqueeList) {
+      item.dispose();
+    }
+    marqueeList.clear();
+  }
 }
