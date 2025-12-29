@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider_st/ui/component/card/dashed_quadrilateral_border.dart';
 import 'package:flutter_provider_st/ui/component/image/l_image.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -48,16 +49,19 @@ class ProductCard extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            alignment: Alignment.center,
-            decoration: const BoxDecoration(
-              color: Color(0xAA333333),
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(6),
-                topRight: Radius.circular(6),
+          DashedQuadrilateralBorder(
+            colors: const [Colors.red, Colors.green, Colors.white],
+            child: Container(
+              alignment: Alignment.center,
+              decoration: const BoxDecoration(
+                color: Color(0xAA333333),
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(6),
+                  topRight: Radius.circular(6),
+                ),
               ),
+              child: LImage(fit: BoxFit.fitWidth, image: image),
             ),
-            child: LImage(fit: BoxFit.fitWidth, image: image),
           ),
           Container(
             padding: EdgeInsets.all(ScreenUtil().setSp(5)),
