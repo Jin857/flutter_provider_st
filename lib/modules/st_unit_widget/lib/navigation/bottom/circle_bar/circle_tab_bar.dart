@@ -1,3 +1,11 @@
+/*
+ * bottom_tab_menu.dart
+ * 描述：底部掏空的底部菜单栏
+ * 创建人：IVAN
+ * 创建时间：2025-12-30
+ * 最后修改：IVAN - 2025-12-30
+ */
+
 import 'package:flutter/material.dart';
 import 'package:st_unit_widget/navigation/bottom/circle_bar/bottom_tab_menu.dart';
 
