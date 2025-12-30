@@ -102,7 +102,7 @@ class _DashedQuadrilateralPainter extends CustomPainter {
   /// -[dashedSpacing] 虚线之间间距
   /// -[skew] 每个虚线的 水平线左右/竖线上线 线条倾斜度
   /// -[colors] 颜色
-  /// /// -[type] 用来设置那个边框不显示虚线
+  /// -[type] 用来设置那个边框不显示虚线
   _DashedQuadrilateralPainter({
     required this.dashedWidth,
     required this.dashedHeight,
