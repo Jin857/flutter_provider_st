@@ -5,7 +5,7 @@ import 'package:flutter_provider_st/page/find/find_page.dart';
 import 'package:flutter_provider_st/page/error_page.dart';
 import 'package:flutter_provider_st/page/home/home_page.dart';
 import 'package:flutter_provider_st/page/persion/persion_page.dart';
-import 'package:flutter_provider_st/page/tiktok/tiktok_page.dart';
+import 'package:flutter_provider_st/page/tiktok/video_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:st_unit_widget/st_unit_widget.dart';
 
@@ -117,7 +117,7 @@ class _LobbyPageState extends State<NewLobbyPage> {
             ),
             KeepAliveWrapper(
               keepAlive: true,
-              child: TiktokPage(),
+              child: VideoPage(),
             ),
             KeepAliveWrapper(
               keepAlive: true,
